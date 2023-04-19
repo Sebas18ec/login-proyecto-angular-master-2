@@ -1,0 +1,61 @@
+
+
+.welcome-container {
+    display: flex;
+    justify-content: center; /* Centra horizontalmente */
+    align-items: center; /* Centra verticalmente */
+    height: 100vh; /* Altura del contenedor */
+  }
+  
+  .welcome-message {
+    text-align: center;
+  }
+  
+  .welcome-message {
+    text-align: center;
+    margin-top: 100px;
+  }
+  
+  .welcome-message h1 {
+    font-size: 3em;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 20px;
+  }
+  
+  .welcome-message p {
+    font-size: 1.5em;
+    color: #777;
+  }
+  
+nav {
+    background-color: #333; /* Cambiar por el color que desees */
+    width: 100%;
+  }
+  
+  nav ul {
+    display: flex;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+  }
+  
+  nav li {
+    flex: 1;
+  }
+  
+  nav a {
+    color: white;
+    display: block;
+    padding: 10px;
+    text-align: center;
+    text-decoration: none;
+  }
+  
+  .logo {  
+    display: inline-block;  
+    height: 6rem;  
+    margin-right: 10px;  
+    vertical-align: middle;  
+  }  
+  
