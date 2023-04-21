@@ -23,7 +23,33 @@
    </div>
  </nav>
 <br>
- 
+<button class="btn btn-primary mb-3" (click)="nuevoCentroCostos()">Añadir nuevo Centro de Costos</button>
+<br>
+
+<div class="table-container">
+
+  <table class="table table-hover">
+    <thead>
+      <tr>
+        <th>Código</th>
+        <th>Nombre Centro de Costos</th>
+        <th>Acciones</th> <!-- Nueva columna para los botones -->
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let cc of centroCostos">
+        <td>{{ cc.codigo }}</td>
+        <td>{{ cc.nombreCentroCostos }}</td>
+        <td>
+          <button class="btn btn-sm btn-primary me-2">Editar</button> <!-- Botón de editar -->
+          <button class="btn btn-sm btn-danger">Eliminar</button> <!-- Botón de eliminar -->
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+
 
 
 

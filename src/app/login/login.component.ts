@@ -52,7 +52,7 @@ export class LoginComponent {
         this.emisores = data.map(emisor => emisor.NombreEmisor);
         console.log(this.emisores); 
       });
-      this.selectedEmisor = this.emisores[0].NombreEmisor;
+      
   }
   
 

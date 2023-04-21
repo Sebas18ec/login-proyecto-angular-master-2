@@ -58,4 +58,9 @@ nav {
     margin-right: 10px;  
     vertical-align: middle;  
   }  
+
+  .table-container {
+    margin: 20px; /* margen de 20px */
+  }
+  
   
