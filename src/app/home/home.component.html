@@ -23,7 +23,21 @@
    </div>
  </nav>
 <br>
-<button class="btn btn-primary mb-3" (click)="nuevoCentroCostos()">Añadir nuevo Centro de Costos</button>
+<div class="form-box">
+
+  <form (ngSubmit)="onSubmit()">
+      <label for="codigo">Código:</label>
+      <input type="number" name="codigo" [(ngModel)]="codigo">
+    
+      <label for="descripcion">Descripción:</label>
+      <input type="text" name="descripcion" [(ngModel)]="descripcion">
+    
+      <button type="submit">Añadir nuevo Centro Costo</button>
+    </form>
+    
+  </div>
+  
+<!--<button class="btn btn-primary mb-3" (click)="nuevoCentroCostos()">Añadir nuevo Centro de Costos</button>-->
 <br>
 
 <div class="table-container">

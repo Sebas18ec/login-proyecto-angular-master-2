@@ -1,7 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { EmisorService } from '../shared/emisor.service';
 import { DomSanitizer } from '@angular/platform-browser';  
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
+import { Router } from '@angular/router';
+import Swal from 'sweetalert2';
+
 
 @Component({
   selector: 'app-home',
@@ -14,10 +17,13 @@ export class HomeComponent implements OnInit {
   logoUrl:any;
   centroCostos: any[] = [];
   datos: any;
+  codigo: number | undefined;
+  descripcion: string | undefined;
+  apiResponse: any;
 
   
 
-  constructor(private emisorService: EmisorService,private sanitizer: DomSanitizer, private http: HttpClient) {
+  constructor(private emisorService: EmisorService,private sanitizer: DomSanitizer, private http: HttpClient,private router: Router) {
     this.logoUrl = this.sanitizer.bypassSecurityTrustUrl('assets/img/logo-taller.svg');  
 
    }
@@ -41,8 +47,26 @@ export class HomeComponent implements OnInit {
   }
 
   nuevoCentroCostos() {
-    // Aquí puedes abrir un modal o un formulario de entrada de datos
-    // para agregar un nuevo centro de costos
+    this.router.navigate(['/insertar']);
+  }
+
+  onSubmit() {
+    //const url = 'api/ControladorAPI/CentroCostosInsert';
+    const url = `api/ControladorAPI/CentroCostosInsert?codigoCentroCostos=${this.codigo}&descripcionCentroCostos=${this.descripcion}`;
+    
+    const body = { codigoCentroCostos: this.codigo, descripcionCentroCostos: this.descripcion };
+    this.http.get(url).subscribe(
+      (response) => {
+        console.log(response);
+        Swal.fire('Se ha ingresado exitosamente');
+        this.router.navigate(['/home']);
+      },
+      (error) => {
+        console.error(error);
+        Swal.fire('¡Error!');
+        this.router.navigate(['/home']);
+      }
+    );
   }
   
 
