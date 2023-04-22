@@ -10,9 +10,15 @@ export class EmisorService {
 
   updateEmisorData(data: any) {
     this.emisorData = data;
+    localStorage.setItem('emisorData', JSON.stringify(data));
   }
 
   getEmisorData() {
+    const storedData = localStorage.getItem('emisorData');
+    if (storedData) {
+      return JSON.parse(storedData);
+    }
     return this.emisorData;
   }
+  
 }

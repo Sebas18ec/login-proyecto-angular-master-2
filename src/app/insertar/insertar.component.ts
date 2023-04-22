@@ -28,14 +28,11 @@ export class InsertarComponent {
 
 
   onSubmit() {
-    const url = `api/ControladorAPI/centrocostos/insert?codigoCentroCostos=${this.codigo}&descripcionCentroCostos=${this.descripcion}`;
-    //const url = 'api/ControladorAPI/centrocostos/insert';
-    //const body = { codigoCentroCostos: this.codigo, descripcionCentroCostos: this.descripcion };
-    //console.log(body)
+    //const url = 'api/ControladorAPI/CentroCostosInsert';
+    const url = `api/ControladorAPI/CentroCostosInsert?codigoCentroCostos=${this.codigo}&descripcionCentroCostos=${this.descripcion}`;
     
-   
-    
-    this.http.post(url, {}).subscribe(
+    const body = { codigoCentroCostos: this.codigo, descripcionCentroCostos: this.descripcion };
+    this.http.get(url).subscribe(
       (response) => {
         console.log(response);
         Swal.fire('Se ha ingresado exitosamente');
@@ -45,57 +42,8 @@ export class InsertarComponent {
         console.error(error);
         Swal.fire('¡Error!');
         this.router.navigate(['/home']);
-     
       }
     );
-    /*this.checkServerConnection(url).subscribe(
-      (connected) => {
-        if (connected) {
-          this.http.post(url, body).subscribe(
-            (response) => {
-              console.log(response);
-              Swal.fire('Se ha ingresado exitosamente');
-              this.router.navigate(['/home']);
-            },
-            (error) => {
-              console.error(error);
-              Swal.fire('¡Error!');
-              this.router.navigate(['/home']);
-            }
-          );
-        } else {
-          Swal.fire('¡Error de conexión!');
-        }
-      }
-    );*/
   }
-
-  /*checkServerConnection(url: string): Observable<boolean> {
-    return new Observable<boolean>(observer => {
-      const xhr = new XMLHttpRequest();
-      xhr.open('GET', url, true);
-      xhr.timeout = 5000; // tiempo máximo de espera de la conexión en milisegundos
-      xhr.onreadystatechange = () => {
-        if (xhr.readyState === 4) {
-          if (xhr.status >= 200 && xhr.status < 300) {
-            observer.next(true);
-          } else {
-            observer.next(false);
-          }
-          observer.complete();
-        }
-      };
-      xhr.onerror = () => {
-        observer.next(false);
-        observer.complete();
-      };
-      xhr.ontimeout = () => {
-        observer.next(false);
-        observer.complete();
-      };
-      xhr.send();
-    });
-  }*/
-  
 
 }

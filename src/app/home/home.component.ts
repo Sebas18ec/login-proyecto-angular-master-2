@@ -50,24 +50,7 @@ export class HomeComponent implements OnInit {
     this.router.navigate(['/insertar']);
   }
 
-  onSubmit() {
-    //const url = 'api/ControladorAPI/CentroCostosInsert';
-    const url = `api/ControladorAPI/CentroCostosInsert?codigoCentroCostos=${this.codigo}&descripcionCentroCostos=${this.descripcion}`;
-    
-    const body = { codigoCentroCostos: this.codigo, descripcionCentroCostos: this.descripcion };
-    this.http.get(url).subscribe(
-      (response) => {
-        console.log(response);
-        Swal.fire('Se ha ingresado exitosamente');
-        this.router.navigate(['/home']);
-      },
-      (error) => {
-        console.error(error);
-        Swal.fire('¡Error!');
-        this.router.navigate(['/home']);
-      }
-    );
-  }
+  
   
 
 }
