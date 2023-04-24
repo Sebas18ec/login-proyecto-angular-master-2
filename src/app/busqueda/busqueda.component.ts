@@ -32,6 +32,7 @@ export class BusquedaComponent {
       (resultados) => {
         this.centroCostos = resultados;
         console.log(this.centroCostos);
+        Swal.fire('Se encontró Centro Costo')
         this.nuevosResultados = true;
         if(this.centroCostos===null)
         {

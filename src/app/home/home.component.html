@@ -52,7 +52,7 @@
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let cc of centroCostos">
+      <tr *ngFor="let cc of centroCostos | filter: nombreBusqueda">
         <td>{{ cc.codigo }}</td>
         <td>{{ cc.nombreCentroCostos }}</td>
         <td>

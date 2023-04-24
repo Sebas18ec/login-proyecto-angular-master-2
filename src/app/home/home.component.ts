@@ -4,6 +4,8 @@ import { DomSanitizer } from '@angular/platform-browser';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Router } from '@angular/router';
 import Swal from 'sweetalert2';
+import { FilterPipe } from '../pipes/filter.pipe';
+
 
 
 @Component({
