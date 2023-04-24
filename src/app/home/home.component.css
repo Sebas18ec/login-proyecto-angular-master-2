@@ -103,4 +103,7 @@ nav {
   button[type="submit"]:hover {
     background-color: #0069d9;
   }
+  .input-group.mb-3 {
+    max-width: 300px;
+  }
   

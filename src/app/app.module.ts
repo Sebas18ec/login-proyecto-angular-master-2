@@ -9,6 +9,7 @@ import { HomeComponent } from './home/home.component';
 import { InsertarComponent } from './insertar/insertar.component';
 import { BusquedaComponent } from './busqueda/busqueda.component';
 import { FilterPipe } from './pipes/filter.pipe';
+import { EditarComponent } from './editar/editar.component';
 
 
 @NgModule({
@@ -19,6 +20,7 @@ import { FilterPipe } from './pipes/filter.pipe';
     InsertarComponent,
     BusquedaComponent,
     FilterPipe,
+    EditarComponent,
   ],
   imports: [
     BrowserModule,
