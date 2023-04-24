@@ -9,9 +9,14 @@
      </button>
      <div class="collapse navbar-collapse" id="navbarNav">
       <ul class="navbar-nav">
+        
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="/busqueda">Busqueda Centros</a>
+        </li>
         <li class="nav-item">
           <a class="nav-link active" aria-current="page" href="/">LogOut</a>
         </li>
+        
       </ul>
       <div class="ms-auto">
         <div class="navbar-text me-3">
@@ -28,6 +33,14 @@
 <button class="btn btn-primary mb-3" (click)="nuevoCentroCostos()">Añadir nuevo Centro de Costos</button>
 <br>
 
+
+<br>
+<div class="input-group mb-3">
+  <input type="text" class="form-control" placeholder="Buscar por nombre" [(ngModel)]="nombreBusqueda">
+  <button class="btn btn-outline-secondary" type="button" id="button-addon2" (click)="buscarCentroCostos()">Buscar</button>
+</div>
+
+<br>
 <div class="table-container">
 
   <table class="table table-hover">

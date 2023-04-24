@@ -20,6 +20,9 @@ export class HomeComponent implements OnInit {
   codigo: number | undefined;
   descripcion: string | undefined;
   apiResponse: any;
+  busqueda: string = '';
+  nombreBusqueda: string = '';
+
 
   
 
@@ -67,6 +70,11 @@ export class HomeComponent implements OnInit {
       });
     }
   }
+
+  buscarCentroCostos(){
+    this.router.navigate(['/busqueda']);
+  }
+
 
   
   

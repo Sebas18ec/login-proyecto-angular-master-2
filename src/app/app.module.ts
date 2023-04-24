@@ -7,6 +7,7 @@ import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
 import { HomeComponent } from './home/home.component';
 import { InsertarComponent } from './insertar/insertar.component';
+import { BusquedaComponent } from './busqueda/busqueda.component';
 
 
 
@@ -16,6 +17,7 @@ import { InsertarComponent } from './insertar/insertar.component';
     LoginComponent,
     HomeComponent,
     InsertarComponent,
+    BusquedaComponent,
   ],
   imports: [
     BrowserModule,
