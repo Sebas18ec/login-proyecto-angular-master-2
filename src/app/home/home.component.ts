@@ -50,6 +50,24 @@ export class HomeComponent implements OnInit {
     this.router.navigate(['/insertar']);
   }
 
+  eliminarCentroCostos(codigo: number, descripcion: string) {
+    const params = new HttpParams()
+        .set('codigocentrocostos', codigo.toString())
+        .set('descripcioncentrocostos', descripcion);
+
+    if (confirm('¿Está seguro que desea eliminar el centro de costos?')) {
+      this.http.get('/api/ControladorAPI/api/centrocostos/delete', { params }).subscribe(result => {
+        console.log(result);
+        Swal.fire('Se ha eliminado exitosamente').then(() => {
+          location.reload();
+        });
+      }, error => {
+        console.error(error);
+        Swal.fire('Ocurrió un error al eliminar el centro de costos', '', 'error');
+      });
+    }
+  }
+
   
   
 

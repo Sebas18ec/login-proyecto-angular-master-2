@@ -44,7 +44,8 @@
         <td>{{ cc.nombreCentroCostos }}</td>
         <td>
           <button class="btn btn-sm btn-primary me-2">Editar</button> <!-- Botón de editar -->
-          <button class="btn btn-sm btn-danger">Eliminar</button> <!-- Botón de eliminar -->
+          <button class="btn btn-sm btn-danger" (click)="eliminarCentroCostos(cc.codigo, cc.nombreCentroCostos)">Eliminar</button>
+
         </td>
       </tr>
     </tbody>
