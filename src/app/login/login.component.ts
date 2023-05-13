@@ -30,9 +30,6 @@ export class LoginComponent {
 
   }
 
-
- 
-
   onlyNumbers(event: KeyboardEvent) {
     const input = event.key;
     const isNumber = /^[0-9]+$/.test(input);
@@ -42,15 +39,11 @@ export class LoginComponent {
       event.preventDefault();
     }
   }
-  
-  
-
 
   ngOnInit() {
     this.http.get<any>('api/ControladorAPI/api/v1/emisores')
       .subscribe((data: any[]) => {
         this.emisores = data.map(emisor => emisor.NombreEmisor);
-        console.log(this.emisores); 
       });
       
   }
@@ -61,8 +54,6 @@ export class LoginComponent {
     const selectedIndex = target.selectedIndex;
     const emisorId = target.options[selectedIndex].value;
     const emisorNombre = target.options[selectedIndex].textContent;
-    console.log('Emisor seleccionado:', emisorId);
-    console.log('Nombre del emisor seleccionado:', emisorNombre);
     this.emisorComp = emisorNombre;
     this.selectedEmisor = emisorId;
   }

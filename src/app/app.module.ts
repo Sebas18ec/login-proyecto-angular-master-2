@@ -10,6 +10,8 @@ import { InsertarComponent } from './insertar/insertar.component';
 import { BusquedaComponent } from './busqueda/busqueda.component';
 import { FilterPipe } from './pipes/filter.pipe';
 import { EditarComponent } from './editar/editar.component';
+import { MovimientoPlanillaComponent } from './movimiento-planilla/movimiento-planilla.component';
+import { NgxPaginationModule } from 'ngx-pagination';
 
 
 @NgModule({
@@ -21,12 +23,14 @@ import { EditarComponent } from './editar/editar.component';
     BusquedaComponent,
     FilterPipe,
     EditarComponent,
+    MovimientoPlanillaComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    NgxPaginationModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -23,45 +23,58 @@
           <h6>Compañía {{ emisorNombre }}</h6>
           <p>RUC: {{ emisorRuc }}</p>
         </div>
+        <div class="navbar-text me-3">
+          <h6>Fecha: {{ fechaActual }}</h6>
+          <p>Usuario: {{ nombreUsuario }}</p>
+        </div>
       </div>
     </div>
    </div>
  </nav>
 <br>
 
-  
-<button class="btn btn-primary mb-3" (click)="nuevoCentroCostos()">Añadir nuevo Centro de Costos</button>
-<br>
+<button class="btn btn-primary mb-3" (click)="CentroCostos()">Centro de Costos</button>
 
-
-<br>
-<div class="input-group mb-3">
-  <input type="text" class="form-control" placeholder="Buscar por nombre" [(ngModel)]="nombreBusqueda">
-  
+<button class="btn btn-primary mb-3" (click)="mostrarMovimientosPlanilla = true">Movimientos Planilla</button>
+<div *ngIf="mostrarMovimientosPlanilla">
+  <app-movimiento-planilla></app-movimiento-planilla>
 </div>
 
+<button *ngIf="sesionIniciada" class="btn btn-danger mb-3" (click)="cerrarSesion()">Cerrar Sesión</button>
+
 <br>
-<div class="table-container">
 
-  <table class="table table-hover">
-    <thead>
-      <tr>
-        <th>Código</th>
-        <th>Nombre Centro de Costos</th>
-        <th>Acciones</th> <!-- Nueva columna para los botones -->
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let cc of centroCostos | filter: nombreBusqueda">
-        <td>{{ cc.codigo }}</td>
-        <td>{{ cc.nombreCentroCostos }}</td>
-        <td>
-          <a class="btn btn-sm btn-primary me-2" [routerLink]="['/centrocostos/editar', cc.codigo]">Editar</a><button class="btn btn-sm btn-danger" (click)="eliminarCentroCostos(cc.codigo, cc.nombreCentroCostos)">Eliminar</button>
+<div *ngIf="mostrarFormularioCentroCostos" class="formulario-nuevo-centro-costos">
+  <br>
+  <div class="input-group mb-3">
+    <input type="text" class="form-control" placeholder="Buscar por nombre" [(ngModel)]="nombreBusqueda">
+  </div>
+  <button class="btn btn-primary mb-3" (click)="nuevoCentroCostos()">Añadir nuevo Centro de Costos</button>
 
-        </td>
-      </tr>
-    </tbody>
-  </table>
+  <br>
+  <div class="table-container">
+
+    <table class="table table-hover">
+      <thead>
+        <tr>
+          <th>Código</th>
+          <th>Nombre Centro de Costos</th>
+          <th>Acciones</th> <!-- Nueva columna para los botones -->
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let cc of centroCostos | filter: nombreBusqueda">
+          <td>{{ cc.codigo }}</td>
+          <td>{{ cc.nombreCentroCostos }}</td>
+          <td>
+            <!-- <a class="btn btn-sm btn-primary me-2" [routerLink]="['/centrocostos/editar', cc.codigo]">Editar</a><button class="btn btn-sm btn-danger" (click)="eliminarCentroCostos(cc.codigo, cc.nombreCentroCostos)">Eliminar</button> -->
+            <button class="btn btn-sm btn-primary me-2" (click)="editarCentroCostos(cc.codigo)">Editar</button>
+            <button class="btn btn-sm btn-danger" (click)="eliminarCentroCostos(cc.codigo, cc.nombreCentroCostos)">Eliminar</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
 </div>
 
 
