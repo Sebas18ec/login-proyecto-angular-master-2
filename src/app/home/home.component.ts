@@ -315,7 +315,7 @@ export class HomeComponent implements OnInit {
   }
   
   actualizarTablaCentroCostos() {
-    this.http.get<any[]>('api/ControladorAPI/api/v1/centrocostos').subscribe(
+    this.http.get<any[]>('https://aspnetback.azurewebsites.net/api/ControladorAPI/api/v1/centrocostos').subscribe(
       data => {
         this.centroCostos = data;
         console.log(this.centroCostos);
@@ -351,7 +351,7 @@ export class HomeComponent implements OnInit {
       cancelButtonText: 'Cancelar'
     }).then((result) => {
       if (result.isConfirmed) {
-        this.http.get('/api/ControladorAPI/api/centrocostos/delete', { params }).subscribe(
+        this.http.get('https://aspnetback.azurewebsites.net/api/ControladorAPI/api/centrocostos/delete', { params }).subscribe(
           result => {
             console.log(result);
             Swal.fire('Se ha eliminado exitosamente').then(() => {
