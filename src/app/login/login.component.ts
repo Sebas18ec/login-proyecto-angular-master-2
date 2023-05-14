@@ -46,12 +46,12 @@ export class LoginComponent {
   
   
   
-  ngOnInit() {  
+   ngOnInit() {  
     this.http.get<any>('api/ControladorAPI/api/v1/emisores')  
       .subscribe((data: any[]) => {  
         this.emisores = data.map(emisor => emisor.NombreEmisor);  
       });    
-  }  
+  } 
     
   onChangeEmisor(event: Event) {  
     const target = event.target as HTMLSelectElement;  
