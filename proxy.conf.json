@@ -1,6 +1,6 @@
 {
   "/api/*": {
-    "target": "https://localhost:7019",
+    "target": "https://aspnetback.azurewebsites.net/",
     "secure": false,
     "logLevel": "debug",
     "changeOrigin":true
