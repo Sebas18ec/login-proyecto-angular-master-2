@@ -11,7 +11,7 @@
           <label for="username">Usuario</label>  
          <input type="text" class="form-control" id="username" [(ngModel)]="username" name="usuario" (keydown)="onlyNumbers($event, minLength.username)" minlength="{{ minLength.username }}">  
 
-          <div *ngIf="username && username.length < minLength.username" class="text-danger">El usuario debe tener al menos {{minLength.username}} caracteres</div>  
+          <div *ngIf="username && username.length < minLength.username" class="text-danger">El usuario debe tener {{minLength.username}} caracteres</div>  
         </div>  
 
 
@@ -22,7 +22,7 @@
 
 
 
-          <div *ngIf="password && password.length < minLength.password" class="text-danger">La contraseña debe tener al menos {{minLength.password}} caracteres</div>  
+          <div *ngIf="password && password.length < minLength.password" class="text-danger">La contraseña debe tener {{minLength.password}} caracteres</div>  
         </div>  
         <div class="form-group">  
           <label for="username">Emisor</label>  
