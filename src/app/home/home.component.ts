@@ -295,7 +295,7 @@ export class HomeComponent implements OnInit {
   }
 
   guardarCambiosCentroCostos(codigo: number, nombre: string): void {
-    const url = `api/ControladorAPI/CentroCostosEdit?codigoCentroCostos=${codigo}&descripcionCentroCostos=${nombre}`;
+    const url = `https://aspnetback.azurewebsites.net/api/ControladorAPI/CentroCostosEdit?codigoCentroCostos=${codigo}&descripcionCentroCostos=${nombre}`;
     this.http.get(url).subscribe(
       (response) => {
         console.log(response);

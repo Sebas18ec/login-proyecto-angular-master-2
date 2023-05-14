@@ -31,7 +31,7 @@ export class MovimientoPlanillaComponent {
 
   ngOnInit(): void {
     this.fetchMovimientosPlanilla();
-    this.http.get<any[]>('api/ControladorAPI/api/GetMovimientosPlanilla').subscribe(
+    this.http.get<any[]>('https://aspnetback.azurewebsites.net/api/ControladorAPI/api/GetMovimientosPlanilla').subscribe(
       data => {
         this.movimientosPlanilla = data;
       },
@@ -40,7 +40,7 @@ export class MovimientoPlanillaComponent {
       }
     );
 
-    this.http.get<any[]>('api/ControladorAPI/ObtenerMovimientosExcepcion1y2')
+    this.http.get<any[]>('https://aspnetback.azurewebsites.net/api/ControladorAPI/ObtenerMovimientosExcepcion1y2')
     .pipe(
       map(data => data.map(item => ({
         value: item.DesripMovimientoExce, // Usar DesripMovimientoExce como valor
@@ -57,7 +57,7 @@ export class MovimientoPlanillaComponent {
         }
       );
 
-      this.http.get<any[]>('api/ControladorAPI/ObtenerMovimientosExcepcion3')
+      this.http.get<any[]>('https://aspnetback.azurewebsites.net/api/ControladorAPI/ObtenerMovimientosExcepcion3')
       .pipe(
         map(data => data.map(item => ({
           value: item.DesripMovimientoExce, // Usar DesripMovimientoExce como valor
@@ -73,7 +73,7 @@ export class MovimientoPlanillaComponent {
         }
       );
 
-      this.http.get<any[]>('/api/ControladorAPI/GetTipoOperacion')
+      this.http.get<any[]>('https://aspnetback.azurewebsites.net/api/ControladorAPI/GetTipoOperacion')
       .pipe(
         map(data => data.map(item => ({
           value: item.NombreOperacion, // Usar DesripMovimientoExce como valor
@@ -89,7 +89,7 @@ export class MovimientoPlanillaComponent {
           }
       );
 
-      this.http.get<any[]>('api/ControladorAPI/GetTrabaAfectaIESS')
+      this.http.get<any[]>('https://aspnetback.azurewebsites.net/api/ControladorAPI/GetTrabaAfectaIESS')
       .pipe(
         map(data => data.map(item => ({
           value: item.DesripMovimientoExce, // Usar DesripMovimientoExce como valor
@@ -105,7 +105,7 @@ export class MovimientoPlanillaComponent {
           }
       );
 
-      this.http.get<any[]>('api/ControladorAPI/GetTrabAfecImpuestoRenta')
+      this.http.get<any[]>('https://aspnetback.azurewebsites.net/api/ControladorAPI/GetTrabAfecImpuestoRenta')
       .pipe(
         map(data => data.map(item => ({
           value: item.DesripMovimientoExce, // Usar DesripMovimientoExce como valor
@@ -128,7 +128,7 @@ export class MovimientoPlanillaComponent {
       .set('page', this.currentPage.toString())
       .set('itemsPerPage', this.itemsPerPage.toString());
   
-    this.http.get<any[]>('api/ControladorAPI/api/GetMovimientosPlanilla', { params }).subscribe(
+    this.http.get<any[]>('https://aspnetback.azurewebsites.net/api/ControladorAPI/api/GetMovimientosPlanilla', { params }).subscribe(
       data => {
         this.movimientosPlanilla = data;
         this.datosTablaOriginal = data;
@@ -301,7 +301,7 @@ export class MovimientoPlanillaComponent {
       concepto && prioridad && tipoOperacion && cuenta1 && cuenta2 && cuenta3 && cuenta4 && movimientoExcepcion1 &&
       movimientoExcepcion2 && movimientoExcepcion3 && trabajaAplicaIess && trabajaProyectoImpRenta && aplicaProyRenta && empresaAfectaIess
     ) {
-      const url = `api/ControladorAPI/MovimientoPlanillaInsert?conceptos=${encodeURIComponent(concepto)}&prioridad=${encodeURIComponent(prioridad)}&tipoOperacion=${encodeURIComponent(tipoOperacion)}&cuenta1=${encodeURIComponent(cuenta1)}&cuenta2=${encodeURIComponent(cuenta2)}&cuenta3=${encodeURIComponent(cuenta3)}&cuenta4=${encodeURIComponent(cuenta4)}&movimientoExcepcion1=${encodeURIComponent(movimientoExcepcion1)}&movimientoExcepcion2=${encodeURIComponent(movimientoExcepcion2)}&movimientoExcepcion3=${encodeURIComponent(movimientoExcepcion3)}&trabajaAplicaIess=${encodeURIComponent(trabajaAplicaIess)}&trabajaProyectoImpRenta=${encodeURIComponent(trabajaProyectoImpRenta)}&aplicaProyRenta=${encodeURIComponent(aplicaProyRenta)}&empresaAfectaIess=${encodeURIComponent(empresaAfectaIess)}`;
+      const url = `https://aspnetback.azurewebsites.net/api/ControladorAPI/MovimientoPlanillaInsert?conceptos=${encodeURIComponent(concepto)}&prioridad=${encodeURIComponent(prioridad)}&tipoOperacion=${encodeURIComponent(tipoOperacion)}&cuenta1=${encodeURIComponent(cuenta1)}&cuenta2=${encodeURIComponent(cuenta2)}&cuenta3=${encodeURIComponent(cuenta3)}&cuenta4=${encodeURIComponent(cuenta4)}&movimientoExcepcion1=${encodeURIComponent(movimientoExcepcion1)}&movimientoExcepcion2=${encodeURIComponent(movimientoExcepcion2)}&movimientoExcepcion3=${encodeURIComponent(movimientoExcepcion3)}&trabajaAplicaIess=${encodeURIComponent(trabajaAplicaIess)}&trabajaProyectoImpRenta=${encodeURIComponent(trabajaProyectoImpRenta)}&aplicaProyRenta=${encodeURIComponent(aplicaProyRenta)}&empresaAfectaIess=${encodeURIComponent(empresaAfectaIess)}`;
   
       this.http.get(url).subscribe(
         () => {
@@ -339,7 +339,7 @@ export class MovimientoPlanillaComponent {
         cancelButtonText: 'Cancelar'
       }).then((result) => {
         if (result.isConfirmed) {
-          this.http.get('/api/ControladorAPI/api/movimientoPlanilla/delete', { params }).subscribe(
+          this.http.get('https://aspnetback.azurewebsites.net/api/ControladorAPI/api/movimientoPlanilla/delete', { params }).subscribe(
             result => {
               // console.log(result);
               Swal.fire('Se ha eliminado exitosamente').then(() => {
@@ -358,7 +358,7 @@ export class MovimientoPlanillaComponent {
 
     searchMovimientoPlanilla() {
       const concepto = this.conceptoBusqueda;
-      this.http.get<any[]>(`api/ControladorAPI/api/movimientoPlanilla/search?concepto=${concepto}`).subscribe(
+      this.http.get<any[]>(`https://aspnetback.azurewebsites.net/api/ControladorAPI/api/movimientoPlanilla/search?concepto=${concepto}`).subscribe(
         (data) => {
           if (data && data.length > 0) {
             this.movimientosPlanilla = data;
