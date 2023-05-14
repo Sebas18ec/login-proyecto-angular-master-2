@@ -66,8 +66,8 @@ export class HomeComponent implements OnInit {
       Swal.fire({
         title: 'Iniciar Sesión',
         html:
-          '<input id="swal-input-usuario" class="swal2-input" placeholder="Usuario" maxlength="5">' +
-          '<input id="swal-input-password" class="swal2-input" placeholder="Contraseña" type="password">',
+          '<input id="swal-input-usuario" class="swal2-input" placeholder="Usuario" maxlength="3">' +
+          '<input id="swal-input-password" class="swal2-input" placeholder="Contraseña" type="password" maxlength="4">',
         showCancelButton: true,
         cancelButtonText: 'Cerrar',
         confirmButtonText: 'Iniciar Sesión',

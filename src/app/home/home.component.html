@@ -33,12 +33,18 @@
  </nav>
 <br>
 
-<button class="btn btn-primary mb-3" (click)="CentroCostos()">Centro de Costos</button>
-
 <button class="btn btn-primary mb-3" (click)="mostrarMovimientosPlanilla = true">Movimientos Planilla</button>
 <div *ngIf="mostrarMovimientosPlanilla">
   <app-movimiento-planilla></app-movimiento-planilla>
 </div>
+
+<button class="btn btn-primary mb-3" (click)="CentroCostos()" id="btnCentroCostos">Centro de Costos</button>  
+
+
+
+
+<!-- Inicia centro de costos -->  
+
 
 <button *ngIf="sesionIniciada" class="btn btn-danger mb-3" (click)="cerrarSesion()">Cerrar Sesión</button>
 

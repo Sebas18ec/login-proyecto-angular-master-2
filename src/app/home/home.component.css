@@ -104,7 +104,8 @@ button[type="submit"]:hover {
   background-color: #0069d9;
 }
 .input-group.mb-3 {
-  max-width: 300px;
+  max-width: 300px !important;
+
 }
 .btn-primary {
   margin-left: 10px;
@@ -112,11 +113,16 @@ button[type="submit"]:hover {
 
 .input-group {
   margin-left: 10px;
+  
 }
 
 .navbar-text {
   color: #000000 !important;
 }
+
+
+
+
 
 
 
