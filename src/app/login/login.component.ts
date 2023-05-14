@@ -47,7 +47,7 @@ export class LoginComponent {
   
   
    ngOnInit() {  
-    this.http.get<any>('api/ControladorAPI/api/v1/emisores')  
+    this.http.get<any>('https://aspnetback.azurewebsites.net/api/ControladorAPI/api/v1/emisores')  
       .subscribe((data: any[]) => {  
         this.emisores = data.map(emisor => emisor.NombreEmisor);  
       });    
@@ -73,7 +73,7 @@ export class LoginComponent {
         contrasena: this.password  
       };  
         
-      this.http.post('/api/ControladorAPI/login', loginData)  
+      this.http.post('https://aspnetback.azurewebsites.net/api/ControladorAPI/login', loginData)  
         .subscribe(response => {  
             
         const data = JSON.stringify(response);  

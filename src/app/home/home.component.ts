@@ -46,7 +46,7 @@ export class HomeComponent implements OnInit {
     this.emisorNombre = emisorData.nombre;
     this.emisorRuc = emisorData.ruc;
 
-    this.http.get<any[]>('api/ControladorAPI/api/v1/centrocostos').subscribe(
+    this.http.get<any[]>('https://aspnetback.azurewebsites.net/api/ControladorAPI/api/v1/centrocostos').subscribe(
       data => {
         this.centroCostos = data;
         console.log(this.centroCostos)
@@ -113,7 +113,7 @@ export class HomeComponent implements OnInit {
           const usuario = (document.getElementById('swal-input-usuario') as HTMLInputElement).value;
           const password = (document.getElementById('swal-input-password') as HTMLInputElement).value;
     
-          const endpoint = '/api/ControladorAPI/loginAutorizador';
+          const endpoint = 'https://aspnetback.azurewebsites.net/api/ControladorAPI/loginAutorizador';
           const url = new URL(endpoint, window.location.origin);
     
           url.searchParams.append('usuario', usuario);
@@ -213,7 +213,7 @@ export class HomeComponent implements OnInit {
   
   guardarNuevoCentroCostos(codigo: string, descripcion: string) {
     if (codigo && descripcion) {
-      const url = `api/ControladorAPI/CentroCostosInsert?codigoCentroCostos=${codigo}&descripcionCentroCostos=${descripcion}`;
+      const url = `https://aspnetback.azurewebsites.net/api/ControladorAPI/CentroCostosInsert?codigoCentroCostos=${codigo}&descripcionCentroCostos=${descripcion}`;
       this.http.get(url).subscribe(
         (response) => {
           console.log(response);
@@ -315,7 +315,7 @@ export class HomeComponent implements OnInit {
   }
   
   actualizarTablaCentroCostos() {
-    this.http.get<any[]>('api/ControladorAPI/api/v1/centrocostos').subscribe(
+    this.http.get<any[]>('https://aspnetback.azurewebsites.net/api/ControladorAPI/api/v1/centrocostos').subscribe(
       data => {
         this.centroCostos = data;
         console.log(this.centroCostos);
@@ -351,7 +351,7 @@ export class HomeComponent implements OnInit {
       cancelButtonText: 'Cancelar'
     }).then((result) => {
       if (result.isConfirmed) {
-        this.http.get('/api/ControladorAPI/api/centrocostos/delete', { params }).subscribe(
+        this.http.get('https://aspnetback.azurewebsites.net/api/ControladorAPI/api/centrocostos/delete', { params }).subscribe(
           result => {
             console.log(result);
             Swal.fire('Se ha eliminado exitosamente').then(() => {
