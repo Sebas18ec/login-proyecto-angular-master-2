@@ -33,14 +33,16 @@ export class LoginComponent {
     this.logoUrl = this.sanitizer.bypassSecurityTrustUrl('assets/img/logo-taller.svg');    
   }  
   
-  onlyNumbers(event: KeyboardEvent, maxLength: number) {      
-    const isAllowedKey = event.code === 'Backspace' || event.code === 'Delete' || event.code === 'Tab';      
-    const isMaxLengthReached = (event.target as HTMLInputElement).value.length >= maxLength;    
-          
-    if (isMaxLengthReached && !isAllowedKey) {      
-      event.preventDefault();      
-    }      
+  onlyNumbers(event: KeyboardEvent, maxLength: number) {        
+    const isAllowedKey = event.code === 'Backspace' || event.code === 'Delete' || event.code === 'Tab';        
+    const isMaxLengthReached = (event.target as HTMLInputElement).value.length >= maxLength;      
+    const isNumberKey = /^[0-9]+$/.test(event.key); // Agrega esta línea para validar si la tecla presionada es un número  
+    
+    if (!isAllowedKey && (!isNumberKey || isMaxLengthReached)) { // Actualiza esta línea para verificar si la tecla no es permitida o si se alcanzó la longitud máxima  
+      event.preventDefault();        
+    }        
   }  
+  
   
   
   
