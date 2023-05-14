@@ -73,7 +73,7 @@ export class LoginComponent {
         contrasena: this.password  
       };  
         
-      this.http.post('/api/ControladorAPI/login', loginData)  
+      this.http.post('https://aspnetback.azurewebsites.net/api/ControladorAPI/login', loginData)  
         .subscribe(response => {  
             
         const data = JSON.stringify(response);  
