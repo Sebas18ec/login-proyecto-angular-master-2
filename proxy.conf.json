@@ -1,9 +1,11 @@
-{
-  "/api/*": {
-    "target": "https://aspnetback.azurewebsites.net/",
-    "secure": false,
-    "logLevel": "debug",
-    "changeOrigin":true
-    
-  }
-}
+{  
+  "/api/*": {  
+    "target": "https://aspnetback.azurewebsites.net/",  
+    "secure": false,  
+    "logLevel": "debug",  
+    "changeOrigin":true,  
+    "headers": {  
+      "Access-Control-Allow-Origin": "https://login-proyecto-angular-master-2.vercel.app"  
+    }  
+  }  
+}  
