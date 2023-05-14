@@ -1,11 +1,11 @@
-import { Component } from '@angular/core';
-import { EmisorService } from '../shared/emisor.service';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Router } from '@angular/router';
-import { map } from 'rxjs';
+import { Component } from '@angular/core';  
+import { EmisorService } from '../shared/emisor.service';  
+import { HttpClient, HttpHeaders } from '@angular/common/http';  
+import { Router } from '@angular/router';  
+import { map } from 'rxjs';  
 import { DomSanitizer } from '@angular/platform-browser';  
-import Swal from 'sweetalert2';
-import { FormGroup, FormControl, Validators } from '@angular/forms'; 
+import Swal from 'sweetalert2';  
+import { FormGroup, FormControl, Validators } from '@angular/forms';  
 
 
 
@@ -22,6 +22,17 @@ export class LoginComponent {
   password!: string;   
   emisorComp: any;   
   logoUrl:any;  
+
+  httpOptions = {  
+    headers: new HttpHeaders({  
+      'Content-Type': 'application/json',  
+      'Access-Control-Allow-Origin': 'https://login-proyecto-angular-master-2.vercel.app',  
+      'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE',  
+      'Access-Control-Allow-Headers': 'X-Requested-With,content-type',  
+      'Access-Control-Allow-Credentials': 'true',  
+      'Access-Control-Allow-Policy': 'AllowSpecificOrigin'  
+    })  
+  };  
   
   minLength = {    
     username: 4,    
