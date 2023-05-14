@@ -67,7 +67,7 @@ export class HomeComponent implements OnInit {
         title: 'Iniciar Sesión',
         html:
           '<input id="swal-input-usuario" class="swal2-input" placeholder="Usuario" maxlength="3">' +
-          '<input id="swal-input-password" class="swal2-input" placeholder="Contraseña" type="password" maxlength="4">',
+          '<input id="swal-input-password" class="swal2-input" placeholder="Contraseña" type="password" maxlength="5">',
         showCancelButton: true,
         cancelButtonText: 'Cerrar',
         confirmButtonText: 'Iniciar Sesión',
