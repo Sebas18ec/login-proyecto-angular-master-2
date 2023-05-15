@@ -145,3 +145,8 @@ select {
   background-position-x: calc(100% - 1rem);
   background-position-y: center;
 }
+
+.tooltip-hover:hover .tooltiptext {  
+  visibility: visible;  
+}  
+
