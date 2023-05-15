@@ -6,7 +6,7 @@
       </h2>  
       <form class="form" (ngSubmit)="onSubmit()">  
         <div class="form-group">  
-          <label for="username" class="tooltip tooltip-hover">Usuario<span class="tooltiptext">Ingresar usuario</span></label>  
+          <label for="username" class="tooltip tooltip-hover">Usuario<span class="tooltip-icon"></span><span class="tooltiptext">Ingresar usuario</span></label>  
           <input type="text" class="form-control" id="username" [(ngModel)]="username" name="usuario" (keydown)="onlyNumbers($event, minLength.username)" minlength="{{ minLength.username }}">  
           <div *ngIf="username && username.length < minLength.username" class="text-danger">El usuario debe tener {{minLength.username}} caracteres</div>  
         </div>  

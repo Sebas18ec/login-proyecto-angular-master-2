@@ -193,4 +193,24 @@ select {
   opacity: 1;
 }
 
+.tooltip-icon {  
+  display: inline-block;  
+  width: 16px;  
+  height: 16px;  
+  background-image: url('ruta/para/icono-de-informacion.png');  
+  background-size: cover;  
+  margin-left: 5px;  
+  transform: translateY(-2px);  
+  transition: transform 0.2s ease-in-out;  
+}  
+  
+.tooltip:hover .tooltip-icon {  
+  transform: translateY(-5px);  
+}  
+  
+.tooltip .tooltiptext {  
+  /* estilos del tooltip */  
+}  
+
+
 
