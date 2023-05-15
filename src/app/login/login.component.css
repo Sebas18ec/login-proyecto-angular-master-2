@@ -146,7 +146,8 @@ select {
   background-position-y: center;
 }
 
-.tooltip-hover:hover .tooltiptext {  
+.tooltip-hover:hover + .tooltiptext {  
   visibility: visible;  
 }  
+
 
