@@ -5,7 +5,7 @@ import { Router } from '@angular/router';
 import { map } from 'rxjs';
 import { DomSanitizer } from '@angular/platform-browser';  
 import Swal from 'sweetalert2';
-
+import { FormGroup, FormControl, Validators } from '@angular/forms'; 
 
 
 @Component({
@@ -14,7 +14,6 @@ import Swal from 'sweetalert2';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent {
-  
   emisores: any;
   selectedEmisor: string;
   mensajeError: any;
@@ -22,26 +21,40 @@ export class LoginComponent {
   password!: string; 
   emisorComp: any; 
   logoUrl:any;
+
+  httpOptions = {  
+    headers: new HttpHeaders({  
+      'Content-Type': 'application/json',  
+      'Access-Control-Allow-Origin': 'https://login-proyecto-angular-master-2.vercel.app',  
+      'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE',  
+      'Access-Control-Allow-Headers': 'X-Requested-With,content-type',  
+      'Access-Control-Allow-Credentials': 'true',  
+      'Access-Control-Allow-Policy': 'AllowSpecificOrigin'  
+    })  
+  }; 
    
+  minLength = {    
+    username: 4,    
+    password: 5    
+  };   
+
   constructor(private http: HttpClient,private sanitizer: DomSanitizer,private emisorService: EmisorService,private router: Router) { 
     this.selectedEmisor= '';
     this.logoUrl = this.sanitizer.bypassSecurityTrustUrl('assets/img/logo-taller.svg');  
-    
-
   }
 
-  onlyNumbers(event: KeyboardEvent) {
-    const input = event.key;
-    const isNumber = /^[0-9]+$/.test(input);
-    const isAllowedKey = event.code === 'Backspace' || event.code === 'Delete' || event.code === 'Tab';
-  
-    if (!isNumber && !isAllowedKey) {
-      event.preventDefault();
-    }
-  }
+  onlyNumbers(event: KeyboardEvent, maxLength: number) {        
+    const isAllowedKey = event.code === 'Backspace' || event.code === 'Delete' || event.code === 'Tab';        
+    const isMaxLengthReached = (event.target as HTMLInputElement).value.length >= maxLength;      
+    const isNumberKey = /^[0-9]+$/.test(event.key); // Agrega esta línea para validar si la tecla presionada es un número  
+
+    if (!isAllowedKey && (!isNumberKey || isMaxLengthReached)) { // Actualiza esta línea para verificar si la tecla no es permitida o si se alcanzó la longitud máxima  
+      event.preventDefault();        
+    }        
+  }  
 
   ngOnInit() {
-    this.http.get<any>('api/ControladorAPI/api/v1/emisores')
+    this.http.get<any>('https://aspnetback.azurewebsites.net/api/ControladorAPI/api/v1/emisores')
       .subscribe((data: any[]) => {
         this.emisores = data.map(emisor => emisor.NombreEmisor);
       });
@@ -59,8 +72,6 @@ export class LoginComponent {
   }
 
   onSubmit() {
-
-
     if (!this.username || !this.password || !this.emisorComp) {
       Swal.fire('¡Error!');
       return;
@@ -71,8 +82,7 @@ export class LoginComponent {
         contrasena: this.password
       };
       
-      
-      this.http.post('/api/ControladorAPI/login', loginData)
+      this.http.post('https://aspnetback.azurewebsites.net/api/ControladorAPI/login', loginData)
         .subscribe(response => {
           
         const data = JSON.stringify(response);
@@ -92,18 +102,10 @@ export class LoginComponent {
         Swal.fire('¡Error!');
         
       }
-  
-  
         }, error => {
           console.log(error);
           Swal.fire('¡Error!');
         });
     }
-  
-    
-    
   }
-  
-  
-  
 }

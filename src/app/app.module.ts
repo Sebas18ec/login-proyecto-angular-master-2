@@ -6,12 +6,9 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
 import { HomeComponent } from './home/home.component';
-import { InsertarComponent } from './insertar/insertar.component';
-import { BusquedaComponent } from './busqueda/busqueda.component';
-import { FilterPipe } from './pipes/filter.pipe';
-import { EditarComponent } from './editar/editar.component';
 import { MovimientoPlanillaComponent } from './movimiento-planilla/movimiento-planilla.component';
 import { NgxPaginationModule } from 'ngx-pagination';
+import { CentroCostosComponent } from './centro-costos/centro-costos.component';
 
 
 @NgModule({
@@ -19,11 +16,8 @@ import { NgxPaginationModule } from 'ngx-pagination';
     AppComponent,
     LoginComponent,
     HomeComponent,
-    InsertarComponent,
-    BusquedaComponent,
-    FilterPipe,
-    EditarComponent,
     MovimientoPlanillaComponent,
+    CentroCostosComponent,
   ],
   imports: [
     BrowserModule,

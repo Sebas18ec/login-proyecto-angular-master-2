@@ -27,20 +27,20 @@ export class MovimientoPlanillaComponent {
   conceptoBusqueda: string = '';
   datosTablaOriginal: any[] = [];
 
-  constructor(private http: HttpClient,private router: Router) {} // Inyecta HttpClient en el constructor
+  constructor(private http: HttpClient) {} // Inyecta HttpClient en el constructor
 
   ngOnInit(): void {
     this.fetchMovimientosPlanilla();
-    this.http.get<any[]>('api/ControladorAPI/api/GetMovimientosPlanilla').subscribe(
+    this.http.get<any[]>('https://aspnetback.azurewebsites.net/api/ControladorAPI/api/GetMovimientosPlanilla').subscribe(
       data => {
         this.movimientosPlanilla = data;
       },
       error => {
         console.log(error);
       }
-    );
+  );
 
-    this.http.get<any[]>('api/ControladorAPI/ObtenerMovimientosExcepcion1y2')
+    this.http.get<any[]>('https://aspnetback.azurewebsites.net/api/ControladorAPI/ObtenerMovimientosExcepcion1y2')
     .pipe(
       map(data => data.map(item => ({
         value: item.DesripMovimientoExce, // Usar DesripMovimientoExce como valor
@@ -57,7 +57,7 @@ export class MovimientoPlanillaComponent {
         }
       );
 
-      this.http.get<any[]>('api/ControladorAPI/ObtenerMovimientosExcepcion3')
+      this.http.get<any[]>('https://aspnetback.azurewebsites.net/api/ControladorAPI/ObtenerMovimientosExcepcion3')
       .pipe(
         map(data => data.map(item => ({
           value: item.DesripMovimientoExce, // Usar DesripMovimientoExce como valor
@@ -73,7 +73,7 @@ export class MovimientoPlanillaComponent {
         }
       );
 
-      this.http.get<any[]>('/api/ControladorAPI/GetTipoOperacion')
+      this.http.get<any[]>('https://aspnetback.azurewebsites.net/api/ControladorAPI/GetTipoOperacion')
       .pipe(
         map(data => data.map(item => ({
           value: item.NombreOperacion, // Usar DesripMovimientoExce como valor
@@ -89,7 +89,7 @@ export class MovimientoPlanillaComponent {
           }
       );
 
-      this.http.get<any[]>('api/ControladorAPI/GetTrabaAfectaIESS')
+      this.http.get<any[]>('https://aspnetback.azurewebsites.net/api/ControladorAPI/GetTrabaAfectaIESS')
       .pipe(
         map(data => data.map(item => ({
           value: item.DesripMovimientoExce, // Usar DesripMovimientoExce como valor
@@ -105,7 +105,7 @@ export class MovimientoPlanillaComponent {
           }
       );
 
-      this.http.get<any[]>('api/ControladorAPI/GetTrabAfecImpuestoRenta')
+      this.http.get<any[]>('https://aspnetback.azurewebsites.net/api/ControladorAPI/GetTrabAfecImpuestoRenta')
       .pipe(
         map(data => data.map(item => ({
           value: item.DesripMovimientoExce, // Usar DesripMovimientoExce como valor
@@ -128,7 +128,7 @@ export class MovimientoPlanillaComponent {
       .set('page', this.currentPage.toString())
       .set('itemsPerPage', this.itemsPerPage.toString());
   
-    this.http.get<any[]>('api/ControladorAPI/api/GetMovimientosPlanilla', { params }).subscribe(
+    this.http.get<any[]>('https://aspnetback.azurewebsites.net/api/ControladorAPI/api/GetMovimientosPlanilla', { params }).subscribe(
       data => {
         this.movimientosPlanilla = data;
         this.datosTablaOriginal = data;
@@ -203,8 +203,16 @@ export class MovimientoPlanillaComponent {
         '<option value="">Aplica Impuesto renta</option>' +
         this.getOptionsTrabAfecImpuestoRenta().map(option => `<option value="${option.value}">${option.label}</option>`).join('') +
         '</select>' +
-        '<input id="swal-input13" class="swal2-input" placeholder="Aplica_Proy_Renta">' +
-        '<input id="swal-input14" class="swal2-input" placeholder="Empresa_Afecta_Iess">',
+        // '<input id="swal-input13" class="swal2-input" placeholder="Aplica_Proy_Renta">' +
+        '<select id="swal-input13" class="swal2-input">' +
+        '<option value="">Aplica Proy Renta</option>' +
+        this.getOptionsTrabAfecImpuestoRenta().map(option => `<option value="${option.value}">${option.label}</option>`).join('') +
+        '</select><br>' +
+        // '<input id="swal-input14" class="swal2-input" placeholder="Empresa_Afecta_Iess">',
+        '<select id="swal-input14" class="swal2-input">' +
+        '<option value="">Empresa Afecta IESS</option>' +
+        this.getOptionsTrabaAfectaIESS().map(option => `<option value="${option.value}">${option.label}</option>`).join('') +
+        '</select><br>',
       focusConfirm: false,
       showCancelButton: true,
       cancelButtonText: 'Cerrar',
@@ -243,13 +251,15 @@ export class MovimientoPlanillaComponent {
         const movimientoExcepcion3Select = document.getElementById('swal-input10') as HTMLSelectElement;
         const movimientoExcepcion3 = movimientoExcepcion3Select.value.trim();
         const trabajaAplicaIessSelect = document.getElementById('swal-input11') as HTMLSelectElement;
-        const trabajaAplicaIess = trabajaAplicaIessSelect.value.trim();
+        const Traba_Aplica_iess = trabajaAplicaIessSelect.value.trim();
         const trabajaProyectoImpRentaSelect = document.getElementById('swal-input12') as HTMLSelectElement;
-        const trabajaProyectoImpRenta = trabajaProyectoImpRentaSelect.value.trim();
-        const aplicaProyRenta = (document.getElementById('swal-input13') as HTMLInputElement).value.trim();
-        const empresaAfectaIess = (document.getElementById('swal-input14') as HTMLInputElement).value.trim();
+        const Traba_Proyecto_imp_renta = trabajaProyectoImpRentaSelect.value.trim();
+        const Aplica_Proy_RentaSelect = document.getElementById('swal-input13') as HTMLSelectElement;
+        const Aplica_Proy_Renta = Aplica_Proy_RentaSelect.value.trim();
+        const Empresa_Afecta_IessSelect = document.getElementById('swal-input14') as HTMLSelectElement;
+        const Empresa_Afecta_Iess = Empresa_Afecta_IessSelect.value.trim();
         
-        if (!concepto || !prioridad || !tipoOperacion || !cuenta1 || !cuenta2 || !cuenta3 || !cuenta4 || !movimientoExcepcion1 || !movimientoExcepcion2 || !movimientoExcepcion3 || !trabajaAplicaIess || !trabajaProyectoImpRenta || !aplicaProyRenta || !empresaAfectaIess) {
+        if (!concepto || !prioridad || !tipoOperacion || !cuenta1 || !cuenta2 || !cuenta3 || !cuenta4 || !movimientoExcepcion1 || !movimientoExcepcion2 || !movimientoExcepcion3 || !Traba_Aplica_iess || !Traba_Proyecto_imp_renta || !Aplica_Proy_Renta || !Empresa_Afecta_Iess) {
           Swal.showValidationMessage('Todos los campos son requeridos');
           return false;
         }
@@ -265,10 +275,10 @@ export class MovimientoPlanillaComponent {
           movimientoExcepcion1,
           movimientoExcepcion2,
           movimientoExcepcion3,
-          trabajaAplicaIess,
-          trabajaProyectoImpRenta,
-          aplicaProyRenta,
-          empresaAfectaIess
+          Traba_Aplica_iess,
+          Traba_Proyecto_imp_renta,
+          Aplica_Proy_Renta,
+          Empresa_Afecta_Iess
         );
         return true;
       },
@@ -301,7 +311,7 @@ export class MovimientoPlanillaComponent {
       concepto && prioridad && tipoOperacion && cuenta1 && cuenta2 && cuenta3 && cuenta4 && movimientoExcepcion1 &&
       movimientoExcepcion2 && movimientoExcepcion3 && trabajaAplicaIess && trabajaProyectoImpRenta && aplicaProyRenta && empresaAfectaIess
     ) {
-      const url = `api/ControladorAPI/MovimientoPlanillaInsert?conceptos=${encodeURIComponent(concepto)}&prioridad=${encodeURIComponent(prioridad)}&tipoOperacion=${encodeURIComponent(tipoOperacion)}&cuenta1=${encodeURIComponent(cuenta1)}&cuenta2=${encodeURIComponent(cuenta2)}&cuenta3=${encodeURIComponent(cuenta3)}&cuenta4=${encodeURIComponent(cuenta4)}&movimientoExcepcion1=${encodeURIComponent(movimientoExcepcion1)}&movimientoExcepcion2=${encodeURIComponent(movimientoExcepcion2)}&movimientoExcepcion3=${encodeURIComponent(movimientoExcepcion3)}&trabajaAplicaIess=${encodeURIComponent(trabajaAplicaIess)}&trabajaProyectoImpRenta=${encodeURIComponent(trabajaProyectoImpRenta)}&aplicaProyRenta=${encodeURIComponent(aplicaProyRenta)}&empresaAfectaIess=${encodeURIComponent(empresaAfectaIess)}`;
+      const url = `https://aspnetback.azurewebsites.net/api/ControladorAPI/MovimientoPlanillaInsert?conceptos=${encodeURIComponent(concepto)}&prioridad=${encodeURIComponent(prioridad)}&tipoOperacion=${encodeURIComponent(tipoOperacion)}&cuenta1=${encodeURIComponent(cuenta1)}&cuenta2=${encodeURIComponent(cuenta2)}&cuenta3=${encodeURIComponent(cuenta3)}&cuenta4=${encodeURIComponent(cuenta4)}&movimientoExcepcion1=${encodeURIComponent(movimientoExcepcion1)}&movimientoExcepcion2=${encodeURIComponent(movimientoExcepcion2)}&movimientoExcepcion3=${encodeURIComponent(movimientoExcepcion3)}&Traba_Aplica_iess=${encodeURIComponent(trabajaAplicaIess)}&Traba_Proyecto_imp_renta=${encodeURIComponent(trabajaProyectoImpRenta)}&Aplica_Proy_Renta=${encodeURIComponent(aplicaProyRenta)}&Empresa_Afecta_Iess=${encodeURIComponent(empresaAfectaIess)}`;
   
       this.http.get(url).subscribe(
         () => {
@@ -317,11 +327,171 @@ export class MovimientoPlanillaComponent {
       Swal.fire('Error', 'Todos los campos son requeridos', 'error');
     }
   }
-     
+
+  validarExcepciones1y2(movimientoExcepcionCodigo: string) {
+    const excepciones = [
+      { CodigoMovimientoExce: "Si Movimiento Planilla", DesripMovimientoExce: "M" },
+      { CodigoMovimientoExce: "Horas Mov Planilla", DesripMovimientoExce: "H" },
+      { CodigoMovimientoExce: "Cuenta Corriente ", DesripMovimientoExce: "C" },
+    ];
+  
+    const validarCodigoExce = excepciones.find(item => item.CodigoMovimientoExce === movimientoExcepcionCodigo);
+    if (validarCodigoExce) {
+      return validarCodigoExce.DesripMovimientoExce;
+    }
+  
+    return movimientoExcepcionCodigo;
+  }
+
+  validarAplica_iess(aplica_iessCodigo: string) {
+    const opciones = [
+      { CodigoMovimientoExce: "Si Aplica", DesripMovimientoExce: "1" },
+      { CodigoMovimientoExce: "No Aplica", DesripMovimientoExce: "0" },
+    ];
+  
+    const validarCodigoAplica_iess = opciones.find(item => item.CodigoMovimientoExce === aplica_iessCodigo);
+    if (validarCodigoAplica_iess) {
+      return validarCodigoAplica_iess.DesripMovimientoExce;
+    }
+  
+    return aplica_iessCodigo;
+  }
+
+  validarAplica_imp_renta(aplica_imp_rentaCodigo: string) {
+    const opciones = [
+      { CodigoMovimientoExce: "Si Aplica", DesripMovimientoExce: "1" },
+      { CodigoMovimientoExce: "No Aplica", DesripMovimientoExce: "0" },
+    ];
+  
+    const validarCodigoAplica_imp_renta = opciones.find(item => item.CodigoMovimientoExce === aplica_imp_rentaCodigo);
+    if (validarCodigoAplica_imp_renta) {
+      return validarCodigoAplica_imp_renta.DesripMovimientoExce;
+    }
+  
+    return aplica_imp_rentaCodigo;
+  }
+  
 
     editarMovimientoPlanilla(codigo: number): void {
+      const movimientoPlanilla = this.movimientosPlanilla.find(cc => cc.CodigoConcepto === codigo);
+      const tipoOperacionSeleccionada = movimientoPlanilla.TipoOperacion+'s';
+      const movimientoExcepcion3 = movimientoPlanilla.MovimientoExcepcion3;
 
+      console.log(movimientoPlanilla.Aplica_imp_renta)
+      console.log(this.validarAplica_imp_renta(movimientoPlanilla.Aplica_imp_renta))
+      console.log(this.getOptionsTrabAfecImpuestoRenta())
+
+      Swal.fire({
+        title: 'Editar Planilla',
+        html:
+          '<input id="swal-input1" class="swal2-input" placeholder="Código Planilla" value="' + movimientoPlanilla.CodigoConcepto + '" readonly>' +
+          '<input id="swal-input2" class="swal2-input" placeholder="Concepto" value="'+ movimientoPlanilla.Concepto + '">'+
+          '<input id="swal-input3" class="swal2-input" placeholder="Prioridad" onkeypress="onlyNumbers(event)" + value="'+movimientoPlanilla.Prioridad+'">' +
+          '<select id="swal-input4" class="swal2-input">' +
+          '<option value="">Tipo Operacion</option>' +
+          this.getOptionsTipoOperacion().map(option => `<option value="${option.value}" ${option.label === tipoOperacionSeleccionada ? "selected" : ""}>${option.label}</option>`).join('') +
+          '</select>'+
+          '<input id="swal-input5" class="swal2-input" placeholder="Cuenta 1" value="'+ movimientoPlanilla.Cuenta1 + '" onkeypress="onlyNumbers(event)">'+
+          '<input id="swal-input6" class="swal2-input" placeholder="Cuenta 2" value="'+ movimientoPlanilla.Cuenta2 + '" onkeypress="onlyNumbers(event)">' +
+          '<input id="swal-input7" class="swal2-input" placeholder="Cuenta 3" value="'+ movimientoPlanilla.Cuenta3 + '" onkeypress="onlyNumbers(event)">' +
+          '<input id="swal-input8" class="swal2-input" placeholder="Cuenta 4" value="'+ movimientoPlanilla.Cuenta4 + '" onkeypress="onlyNumbers(event)">' +
+          '<select id="swal-input9" class="swal2-input">' +
+          '<option value="">movimiento exepcion 1</option>' +
+          this.getOptionsMovimientoExcepcion1().map(option => `<option value="${option.value}" ${option.value === this.validarExcepciones1y2(movimientoPlanilla.MovimientoExcepcion1) ? "selected" : ""}>${option.label}</option>`).join('') +
+          '</select>' +
+          '<select id="swal-input10" class="swal2-input">' +
+          '<option value="">movimiento exepcion 2</option>' +
+          this.getOptionsMovimientoExcepcion2().map(option => `<option value="${option.value}" ${option.value === this.validarExcepciones1y2(movimientoPlanilla.MovimientoExcepcion2) ? "selected" : ""}>${option.label}</option>`).join('') +
+          '</select>' +
+          '<select id="swal-input11" class="swal2-input">' +
+          '<option value="">movimiento exepcion 3</option>' +
+          this.getOptionsMovimientoExcepcion3().map(option => `<option value="${option.value}" ${option.label === movimientoExcepcion3 ? "selected" : ""}>${option.label}</option>`).join('') +
+          '</select>' +
+          '<select id="swal-input12" class="swal2-input">' +
+          '<option value="">Aplica IESS</option>' +
+          this.getOptionsTrabaAfectaIESS().map(option => `<option value="${option.value}" ${option.value === this.validarAplica_iess(movimientoPlanilla.Aplica_iess) ? "selected" : ""}>${option.label}</option>`).join('') +
+          '</select><br>' +
+          '<select id="swal-input13" class="swal2-input">' +
+          '<option value="">Aplica Impuesto renta</option>' +
+          this.getOptionsTrabAfecImpuestoRenta().map(option => `<option value="${option.value}" ${option.value === this.validarAplica_imp_renta(movimientoPlanilla.Aplica_imp_renta) ? "selected" : ""}>${option.label}</option>`).join('') +
+          '</select>' +
+          // '<input id="swal-input13" class="swal2-input" placeholder="Aplica_Proy_Renta">' +
+          '<select id="swal-input14" class="swal2-input">' +
+          '<option value="">Aplica Proy Renta</option>' +
+          this.getOptionsTrabAfecImpuestoRenta().map(option => `<option value="${option.value}" ${option.value === this.validarAplica_imp_renta(movimientoPlanilla.Aplica_imp_renta) ? "selected" : ""}>${option.label}</option>`).join('') +
+          '</select><br>' +
+          // '<input id="swal-input14" class="swal2-input" placeholder="Empresa_Afecta_Iess">',
+          '<select id="swal-input15" class="swal2-input">' +
+          '<option value="">Empresa Afecta IESS</option>' +
+          this.getOptionsTrabaAfectaIESS().map(option => `<option value="${option.value}" ${option.value === this.validarAplica_iess(movimientoPlanilla.Empresa_Afecta_Iess) ? "selected" : ""}>${option.label}</option>`).join('') +
+          '</select><br>',
+
+        focusConfirm: false,
+        showCancelButton: true,
+        cancelButtonText: 'Cancelar',
+        confirmButtonText: 'Guardar',
+        allowOutsideClick: () => !Swal.isLoading(),
+        didOpen: () => {
+          const input2 = document.getElementById('swal-input2') as HTMLInputElement;
+          input2.addEventListener('keypress', this.onlyLettersAndNumbers);
+        },
+        preConfirm: () => {
+          const codigoPlanilla = parseInt((document.getElementById('swal-input1') as HTMLInputElement).value, 10);
+          const conceptos = (document.getElementById('swal-input2') as HTMLInputElement).value;
+          const prioridad = parseInt((document.getElementById('swal-input3') as HTMLInputElement).value, 10);
+          const tipoOperacion = (document.getElementById('swal-input4') as HTMLInputElement).value;
+          const cuenta1 = parseInt((document.getElementById('swal-input5') as HTMLInputElement).value, 10);
+          const cuenta2 = parseInt((document.getElementById('swal-input6') as HTMLInputElement).value, 10);
+          const cuenta3 = parseInt((document.getElementById('swal-input7') as HTMLInputElement).value, 10);
+          const cuenta4 = parseInt((document.getElementById('swal-input8') as HTMLInputElement).value, 10);
+          const MovimientoExcepcion1 = (document.getElementById('swal-input9') as HTMLInputElement).value;
+          const MovimientoExcepcion2 = (document.getElementById('swal-input10') as HTMLInputElement).value;
+          const MovimientoExcepcion3 = (document.getElementById('swal-input11') as HTMLInputElement).value;
+          const Traba_Aplica_iess = parseInt((document.getElementById('swal-input12') as HTMLInputElement).value, 10);
+          const Traba_Proyecto_imp_renta = parseInt((document.getElementById('swal-input13') as HTMLInputElement).value, 10);
+          const Aplica_Proy_Renta = parseInt((document.getElementById('swal-input14') as HTMLInputElement).value, 10);
+          const Empresa_Afecta_Iess = parseInt((document.getElementById('swal-input15') as HTMLInputElement).value, 10);
+
+          if (conceptos && prioridad && tipoOperacion && cuenta1 && cuenta2 && cuenta3 && cuenta4 && MovimientoExcepcion1 
+            && MovimientoExcepcion2 && MovimientoExcepcion3 && Traba_Aplica_iess && Traba_Proyecto_imp_renta && Aplica_Proy_Renta && Empresa_Afecta_Iess) {
+            Swal.showValidationMessage('Todos los campos son requeridos');
+            return false;
+          }
+          this.guardarCambiosMovimientoPlanilla(codigoPlanilla,conceptos,prioridad,tipoOperacion,cuenta1,cuenta2,cuenta3,cuenta4
+            ,MovimientoExcepcion1,MovimientoExcepcion2,MovimientoExcepcion3,Traba_Aplica_iess,Traba_Proyecto_imp_renta
+            ,Aplica_Proy_Renta,Empresa_Afecta_Iess);
+          return true;
+        },
+        willClose: () => {
+          const input2 = document.getElementById('swal-input2') as HTMLInputElement;
+          input2.removeEventListener('keypress', this.onlyLettersAndNumbers);
+        }
+      });
     }
+
+    guardarCambiosMovimientoPlanilla(codigoPlanilla: number, conceptos: string, prioridad: number, tipooperacion: string
+      ,cuenta1: number,cuenta2: number,cuenta3: number,cuenta4: number, MovimientoExcepcion1: string,MovimientoExcepcion2: string,MovimientoExcepcion3: string,Traba_Aplica_iess: number,Traba_Proyecto_imp_renta: number
+      ,Aplica_Proy_Renta: number,Empresa_Afecta_Iess: number): void {
+      const url = `https://aspnetback.azurewebsites.net/api/ControladorAPI/api/movimientoPlanilla/edit?codigoplanilla=${codigoPlanilla}&conceptos=${conceptos}&prioridad=${prioridad}&tipooperacion=${tipooperacion}&cuenta1=${cuenta1}&cuenta2=${cuenta2}&cuenta3=${cuenta3}&cuenta4=${cuenta4}
+      &MovimientoExcepcion1=${MovimientoExcepcion1}&MovimientoExcepcion2=${MovimientoExcepcion2}&MovimientoExcepcion3=${MovimientoExcepcion3}&Traba_Aplica_iess=${Traba_Aplica_iess}&Traba_Proyecto_imp_renta=${Traba_Proyecto_imp_renta}&Aplica_Proy_Renta=${Aplica_Proy_Renta}&Empresa_Afecta_Iess=${Empresa_Afecta_Iess}`;
+      this.http.get(url).subscribe(
+        (response) => {
+          console.log(response);
+          Swal.fire({
+            title: 'Cambios guardados',
+            icon: 'success',
+            showCancelButton: false,
+          }).then(() => {
+            this.fetchMovimientosPlanilla();
+          });
+        },
+        (error) => {
+          console.error(error);
+          Swal.fire('Error al guardar los cambios', '', 'error');
+        }
+      );
+    }
+
 
     eliminarMovimientoPlanilla(codigo: number, descripcion: string) {
       const params = new HttpParams()
@@ -339,7 +509,7 @@ export class MovimientoPlanillaComponent {
         cancelButtonText: 'Cancelar'
       }).then((result) => {
         if (result.isConfirmed) {
-          this.http.get('/api/ControladorAPI/api/movimientoPlanilla/delete', { params }).subscribe(
+          this.http.get('https://aspnetback.azurewebsites.net/api/ControladorAPI/api/movimientoPlanilla/delete', { params }).subscribe(
             result => {
               // console.log(result);
               Swal.fire('Se ha eliminado exitosamente').then(() => {
@@ -349,7 +519,7 @@ export class MovimientoPlanillaComponent {
             },
             error => {
               console.error(error);
-              Swal.fire('Ocurrió un error al eliminar el movimiento de planilla', '', 'error');
+              Swal.fire('Ocurrió un error al eliminar al intentar eliminar la planilla', '', 'error');
             }
           );
         }
@@ -358,10 +528,11 @@ export class MovimientoPlanillaComponent {
 
     searchMovimientoPlanilla() {
       const concepto = this.conceptoBusqueda;
-      this.http.get<any[]>(`api/ControladorAPI/api/movimientoPlanilla/search?concepto=${concepto}`).subscribe(
+      this.http.get<any[]>(`https://aspnetback.azurewebsites.net/api/ControladorAPI/api/movimientoPlanilla/search?concepto=${concepto}`).subscribe(
         (data) => {
           if (data && data.length > 0) {
             this.movimientosPlanilla = data;
+            this.currentPage = 1;
           } else {
             Swal.fire({
               icon: 'info',

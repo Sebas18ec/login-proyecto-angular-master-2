@@ -1,22 +1,13 @@
 <br>
-<div class="input-group mb-3">
+<div class="d-flex align-items-center">
+  <input type="text" class="form-control input-small" placeholder="Buscar por concepto" [(ngModel)]="conceptoBusqueda">
+  <div class="ms-2 d-flex">
+    <button class="btn btn-warning me-2 btn-rounded" (click)="searchMovimientoPlanilla()">Buscar</button>
+    <button class="btn btn-dark btn-rounded" (click)="limpiarBusqueda()">Limpiar búsqueda</button>
+  </div>
 </div>
 
 <br>
-<!-- <div class="input-group mb-3">
-  <input type="text" class="form-control" placeholder="Buscar por nombre" [(ngModel)]="nombreBusqueda">
-</div>
-<button class="btn btn-warning mb-3" >Buscar</button> -->
-<!-- <div class="input-group mb-3">
-  <input type="text" class="form-control" placeholder="Buscar por concepto" [(ngModel)]="conceptoBusqueda">
-  <button class="btn btn-primary" (click)="searchMovimientoPlanilla()">Buscar</button>
-</div> -->
-<div class="input-group mb-3">
-  <input type="text" class="form-control" placeholder="Buscar por concepto" [(ngModel)]="conceptoBusqueda">
-  <button class="btn btn-primary" (click)="searchMovimientoPlanilla()">Buscar</button>
-  <button class="btn btn-secondary" (click)="limpiarBusqueda()">Limpiar búsqueda</button>
-</div>
-
 <button class="btn btn-primary mb-3" (click)="nuevoMovimientoPlanilla()">Crear nuevo Movimiento</button>
 
 <div class="table-container">
@@ -67,15 +58,15 @@
     </tbody>
   </table>
   <!-- Navegación de paginación -->
-<div class="pagination-container">
-  <pagination-controls
-    (pageChange)="currentPage = $event"
-    previousLabel="Anterior"
-    nextLabel="Siguiente"
-    firstLabel="Primera"
-    lastLabel="Última"
-    class="pagination"
-  >
-  </pagination-controls>
-</div>
+  <div class="pagination-container">
+    <pagination-controls
+      (pageChange)="currentPage = $event"
+      previousLabel="Anterior"
+      nextLabel="Siguiente"
+      firstLabel="Primera"
+      lastLabel="Última"
+      class="pagination"
+    >
+    </pagination-controls>
+  </div>
 </div>
