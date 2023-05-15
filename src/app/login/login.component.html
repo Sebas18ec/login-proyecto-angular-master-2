@@ -6,12 +6,12 @@
       </h2>  
       <form class="form" (ngSubmit)="onSubmit()">  
         <div class="form-group">  
-          <label for="username" class="tooltip tooltip-hover">Usuario<span class="tooltip-icon"></span><span class="tooltiptext">Ingresar usuario</span></label>  
+          <label for="username" data-toggle="tooltip" data-placement="top" title="Ingresar usuario">Usuario<span class="tooltip-icon"></span></label>  
           <input type="text" class="form-control" id="username" [(ngModel)]="username" name="usuario" (keydown)="onlyNumbers($event, minLength.username)" minlength="{{ minLength.username }}">  
           <div *ngIf="username && username.length < minLength.username" class="text-danger">El usuario debe tener {{minLength.username}} caracteres</div>  
         </div>  
         <div class="form-group">  
-          <label for="password" class="tooltip tooltip-hover">Contraseña<span class="tooltiptext">Ingresar contraseña</span></label>  
+          <label for="password" data-toggle="tooltip" data-placement="top" title="Ingresar contraseña">Contraseña</label>  
           <input type="password" class="form-control" id="password" [(ngModel)]="password" name="contrasena" minlength="{{ minLength.password }}" maxlength="5">  
           <div *ngIf="password && password.length < minLength.password" class="text-danger">La contraseña debe tener {{minLength.password}} caracteres</div>  
         </div>  
