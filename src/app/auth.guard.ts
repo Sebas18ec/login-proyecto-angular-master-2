@@ -1,24 +1,20 @@
 import { Injectable } from '@angular/core';  
 import { CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot, UrlTree, Router } from '@angular/router';  
 import { Observable } from 'rxjs';  
+import { EmisorService } from './shared/emisor.service';  
   
 @Injectable({  
   providedIn: 'root'  
 })  
 export class AuthGuard implements CanActivate {  
   
-  constructor(private router: Router) {}  
+  constructor(private router: Router, private emisorService: EmisorService) {}  
   
   canActivate(  
     next: ActivatedRouteSnapshot,  
     state: RouterStateSnapshot): boolean {  
-    return this.checkLoggedIn();  
-  }  
-  
-  checkLoggedIn(): boolean {  
-    const user = localStorage.getItem('user');  
-    const emisor = localStorage.getItem('emisor');  
-    if (user && emisor) { // si ambos valores están presentes, entonces el usuario ha iniciado sesión  
+    const emisor = this.emisorService.getEmisorData();  
+    if (emisor) {   
       return true;  
     } else {  
       this.router.navigate(['/']);  
