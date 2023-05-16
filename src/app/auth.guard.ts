@@ -16,10 +16,12 @@ export class AuthGuard implements CanActivate {
   }  
   
   checkLoggedIn(): boolean {  
-    if (localStorage.getItem('token')) { // utilizar la variable loggedIn para comprobar si el usuario ha iniciado sesión  
+    const user = localStorage.getItem('user');  
+    const emisor = localStorage.getItem('emisor');  
+    if (user && emisor) { // si ambos valores están presentes, entonces el usuario ha iniciado sesión  
       return true;  
     } else {  
-      this.router.navigate(['/']); // redirigir al usuario a la pantalla de inicio de sesión si no ha iniciado sesión  
+      this.router.navigate(['/']);  
       return false;  
     }  
   }  
