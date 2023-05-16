@@ -97,9 +97,10 @@ onSubmit() {
       const emisorData = {  
         nombre: responseObj[0].NOMBREEMISOR,  
         ruc: responseObj[0].RucUsuario,  
+        rol: responseObj[0].rol
       };  
   
-      if (this.emisorComp === emisorData.nombre) {  
+      if (this.emisorComp === emisorData.nombre && emisorData.rol === 'admin') {  
         Swal.fire('Inicio exitoso!');  
         this.emisorService.updateEmisorData(emisorData);  
         this.router.navigate(['/home']);  
