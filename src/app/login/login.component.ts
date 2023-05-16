@@ -58,9 +58,7 @@ export class LoginComponent  implements OnInit{
   
   
   ngOnInit() {  
-    if (localStorage.getItem('token') || this.loggedIn) {  
-      this.router.navigate(['/home']);  
-    }  
+  
       
     this.http.get<any>('https://aspnetback.azurewebsites.net/api/ControladorAPI/api/v1/emisores')    
         .subscribe((data: any[]) => {    
