@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';  
-import { CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot, UrlTree } from '@angular/router';  
+import { CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot, UrlTree, Router } from '@angular/router';  
 import { Observable } from 'rxjs';  
-import { Router } from '@angular/router';  
   
 @Injectable({  
   providedIn: 'root'  
@@ -13,15 +12,14 @@ export class AuthGuard implements CanActivate {
   canActivate(  
     next: ActivatedRouteSnapshot,  
     state: RouterStateSnapshot): boolean {  
-    return this.checkToken();  
+    return this.checkLoggedIn();  
   }  
   
-  checkToken(): boolean {  
-    const token = localStorage.getItem('token');  
-    if (token) {  
+  checkLoggedIn(): boolean {  
+    if (localStorage.getItem('token')) { // utilizar la variable loggedIn para comprobar si el usuario ha iniciado sesión  
       return true;  
     } else {  
-      this.router.navigate(['/']);  
+      this.router.navigate(['/']); // redirigir al usuario a la pantalla de inicio de sesión si no ha iniciado sesión  
       return false;  
     }  
   }  

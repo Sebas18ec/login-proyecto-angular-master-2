@@ -57,15 +57,17 @@ export class LoginComponent  implements OnInit{
   
   
   
-   ngOnInit() {  
-   
-   
-    this.http.get<any>('https://aspnetback.azurewebsites.net/api/ControladorAPI/api/v1/emisores')  
-      .subscribe((data: any[]) => {  
-        this.emisores = data.map(emisor => emisor.NombreEmisor);  
-      });    
-     
-  } 
+  ngOnInit() {  
+    if (localStorage.getItem('token') || this.loggedIn) {  
+      this.router.navigate(['/home']);  
+    }  
+      
+    this.http.get<any>('https://aspnetback.azurewebsites.net/api/ControladorAPI/api/v1/emisores')    
+        .subscribe((data: any[]) => {    
+          this.emisores = data.map(emisor => emisor.NombreEmisor);    
+        });      
+  }  
+  
     
   onChangeEmisor(event: Event) {  
     const target = event.target as HTMLSelectElement;  
@@ -76,42 +78,40 @@ export class LoginComponent  implements OnInit{
     this.selectedEmisor = emisorId;  
   }  
   
-  onSubmit() {  
-    if (!this.username || !this.password || !this.emisorComp) {  
-      Swal.fire('¡Error!');  
-      return;  
-    }  
-    else{  
-      const loginData = {  
-        usuario: this.username,  
-        contrasena: this.password  
-      };  
-        
-      this.http.post('https://aspnetback.azurewebsites.net/api/ControladorAPI/login', loginData)  
-        .subscribe(response => {  
-            
-        const data = JSON.stringify(response);  
-        const responseObj = JSON.parse(data);  
-            
-        const emisorData = {  
+  loggedIn = false;  
+  
+onSubmit() {  
+  if (!this.username || !this.password || !this.emisorComp) {  
+    Swal.fire('Error');  
+    return;  
+  }  
+  
+  const loginData = {  
+    usuario: this.username,  
+    contrasena: this.password  
+  };  
+  
+  this.http.post('https://aspnetback.azurewebsites.net/api/ControladorAPI/login', loginData)  
+    .subscribe(response => {  
+      const data = JSON.stringify(response);  
+      const responseObj = JSON.parse(data);  
+  
+      const emisorData = {  
         nombre: responseObj[0].NOMBREEMISOR,  
         ruc: responseObj[0].RucUsuario,  
       };  
+  
       if (this.emisorComp === emisorData.nombre) {  
         Swal.fire('Inicio exitoso!');  
         this.emisorService.updateEmisorData(emisorData);  
-        this.router.navigate(['/home']); // aquí se navega a la ruta /home  
-    
+        this.router.navigate(['/home']);  
+        this.loggedIn = true; // actualiza el estado de inicio de sesión del usuario  
       } else {  
-        // mostrar mensaje de error o hacer otra acción  
-        Swal.fire('¡Error!');  
-          
+        Swal.fire('Error');  
       }  
-    
-        }, error => {  
-          console.log(error);  
-          Swal.fire('¡Error!');  
-        });  
-    }  
-  }  
+    }, error => {  
+      console.log(error);  
+      Swal.fire('Error');  
+    });  
+}  
 }  
