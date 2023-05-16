@@ -42,12 +42,8 @@ export class HomeComponent implements OnInit {
 
   ngOnInit(): void {
     const emisorData = this.emisorService.getEmisorData();
-    // console.log(emisorData)
     this.emisorNombre = emisorData.nombre;
     this.emisorRuc = emisorData.ruc;
-
-    
-    
     window.onbeforeunload = () => {
       localStorage.setItem('sesionIniciada', this.sesionIniciada.toString());
     };
