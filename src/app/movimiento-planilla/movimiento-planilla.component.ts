@@ -31,14 +31,6 @@ export class MovimientoPlanillaComponent {
 
   ngOnInit(): void {
     this.fetchMovimientosPlanilla();
-    this.http.get<any[]>('https://aspnetback.azurewebsites.net/api/ControladorAPI/api/GetMovimientosPlanilla').subscribe(
-      data => {
-        this.movimientosPlanilla = data;
-      },
-      error => {
-        console.log(error);
-      }
-  );
 
     this.http.get<any[]>('https://aspnetback.azurewebsites.net/api/ControladorAPI/ObtenerMovimientosExcepcion1y2')
     .pipe(
@@ -376,11 +368,7 @@ export class MovimientoPlanillaComponent {
       const movimientoPlanilla = this.movimientosPlanilla.find(cc => cc.CodigoConcepto === codigo);
       const tipoOperacionSeleccionada = movimientoPlanilla.TipoOperacion+'s';
       const movimientoExcepcion3 = movimientoPlanilla.MovimientoExcepcion3;
-
-      console.log(movimientoPlanilla.Aplica_imp_renta)
-      console.log(this.validarAplica_imp_renta(movimientoPlanilla.Aplica_imp_renta))
-      console.log(this.getOptionsTrabAfecImpuestoRenta())
-
+      
       Swal.fire({
         title: 'Editar Planilla',
         html:

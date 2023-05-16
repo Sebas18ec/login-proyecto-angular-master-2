@@ -42,7 +42,7 @@ export class HomeComponent implements OnInit {
 
   ngOnInit(): void {
     const emisorData = this.emisorService.getEmisorData();
-    console.log(emisorData)
+    // console.log(emisorData)
     this.emisorNombre = emisorData.nombre;
     this.emisorRuc = emisorData.ruc;
 
@@ -193,6 +193,7 @@ export class HomeComponent implements OnInit {
 
   cerrarSesionAPP(){
     this.sesionIniciada = false;
+    this.emisorService.clearEmisorData();  
   }
   
   onlyLettersAndNumbers(event: KeyboardEvent): void {
