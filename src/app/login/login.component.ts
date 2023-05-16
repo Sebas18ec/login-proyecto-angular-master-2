@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';  
+import { Component, OnInit } from '@angular/core';  
 import { EmisorService } from '../shared/emisor.service';  
 import { HttpClient, HttpHeaders } from '@angular/common/http';  
 import { Router } from '@angular/router';  
@@ -14,7 +14,7 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
 })
-export class LoginComponent {  
+export class LoginComponent  implements OnInit{  
   emisores: any;  
   selectedEmisor: string;  
   mensajeError: any;  
@@ -58,6 +58,9 @@ export class LoginComponent {
   
   
    ngOnInit() {  
+    if(localStorage.getItem('token')) {  
+      this.router.navigate(['/home']);  
+    }  
     this.http.get<any>('https://aspnetback.azurewebsites.net/api/ControladorAPI/api/v1/emisores')  
       .subscribe((data: any[]) => {  
         this.emisores = data.map(emisor => emisor.NombreEmisor);  

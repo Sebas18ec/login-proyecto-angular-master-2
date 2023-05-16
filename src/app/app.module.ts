@@ -12,6 +12,7 @@ import { FilterPipe } from './pipes/filter.pipe';
 import { EditarComponent } from './editar/editar.component';
 import { MovimientoPlanillaComponent } from './movimiento-planilla/movimiento-planilla.component';
 import { NgxPaginationModule } from 'ngx-pagination';
+import { AuthGuard } from './auth.guard';  
 
 
 @NgModule({
@@ -32,7 +33,7 @@ import { NgxPaginationModule } from 'ngx-pagination';
     FormsModule,
     NgxPaginationModule
   ],
-  providers: [],
+  providers: [AuthGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
