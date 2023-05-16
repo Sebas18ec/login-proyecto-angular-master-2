@@ -14,7 +14,7 @@ export class AuthGuard implements CanActivate {
     next: ActivatedRouteSnapshot,  
     state: RouterStateSnapshot): boolean {  
     const emisor = this.emisorService.getEmisorData();  
-    if (emisor && emisor.rol === 'admin') { // Verifica que existe el atributo 'rol' y es igual a 'admin'  
+    if (emisor && emisor.OBSERVACION === 'INGRESO EXITOSO') { // Verifica que existe el atributo 'rol' y es igual a 'admin'  
       return true;  
     } else {  
       this.router.navigate(['/']);  
