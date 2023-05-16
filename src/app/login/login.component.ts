@@ -95,12 +95,12 @@ onSubmit() {
       const responseObj = JSON.parse(data);  
   
       const emisorData = {  
-        nombre: responseObj[0].NOMBREEMISOR,  
+        nombre: responseObj[0].NOMBREEMISOR.trim(),  
         ruc: responseObj[0].RucUsuario,  
         OBSERVACION: responseObj[0].OBSERVACION
       };  
   
-      if (emisorData.OBSERVACION === 'INGRESO EXITOSO') {  
+      if (this.emisorComp === emisorData.nombre && emisorData.OBSERVACION === 'INGRESO EXITOSO') {  
         Swal.fire('Inicio exitoso!');  
         this.emisorService.updateEmisorData(emisorData);  
         this.router.navigate(['/home']);  
