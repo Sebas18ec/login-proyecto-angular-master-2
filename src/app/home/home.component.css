@@ -133,7 +133,42 @@ button[type="submit"]:hover {
   margin-bottom: 0; /* Elimina el espacio inferior entre los elementos */
 }
 
+.navbar-collapse .navbar-nav .nav-item {
+  /* Estilos personalizados para los elementos <li> */
+  margin-bottom: 10px;
+}
 
+.navbar-collapse .navbar-nav .nav-item h6 {
+  /* Estilos personalizados para los elementos <h6> dentro de los <li> */
+  margin-bottom: 5px;
+  font-weight: bold;
+  color: black;
+}
+
+.navbar-nav li {
+  margin-left: 155px; /* Ajusta el valor según tus necesidades */
+}
+@media (max-width: 992px) {
+.navbar-nav li {
+  margin-left: 20px; /* Elimina el margen izquierdo */
+}
+}
+
+.sidebar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 240px;
+  background-color: #333;
+  color: #fff;
+  padding: 20px;
+}
+
+.content {
+  margin-left: 240px;
+  padding: 20px;
+}
 
 
 

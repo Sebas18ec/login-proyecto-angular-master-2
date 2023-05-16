@@ -190,6 +190,8 @@ export class HomeComponent implements OnInit {
   cerrarSesionAPP(){
     this.sesionIniciada = false;
     this.emisorService.clearEmisorData();  
+    localStorage.removeItem('sesionIniciada');
+    this.router.navigate(['/']);  
   }
   
   onlyLettersAndNumbers(event: KeyboardEvent): void {
