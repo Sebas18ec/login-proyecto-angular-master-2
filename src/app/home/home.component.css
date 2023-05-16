@@ -120,6 +120,18 @@ button[type="submit"]:hover {
   color: #000000 !important;
 }
 
+.ms-auto.text-dark {
+  margin-right: 0; /* Elimina el margen derecho */
+}
+
+.navbar-text {
+  margin-right: 10px; /* Ajusta el margen derecho entre los elementos */
+}
+
+.navbar-text h6,
+.navbar-text p {
+  margin-bottom: 0; /* Elimina el espacio inferior entre los elementos */
+}
 
 
 

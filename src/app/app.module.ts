@@ -12,7 +12,8 @@ import { FilterPipe } from './pipes/filter.pipe';
 import { EditarComponent } from './editar/editar.component';
 import { MovimientoPlanillaComponent } from './movimiento-planilla/movimiento-planilla.component';
 import { NgxPaginationModule } from 'ngx-pagination';
-import { AuthGuard } from './auth.guard';  
+import { AuthGuard } from './auth.guard';
+import { CentroCostosComponent } from './centro-costos/centro-costos.component';  
 
 
 @NgModule({
@@ -25,6 +26,7 @@ import { AuthGuard } from './auth.guard';
     FilterPipe,
     EditarComponent,
     MovimientoPlanillaComponent,
+    CentroCostosComponent,
   ],
   imports: [
     BrowserModule,
