@@ -22,7 +22,7 @@ export class LoginComponent implements OnInit {
   password!: string;
   emisorComp: any;
   logoUrl: any;
-  fechaActual: any;
+  fechaActual: any
 
   httpOptions = {
     headers: new HttpHeaders({
@@ -80,11 +80,7 @@ export class LoginComponent implements OnInit {
   loggedIn = false;
 
 
-  mostrarFechaActual() {
-     fechaActual = this.getCurrentDate(); const mensaje = Hola ${ emisorNombre }, hoy es ${ fechaActual }.;
-
-    Swal.fire('Fecha Actual', mensaje, 'info');
-  }
+  mostrarFechaActual() { const fechaActual = new Date().toLocaleDateString(); const mensaje = `Hola ${this.emisorComp}, hoy es ${fechaActual}.`; Swal.fire('Fecha Actual', mensaje, 'info'); }
 
   onSubmit() {
     if (!this.username || !this.password || !this.emisorComp) {
