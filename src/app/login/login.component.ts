@@ -22,7 +22,7 @@ export class LoginComponent implements OnInit {
   password!: string;
   emisorComp: any;
   logoUrl: any;
-  fechaActual: any
+  fechaActual: string | undefined;
 
   httpOptions = {
     headers: new HttpHeaders({
@@ -43,7 +43,7 @@ export class LoginComponent implements OnInit {
   constructor(private http: HttpClient, private sanitizer: DomSanitizer, private emisorService: EmisorService, private router: Router) {
     this.selectedEmisor = '';
     this.logoUrl = this.sanitizer.bypassSecurityTrustUrl('assets/img/logo-taller.svg');
-    const fechaActual = new Date().toLocaleDateString();
+    this.fechaActual = new Date().toLocaleDateString();
   }
 
   onlyNumbers(event: KeyboardEvent, maxLength: number) {
