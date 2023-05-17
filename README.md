@@ -33,16 +33,9 @@ Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To u
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
 
 
-
-mostrarFechaActual(nombre: string) {
-    const fechaActual = this.getCurrentDate();
-    const mensaje = `Hola ${nombre}, hoy es ${fechaActual}.`;
+ mostrarFechaActual(nombre: string) {
+    const fechaActual = new Date().toLocaleDateString();
+    const mensaje = `Hola ${this.emisorComp}, hoy es ${fechaActual}.`;
 
     Swal.fire('Fecha Actual', mensaje, 'info');
-  }
-
-  getCurrentDate(): string {
-    const currentDate = new Date();
-    const options = { year: 'numeric', month: 'numeric', day: 'numeric' };
-    return currentDate.toLocaleDateString('es-ES', options);
   }
