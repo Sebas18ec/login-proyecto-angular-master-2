@@ -43,6 +43,7 @@ export class LoginComponent implements OnInit {
   constructor(private http: HttpClient, private sanitizer: DomSanitizer, private emisorService: EmisorService, private router: Router) {
     this.selectedEmisor = '';
     this.logoUrl = this.sanitizer.bypassSecurityTrustUrl('assets/img/logo-taller.svg');
+    const fechaActual = new Date().toLocaleDateString();
   }
 
   onlyNumbers(event: KeyboardEvent, maxLength: number) {
@@ -109,7 +110,7 @@ export class LoginComponent implements OnInit {
 
           Swal.fire({
             title: 'Bienvenido: Udla software',
-            html: ' <h6>Fecha:</h6>' + this.fechaActual,
+            html: ' <h6>Fecha:</h6>' + this.emisorComp + this.fechaActual,
             showCancelButton: false,
           })
           this.emisorService.updateEmisorData(emisorData);
