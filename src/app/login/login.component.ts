@@ -109,7 +109,7 @@ export class LoginComponent implements OnInit {
 
           Swal.fire({
             title: 'Bienvenido: Udla software',
-            html: ' <h6>Fecha: {{ fechaActual }}</h6>',
+            html: ' <h6>Fecha:</h6>' + this.fechaActual,
             showCancelButton: false,
           })
           this.emisorService.updateEmisorData(emisorData);
