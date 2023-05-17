@@ -61,7 +61,7 @@ export class LoginComponent implements OnInit {
 
   ngOnInit() {
 
-
+    const fechaActual = new Date().toLocaleDateString();
     this.http.get<any>('https://aspnetback.azurewebsites.net/api/ControladorAPI/api/v1/emisores')
       .subscribe((data: any[]) => {
         this.emisores = data.map(emisor => emisor.NombreEmisor);
@@ -109,8 +109,8 @@ export class LoginComponent implements OnInit {
 
 
           Swal.fire({
-            title: 'Bienvenido: Udla software',
-            html: ' <h6>Fecha:</h6>' + this.emisorComp + this.fechaActual,
+            title: 'Bienvenido, ' + this.emisorComp,
+            html: ' <h6>Fecha:</h6>'  + this.fechaActual,
             showCancelButton: false,
           })
           this.emisorService.updateEmisorData(emisorData);
