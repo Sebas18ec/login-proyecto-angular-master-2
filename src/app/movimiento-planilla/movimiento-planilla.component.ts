@@ -445,8 +445,8 @@ export class MovimientoPlanillaComponent {
           const Aplica_Proy_Renta = parseInt((document.getElementById('swal-input14') as HTMLInputElement).value, 10);
           const Empresa_Afecta_Iess = parseInt((document.getElementById('swal-input15') as HTMLInputElement).value, 10);
 
-          if (conceptos && prioridad && tipoOperacion && cuenta1 && cuenta2 && cuenta3 && cuenta4 && MovimientoExcepcion1 
-            && MovimientoExcepcion2 && MovimientoExcepcion3 && Traba_Aplica_iess && Traba_Proyecto_imp_renta && Aplica_Proy_Renta && Empresa_Afecta_Iess) {
+          if (!codigoPlanilla || !conceptos || !prioridad || !tipoOperacion || !cuenta1 || !cuenta2 || !cuenta3 || !cuenta4 || !MovimientoExcepcion1 
+            || !MovimientoExcepcion2 || !MovimientoExcepcion3) {
             Swal.showValidationMessage('Todos los campos son requeridos');
             return false;
           }
@@ -465,24 +465,29 @@ export class MovimientoPlanillaComponent {
     guardarCambiosMovimientoPlanilla(codigoPlanilla: number, conceptos: string, prioridad: number, tipooperacion: string
       ,cuenta1: number,cuenta2: number,cuenta3: number,cuenta4: number, MovimientoExcepcion1: string,MovimientoExcepcion2: string,MovimientoExcepcion3: string,Traba_Aplica_iess: number,Traba_Proyecto_imp_renta: number
       ,Aplica_Proy_Renta: number,Empresa_Afecta_Iess: number): void {
-      const url = `api/ControladorAPI/api/movimientoPlanilla/edit?codigoplanilla=${codigoPlanilla}&conceptos=${conceptos}&prioridad=${prioridad}&tipooperacion=${tipooperacion}&cuenta1=${cuenta1}&cuenta2=${cuenta2}&cuenta3=${cuenta3}&cuenta4=${cuenta4}
-      &MovimientoExcepcion1=${MovimientoExcepcion1}&MovimientoExcepcion2=${MovimientoExcepcion2}&MovimientoExcepcion3=${MovimientoExcepcion3}&Traba_Aplica_iess=${Traba_Aplica_iess}&Traba_Proyecto_imp_renta=${Traba_Proyecto_imp_renta}&Aplica_Proy_Renta=${Aplica_Proy_Renta}&Empresa_Afecta_Iess=${Empresa_Afecta_Iess}`;
-      this.http.get(url).subscribe(
-        (response) => {
-          console.log(response);
-          Swal.fire({
-            title: 'Cambios guardados',
-            icon: 'success',
-            showCancelButton: false,
-          }).then(() => {
-            this.fetchMovimientosPlanilla();
-          });
-        },
-        (error) => {
-          console.error(error);
-          Swal.fire('Error al guardar los cambios', '', 'error');
-        }
-      );
+      if(codigoPlanilla && conceptos && prioridad && tipooperacion && cuenta1 && cuenta2 && cuenta3 && cuenta4 && MovimientoExcepcion1
+        && MovimientoExcepcion2 && MovimientoExcepcion3){
+        const url = `api/ControladorAPI/api/movimientoPlanilla/edit?codigoplanilla=${codigoPlanilla}&conceptos=${conceptos}&prioridad=${prioridad}&tipooperacion=${tipooperacion}&cuenta1=${cuenta1}&cuenta2=${cuenta2}&cuenta3=${cuenta3}&cuenta4=${cuenta4}
+        &MovimientoExcepcion1=${MovimientoExcepcion1}&MovimientoExcepcion2=${MovimientoExcepcion2}&MovimientoExcepcion3=${MovimientoExcepcion3}&Traba_Aplica_iess=${Traba_Aplica_iess}&Traba_Proyecto_imp_renta=${Traba_Proyecto_imp_renta}&Aplica_Proy_Renta=${Aplica_Proy_Renta}&Empresa_Afecta_Iess=${Empresa_Afecta_Iess}`;
+        this.http.get(url).subscribe(
+          (response) => {
+            console.log(response);
+            Swal.fire({
+              title: 'Cambios guardados',
+              icon: 'success',
+              showCancelButton: false,
+            }).then(() => {
+              this.fetchMovimientosPlanilla();
+            });
+          },
+          (error) => {
+            console.error(error);
+            Swal.fire('Error al guardar los cambios', '', 'error');
+          }
+        );
+      }else {
+        Swal.fire('Error', 'Todos los campos son requeridos', 'error');
+      }
     }
 
 
