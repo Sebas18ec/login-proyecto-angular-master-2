@@ -18,8 +18,8 @@
         <table class="table table-hover">
             <thead>
                 <tr>
-                    <th>Codigo</th>
-                    <th>Trabajador</th>
+                    <th>Codigo Compañia</th>
+                    <th>ID Trabajador</th>
                     <th>Tipo</th> <!-- Nueva columna para los botones -->
                     <th>Apellido Paterno</th>
                     <th>Apellido Materno</th>
@@ -108,6 +108,10 @@
                 <td>{{ cc.CuotaCuentaCorriente }}</td>
                 <td>{{ cc.Fondo_Reserva }}</td>
                 <!-- <td>{{ cc.Mensaje }}</td> -->
+                <td>
+                  <!-- <button class="btn btn-sm btn-primary me-2" (click)="editarTrabajador(cc.CodigoConcepto)">Editar</button> -->
+                  <button class="btn btn-sm btn-danger" (click)="eliminarTrabajador(cc.COMP_Codigo, cc.Id_Trabajador)">Eliminar</button>
+                </td>
             </tr>
           </tbody>
         </table>

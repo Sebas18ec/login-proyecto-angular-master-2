@@ -15,7 +15,7 @@ export class TrabajadorComponent {
   trabajadores: any[] = [];
   datosTablaOriginal: any[] = [];
   currentPage = 1;
-  itemsPerPage = 10;
+  itemsPerPage = 15;
   emisorSeleccionado: any;
   mensaje: any = "";
   mensaje2: any = "";
@@ -41,6 +41,39 @@ export class TrabajadorComponent {
         console.log(error);
       }
     );
+  }
+
+  eliminarTrabajador(sucursal: number, idEmpleado: string) {
+    const params = new HttpParams()
+      .set('sucursal', sucursal.toString())
+      .set('codigoempleado', idEmpleado);
+  
+    Swal.fire({
+      title: 'Confirmación',
+      text: '¿Está seguro que desea eliminar el trabajador?',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Sí, eliminar',
+      cancelButtonText: 'Cancelar'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        this.http.get('api/ControladorAPI/trabajador/delete', { params }).subscribe(
+          result => {
+            // console.log(result);
+            Swal.fire('Se ha eliminado exitosamente').then(() => {
+              // Realizar acciones adicionales después de eliminar
+              this.fetchTrabajadores()
+            });
+          },
+          error => {
+            console.error(error);
+            Swal.fire('Ocurrió un error al eliminar al intentar eliminar el trabajador', '', 'error');
+          }
+        );
+      }
+    });
   }
   
 }

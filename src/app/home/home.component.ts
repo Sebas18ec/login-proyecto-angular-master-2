@@ -182,9 +182,13 @@ export class HomeComponent implements OnInit {
   }
 
   Trabajadores(): void {
-    this.mostrarTrabajadores = true;
-    this.mostrarFormularioCentroCostos = false;
-    this.mostrarMovimientosPlanilla = false;
+    if (!this.sesionIniciada) {
+      this.abrirVentanaLogin('Trabajadores');
+    } else {
+      this.mostrarTrabajadores = true;
+      this.mostrarFormularioCentroCostos = false;
+      this.mostrarMovimientosPlanilla = false;
+    }
   }
 
   cerrarSesionAutorizador(): void {
