@@ -107,13 +107,6 @@ export class LoginComponent implements OnInit {
         };
 
         if (this.emisorComp === emisorData.nombre && emisorData.OBSERVACION === 'INGRESO EXITOSO') {
-
-
-          Swal.fire({
-            title: 'Bienvenido, ' + this.emisorComp,
-            html: ' <h6>Fecha:</h6>'  + this.fechaActual,
-            showCancelButton: false,
-          })
           this.emisorService.updateEmisorData(emisorData);
           this.router.navigate(['/home']);
           this.loggedIn = true; // actualiza el estado de inicio de sesión del usuario  
