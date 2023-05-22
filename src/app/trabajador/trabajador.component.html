@@ -60,7 +60,7 @@
                     <th>Remuneracion_Minima</th>
                     <th>CuotaCuentaCorriente</th>
                     <th>Fondo_Reserva</th>
-                    <th>Mensaje</th>
+                    <!-- <th>Mensaje</th> -->
                 </tr>
             </thead>
             <tbody>
@@ -98,7 +98,7 @@
                 <td>{{ cc.BancoCTA_CTE }}</td>
                 <td>{{ cc.Tipo_Cuenta }}</td>
                 <td>{{ cc.RSV_Indem_Acumul }}</td>
-                <td> Año_Ult_Rsva_Indemni </td>
+                <td> Año_Ult_Rsva_Indemni </td> <!--este campo tiene ñ y da este error: Parser Error: Lexer Error: Unexpected character [ñ] -->
                 <td>{{ cc.Mes_Ult_Rsva_Indemni }}</td>
                 <td>{{ cc.FormaCalculo13ro }}</td>
                 <td>{{ cc.FormaCalculo14ro }}</td>
@@ -107,7 +107,7 @@
                 <td>{{ cc.Remuneracion_Minima }}</td>
                 <td>{{ cc.CuotaCuentaCorriente }}</td>
                 <td>{{ cc.Fondo_Reserva }}</td>
-                <td>{{ cc.Mensaje }}</td>
+                <!-- <td>{{ cc.Mensaje }}</td> -->
             </tr>
           </tbody>
         </table>

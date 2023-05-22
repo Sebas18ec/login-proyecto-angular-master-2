@@ -165,46 +165,48 @@ export class MovimientoPlanillaComponent {
     Swal.fire({
       title: 'Añadir nuevo Movimiento Planilla',
       html:
-        '<input id="swal-input1" class="swal2-input" placeholder="Concepto">' +
-        '<input id="swal-input2" class="swal2-input" placeholder="Prioridad" onkeypress="onlyNumbers(event)">' +
-        '<select id="swal-input3" class="swal2-input">' +
+      '<div class="swal2-input-container" style="column-count: 3; column-gap: 30px;">' +
+      '<input id="swal-input1" class="swal2-input" placeholder="Concepto">' +
+      '<input id="swal-input2" class="swal2-input" placeholder="Prioridad" onkeypress="onlyNumbers(event)">' +
+      '<select id="swal-input3" class="swal2-input">' +
         '<option value="">Tipo Operacion</option>' +
         this.getOptionsTipoOperacion().map(option => `<option value="${option.value}">${option.label}</option>`).join('') +
-        '</select>' +
-        '<input id="swal-input4" class="swal2-input" placeholder="Cuenta 1" onkeypress="onlyNumbers(event)">' +
-        '<input id="swal-input5" class="swal2-input" placeholder="Cuenta 2" onkeypress="onlyNumbers(event)">' +
-        '<input id="swal-input6" class="swal2-input" placeholder="Cuenta 3" onkeypress="onlyNumbers(event)">' +
-        '<input id="swal-input7" class="swal2-input" placeholder="Cuenta 4" onkeypress="onlyNumbers(event)">' +
-        '<select id="swal-input8" class="swal2-input">' +
+      '</select>' +
+      '<input id="swal-input4" class="swal2-input" placeholder="Cuenta 1" onkeypress="onlyNumbers(event)">' +
+      '<input id="swal-input5" class="swal2-input" placeholder="Cuenta 2" onkeypress="onlyNumbers(event)">' +
+      '<input id="swal-input6" class="swal2-input" placeholder="Cuenta 3" onkeypress="onlyNumbers(event)">' +
+      '<input id="swal-input7" class="swal2-input" placeholder="Cuenta 4" onkeypress="onlyNumbers(event)">' +
+      '<select id="swal-input8" class="swal2-input">' +
         '<option value="">movimiento exepcion 1</option>' +
         this.getOptionsMovimientoExcepcion1().map(option => `<option value="${option.value}">${option.label}</option>`).join('') +
-        '</select>' +
-        '<select id="swal-input9" class="swal2-input">' +
+      '</select>' +
+      '<select id="swal-input9" class="swal2-input">' +
         '<option value="">movimiento exepcion 2</option>' +
         this.getOptionsMovimientoExcepcion2().map(option => `<option value="${option.value}">${option.label}</option>`).join('') +
-        '</select>' +
-        '<select id="swal-input10" class="swal2-input">' +
+      '</select>' +
+      '<select id="swal-input10" class="swal2-input">' +
         '<option value="">movimiento exepcion 3</option>' +
         this.getOptionsMovimientoExcepcion3().map(option => `<option value="${option.value}">${option.label}</option>`).join('') +
-        '</select>' +
-        '<select id="swal-input11" class="swal2-input">' +
+      '</select>' +
+      '<select id="swal-input11" class="swal2-input">' +
         '<option value="">Aplica IESS</option>' +
         this.getOptionsTrabaAfectaIESS().map(option => `<option value="${option.value}">${option.label}</option>`).join('') +
-        '</select><br>' +
-        '<select id="swal-input12" class="swal2-input">' +
+      '</select><br>' +
+      '<select id="swal-input12" class="swal2-input">' +
         '<option value="">Aplica Impuesto renta</option>' +
         this.getOptionsTrabAfecImpuestoRenta().map(option => `<option value="${option.value}">${option.label}</option>`).join('') +
-        '</select>' +
-        // '<input id="swal-input13" class="swal2-input" placeholder="Aplica_Proy_Renta">' +
-        '<select id="swal-input13" class="swal2-input">' +
+      '</select>' +
+      '<select id="swal-input13" class="swal2-input">' +
         '<option value="">Aplica Proy Renta</option>' +
         this.getOptionsTrabAfecImpuestoRenta().map(option => `<option value="${option.value}">${option.label}</option>`).join('') +
-        '</select><br>' +
-        // '<input id="swal-input14" class="swal2-input" placeholder="Empresa_Afecta_Iess">',
-        '<select id="swal-input14" class="swal2-input">' +
+      '</select><br>' +
+      '<select id="swal-input14" class="swal2-input">' +
         '<option value="">Empresa Afecta IESS</option>' +
         this.getOptionsTrabaAfectaIESS().map(option => `<option value="${option.value}">${option.label}</option>`).join('') +
-        '</select><br>',
+      '</select><br>' +
+    '</div>' +
+    '</div>',
+      width: '1200px',
       focusConfirm: false,
       showCancelButton: true,
       cancelButtonText: 'Cerrar',
@@ -372,48 +374,51 @@ export class MovimientoPlanillaComponent {
       Swal.fire({
         title: 'Editar Planilla',
         html:
-          '<input id="swal-input1" class="swal2-input" placeholder="Código Planilla" value="' + movimientoPlanilla.CodigoConcepto + '" readonly>' +
-          '<input id="swal-input2" class="swal2-input" placeholder="Concepto" value="'+ movimientoPlanilla.Concepto + '">'+
-          '<input id="swal-input3" class="swal2-input" placeholder="Prioridad" onkeypress="onlyNumbers(event)" + value="'+movimientoPlanilla.Prioridad+'">' +
-          '<select id="swal-input4" class="swal2-input">' +
-          '<option value="">Tipo Operacion</option>' +
-          this.getOptionsTipoOperacion().map(option => `<option value="${option.value}" ${option.label === tipoOperacionSeleccionada ? "selected" : ""}>${option.label}</option>`).join('') +
-          '</select>'+
-          '<input id="swal-input5" class="swal2-input" placeholder="Cuenta 1" value="'+ movimientoPlanilla.Cuenta1 + '" onkeypress="onlyNumbers(event)">'+
-          '<input id="swal-input6" class="swal2-input" placeholder="Cuenta 2" value="'+ movimientoPlanilla.Cuenta2 + '" onkeypress="onlyNumbers(event)">' +
-          '<input id="swal-input7" class="swal2-input" placeholder="Cuenta 3" value="'+ movimientoPlanilla.Cuenta3 + '" onkeypress="onlyNumbers(event)">' +
-          '<input id="swal-input8" class="swal2-input" placeholder="Cuenta 4" value="'+ movimientoPlanilla.Cuenta4 + '" onkeypress="onlyNumbers(event)">' +
-          '<select id="swal-input9" class="swal2-input">' +
-          '<option value="">movimiento exepcion 1</option>' +
-          this.getOptionsMovimientoExcepcion1().map(option => `<option value="${option.value}" ${option.value === this.validarExcepciones1y2(movimientoPlanilla.MovimientoExcepcion1) ? "selected" : ""}>${option.label}</option>`).join('') +
-          '</select>' +
-          '<select id="swal-input10" class="swal2-input">' +
-          '<option value="">movimiento exepcion 2</option>' +
-          this.getOptionsMovimientoExcepcion2().map(option => `<option value="${option.value}" ${option.value === this.validarExcepciones1y2(movimientoPlanilla.MovimientoExcepcion2) ? "selected" : ""}>${option.label}</option>`).join('') +
-          '</select>' +
-          '<select id="swal-input11" class="swal2-input">' +
-          '<option value="">movimiento exepcion 3</option>' +
-          this.getOptionsMovimientoExcepcion3().map(option => `<option value="${option.value}" ${option.label === movimientoExcepcion3 ? "selected" : ""}>${option.label}</option>`).join('') +
-          '</select>' +
-          '<select id="swal-input12" class="swal2-input">' +
-          '<option value="">Aplica IESS</option>' +
-          this.getOptionsTrabaAfectaIESS().map(option => `<option value="${option.value}" ${option.value === this.validarAplica_iess(movimientoPlanilla.Aplica_iess) ? "selected" : ""}>${option.label}</option>`).join('') +
-          '</select><br>' +
-          '<select id="swal-input13" class="swal2-input">' +
-          '<option value="">Aplica Impuesto renta</option>' +
-          this.getOptionsTrabAfecImpuestoRenta().map(option => `<option value="${option.value}" ${option.value === this.validarAplica_imp_renta(movimientoPlanilla.Aplica_imp_renta) ? "selected" : ""}>${option.label}</option>`).join('') +
-          '</select>' +
-          // '<input id="swal-input13" class="swal2-input" placeholder="Aplica_Proy_Renta">' +
-          '<select id="swal-input14" class="swal2-input">' +
-          '<option value="">Aplica Proy Renta</option>' +
-          this.getOptionsTrabAfecImpuestoRenta().map(option => `<option value="${option.value}" ${option.value === this.validarAplica_imp_renta(movimientoPlanilla.Aplica_imp_renta) ? "selected" : ""}>${option.label}</option>`).join('') +
-          '</select><br>' +
-          // '<input id="swal-input14" class="swal2-input" placeholder="Empresa_Afecta_Iess">',
-          '<select id="swal-input15" class="swal2-input">' +
-          '<option value="">Empresa Afecta IESS</option>' +
-          this.getOptionsTrabaAfectaIESS().map(option => `<option value="${option.value}" ${option.value === this.validarAplica_iess(movimientoPlanilla.Empresa_Afecta_Iess) ? "selected" : ""}>${option.label}</option>`).join('') +
-          '</select><br>',
-
+          '<div class="swal2-input-container" style="column-count: 3; column-gap: 30px;">' +
+            '<input id="swal-input1" class="swal2-input" placeholder="Código Planilla" value="' + movimientoPlanilla.CodigoConcepto + '" readonly>' +
+            '<input id="swal-input2" class="swal2-input" placeholder="Concepto" value="'+ movimientoPlanilla.Concepto + '">'+
+            '<input id="swal-input3" class="swal2-input" placeholder="Prioridad" onkeypress="onlyNumbers(event)" + value="'+movimientoPlanilla.Prioridad+'">' +
+            '<select id="swal-input4" class="swal2-input">' +
+            '<option value="">Tipo Operacion</option>' +
+            this.getOptionsTipoOperacion().map(option => `<option value="${option.value}" ${option.label === tipoOperacionSeleccionada ? "selected" : ""}>${option.label}</option>`).join('') +
+            '</select>'+
+            '<input id="swal-input5" class="swal2-input" placeholder="Cuenta 1" value="'+ movimientoPlanilla.Cuenta1 + '" onkeypress="onlyNumbers(event)">'+
+            '<input id="swal-input6" class="swal2-input" placeholder="Cuenta 2" value="'+ movimientoPlanilla.Cuenta2 + '" onkeypress="onlyNumbers(event)">' +
+            '<input id="swal-input7" class="swal2-input" placeholder="Cuenta 3" value="'+ movimientoPlanilla.Cuenta3 + '" onkeypress="onlyNumbers(event)">' +
+            '<input id="swal-input8" class="swal2-input" placeholder="Cuenta 4" value="'+ movimientoPlanilla.Cuenta4 + '" onkeypress="onlyNumbers(event)">' +
+            '<select id="swal-input9" class="swal2-input">' +
+            '<option value="">movimiento exepcion 1</option>' +
+            this.getOptionsMovimientoExcepcion1().map(option => `<option value="${option.value}" ${option.value === this.validarExcepciones1y2(movimientoPlanilla.MovimientoExcepcion1) ? "selected" : ""}>${option.label}</option>`).join('') +
+            '</select>' +
+            '<select id="swal-input10" class="swal2-input">' +
+            '<option value="">movimiento exepcion 2</option>' +
+            this.getOptionsMovimientoExcepcion2().map(option => `<option value="${option.value}" ${option.value === this.validarExcepciones1y2(movimientoPlanilla.MovimientoExcepcion2) ? "selected" : ""}>${option.label}</option>`).join('') +
+            '</select>' +
+            '<select id="swal-input11" class="swal2-input">' +
+            '<option value="">movimiento exepcion 3</option>' +
+            this.getOptionsMovimientoExcepcion3().map(option => `<option value="${option.value}" ${option.label === movimientoExcepcion3 ? "selected" : ""}>${option.label}</option>`).join('') +
+            '</select>' +
+            '<select id="swal-input12" class="swal2-input">' +
+            '<option value="">Aplica IESS</option>' +
+            this.getOptionsTrabaAfectaIESS().map(option => `<option value="${option.value}" ${option.value === this.validarAplica_iess(movimientoPlanilla.Aplica_iess) ? "selected" : ""}>${option.label}</option>`).join('') +
+            '</select><br>' +
+            '<select id="swal-input13" class="swal2-input">' +
+            '<option value="">Aplica Impuesto renta</option>' +
+            this.getOptionsTrabAfecImpuestoRenta().map(option => `<option value="${option.value}" ${option.value === this.validarAplica_imp_renta(movimientoPlanilla.Aplica_imp_renta) ? "selected" : ""}>${option.label}</option>`).join('') +
+            '</select>' +
+            // '<input id="swal-input13" class="swal2-input" placeholder="Aplica_Proy_Renta">' +
+            '<select id="swal-input14" class="swal2-input">' +
+            '<option value="">Aplica Proy Renta</option>' +
+            this.getOptionsTrabAfecImpuestoRenta().map(option => `<option value="${option.value}" ${option.value === this.validarAplica_imp_renta(movimientoPlanilla.Aplica_imp_renta) ? "selected" : ""}>${option.label}</option>`).join('') +
+            '</select><br>' +
+            // '<input id="swal-input14" class="swal2-input" placeholder="Empresa_Afecta_Iess">',
+            '<select id="swal-input15" class="swal2-input">' +
+            '<option value="">Empresa Afecta IESS</option>' +
+            this.getOptionsTrabaAfectaIESS().map(option => `<option value="${option.value}" ${option.value === this.validarAplica_iess(movimientoPlanilla.Empresa_Afecta_Iess) ? "selected" : ""}>${option.label}</option>`).join('') +
+            '</select><br>'+
+            '</div>' +
+          '</div>',
+        width: '1200px',
         focusConfirm: false,
         showCancelButton: true,
         cancelButtonText: 'Cancelar',
