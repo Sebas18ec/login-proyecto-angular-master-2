@@ -49,6 +49,9 @@
           <li class="nav-item" style="margin-top: 45px;">
             <a class="nav-link text-black" (click)="MovimientoPlanilla()">Movimiento Planilla</a>
           </li>
+          <li class="nav-item" style="margin-top: 45px;">
+            <a class="nav-link text-black" (click)="Trabajadores()">Trabajadores</a>
+          </li>
         </ul>
       </div>      
       <div class="col-9 content" style="margin-top: 150px;">
@@ -57,6 +60,9 @@
         </div>
         <div *ngIf="mostrarMovimientosPlanilla">
           <app-movimiento-planilla></app-movimiento-planilla>
+        </div>
+        <div *ngIf="mostrarTrabajadores">
+          <app-trabajador></app-trabajador>
         </div>
       </div>
     </div>

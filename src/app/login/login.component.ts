@@ -100,6 +100,7 @@ export class LoginComponent implements OnInit {
         const responseObj = JSON.parse(data);
 
         const emisorData = {
+          compania: responseObj[0].COMPANIA,
           nombre: responseObj[0].NOMBREEMISOR.trim(),
           ruc: responseObj[0].RucUsuario,
           OBSERVACION: responseObj[0].OBSERVACION

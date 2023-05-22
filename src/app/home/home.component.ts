@@ -26,8 +26,8 @@ export class HomeComponent implements OnInit {
   nombreUsuario: string = 'no logeado';
   sesionIniciada: boolean = false;
   mostrarMovimientosPlanilla: boolean = false;
+  mostrarTrabajadores: boolean = false;
   
-
   constructor(private emisorService: EmisorService,private sanitizer: DomSanitizer, private http: HttpClient,private router: Router) {
     this.logoUrl = this.sanitizer.bypassSecurityTrustUrl('assets/img/logo-taller.svg');  
     this.fechaActual = new Date().toLocaleDateString();
@@ -120,10 +120,18 @@ export class HomeComponent implements OnInit {
                   // Lógica específica para CentroCostos
                   this.mostrarFormularioCentroCostos = true;
                   this.mostrarMovimientosPlanilla = false;
+                  this.mostrarTrabajadores = false;
                 } else if (origen === 'MovimientoPlanilla') {
                   // Lógica específica para MovimientoPlanilla
                   this.mostrarMovimientosPlanilla = true;
                   this.mostrarFormularioCentroCostos = false;
+                  this.mostrarTrabajadores = false;
+                }
+                else if (origen === 'Trabajadores') {
+                  // Lógica específica para MovimientoPlanilla
+                  this.mostrarTrabajadores = true;
+                  this.mostrarFormularioCentroCostos = false;
+                  this.mostrarMovimientosPlanilla = false;
                 }
                 this.nombreUsuario = responseObj[0].NOMBREUSUARIO;
                 this.sesionIniciada = true;
@@ -158,6 +166,7 @@ export class HomeComponent implements OnInit {
       // Aquí puedes colocar la lógica para mostrar el contenido del "Centro de Costos"
       this.mostrarFormularioCentroCostos = true;
       this.mostrarMovimientosPlanilla = false;
+      this.mostrarTrabajadores = false;
     }
   }
 
@@ -168,7 +177,14 @@ export class HomeComponent implements OnInit {
       // Aquí puedes colocar la lógica para mostrar el contenido del "Centro de Costos"
       this.mostrarMovimientosPlanilla = true;
       this.mostrarFormularioCentroCostos = false;
+      this.mostrarTrabajadores = false;
     }
+  }
+
+  Trabajadores(): void {
+    this.mostrarTrabajadores = true;
+    this.mostrarFormularioCentroCostos = false;
+    this.mostrarMovimientosPlanilla = false;
   }
 
   cerrarSesionAutorizador(): void {
@@ -184,6 +200,7 @@ export class HomeComponent implements OnInit {
     this.nombreUsuario = 'no logeado';
     this.mostrarFormularioCentroCostos = false;
     this.mostrarMovimientosPlanilla = false;
+    this.mostrarTrabajadores = false;
     localStorage.setItem('nombreUsuario', 'no logeado'); // Reemplaza "nombreUsuario" con el valor real
   }
 

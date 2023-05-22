@@ -13,7 +13,8 @@ import { EditarComponent } from './editar/editar.component';
 import { MovimientoPlanillaComponent } from './movimiento-planilla/movimiento-planilla.component';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { AuthGuard } from './auth.guard';
-import { CentroCostosComponent } from './centro-costos/centro-costos.component';  
+import { CentroCostosComponent } from './centro-costos/centro-costos.component';
+import { TrabajadorComponent } from './trabajador/trabajador.component';  
 
 
 @NgModule({
@@ -27,6 +28,7 @@ import { CentroCostosComponent } from './centro-costos/centro-costos.component';
     EditarComponent,
     MovimientoPlanillaComponent,
     CentroCostosComponent,
+    TrabajadorComponent,
   ],
   imports: [
     BrowserModule,
