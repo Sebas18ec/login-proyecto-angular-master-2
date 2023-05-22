@@ -26,7 +26,7 @@ export class CentroCostosComponent {
       .set('page', this.currentPage.toString())
       .set('itemsPerPage', this.itemsPerPage.toString());
   
-    this.http.get<any[]>('https://aspnetback.azurewebsites.net/api/ControladorAPI/api/v1/centrocostos', { params }).subscribe(
+    this.http.get<any[]>('api/ControladorAPI/api/v1/centrocostos', { params }).subscribe(
       data => {
         this.centroCostos = data;
         this.datosTablaOriginal = data;
@@ -80,7 +80,7 @@ export class CentroCostosComponent {
   
   guardarNuevoCentroCostos(codigo: string, descripcion: string) {
     if (codigo && descripcion) {
-      const url = `https://aspnetback.azurewebsites.net/api/ControladorAPI/CentroCostosInsert?codigoCentroCostos=${codigo}&descripcionCentroCostos=${descripcion}`;
+      const url = `api/ControladorAPI/CentroCostosInsert?codigoCentroCostos=${codigo}&descripcionCentroCostos=${descripcion}`;
       this.http.get(url).subscribe(
         (response) => {
           console.log(response);
@@ -161,7 +161,7 @@ export class CentroCostosComponent {
   }
 
   guardarCambiosCentroCostos(codigo: number, nombre: string): void {
-    const url = `https://aspnetback.azurewebsites.net/api/ControladorAPI/CentroCostosEdit?codigoCentroCostos=${codigo}&descripcionCentroCostos=${nombre}`;
+    const url = `api/ControladorAPI/CentroCostosEdit?codigoCentroCostos=${codigo}&descripcionCentroCostos=${nombre}`;
     this.http.get(url).subscribe(
       (response) => {
         console.log(response);
@@ -196,7 +196,7 @@ export class CentroCostosComponent {
       cancelButtonText: 'Cancelar'
     }).then((result) => {
       if (result.isConfirmed) {
-        this.http.get('https://aspnetback.azurewebsites.net/api/ControladorAPI/api/centrocostos/delete', { params }).subscribe(
+        this.http.get('api/ControladorAPI/api/centrocostos/delete', { params }).subscribe(
           result => {
             console.log(result);
             Swal.fire('Se ha eliminado exitosamente').then(() => {
@@ -214,7 +214,7 @@ export class CentroCostosComponent {
 
   searchCentroCostos() {
     const descripcion = this.descripcionBusqueda;
-    this.http.get<any[]>(`https://aspnetback.azurewebsites.net/api/ControladorAPI/api/centrocostos/search?descripcioncentrocostos=${descripcion}`).subscribe(
+    this.http.get<any[]>(`api/ControladorAPI/api/centrocostos/search?descripcioncentrocostos=${descripcion}`).subscribe(
       (data) => {
         if (data && data.length > 0) {
           this.centroCostos = data;
