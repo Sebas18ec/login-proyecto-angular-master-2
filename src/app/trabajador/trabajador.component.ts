@@ -28,7 +28,6 @@ export class TrabajadorComponent {
 
   fetchTrabajadores(): void {
     const codigoEmisorSeleccionado = this.emisorService.getEmisorData().compania;
-    console.log(codigoEmisorSeleccionado)
     const params = new HttpParams()
       .set('page', this.currentPage.toString())
       .set('itemsPerPage', this.itemsPerPage.toString());
