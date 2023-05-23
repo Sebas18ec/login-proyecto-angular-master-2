@@ -1,4 +1,4 @@
-import { HttpClient, HttpParams } from '@angular/common/http';
+import { HttpClient, HttpParams, HttpErrorResponse } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { EmisorService } from 'src/app/shared/emisor.service';
 import { Router } from '@angular/router';
@@ -320,20 +320,20 @@ export class TrabajadorComponent {
         '<option value="">¿Es reingreso?</option>' +
         this.getOptionsEsReingreso().map(option => `<option value="${option.value}">${option.label}</option>`).join('') +
       '</select><br>' +
-      '<input id="swal-input30" class="swal2-input" placeholder="Banco CTA. CTE" onkeypress="onlyNumbers(event)">' +
+      '<input id="swal-input30" class="swal2-input" placeholder="Banco CTA. CTE">' +
       '<select id="swal-input31" class="swal2-input">' +
         '<option value="">Tipo Cuenta</option>' +
         this.getOptionsTipoCuenta().map(option => `<option value="${option.value}">${option.label}</option>`).join('') +
       '</select><br>' +
-      '<input id="swal-input32" class="swal2-input" placeholder="RSV_Indem_Acumul" onkeypress="onlyNumbers(event)">' +
-      '<input id="swal-input33" class="swal2-input" placeholder="Año_Ult_Rsva_Indemni" onkeypress="onlyNumbers(event)">' +
-      '<input id="swal-input34" class="swal2-input" placeholder="Mes_Ult_Rsva_Indemni" onkeypress="onlyNumbers(event)">' +
-      '<input id="swal-input35" class="swal2-input" placeholder="FormaCalculo13ro" onkeypress="onlyNumbers(event)">' +
-      '<input id="swal-input36" class="swal2-input" placeholder="FormaCalculo14ro" onkeypress="onlyNumbers(event)">' +
-      '<input id="swal-input37" class="swal2-input" placeholder="BoniComplementaria" onkeypress="onlyNumbers(event)">' +
-      '<input id="swal-input38" class="swal2-input" placeholder="BoniEspecial" onkeypress="onlyNumbers(event)">' +
-      '<input id="swal-input39" class="swal2-input" placeholder="Remuneracion_Minima" onkeypress="onlyNumbers(event)">' +
-      '<input id="swal-input40" class="swal2-input" placeholder="CuotaCuentaCorriente" onkeypress="onlyNumbers(event)">' +
+      '<input id="swal-input32" class="swal2-input" placeholder="RSV_Indem_Acumul">' +
+      '<input id="swal-input33" class="swal2-input" placeholder="Año_Ult_Rsva_Indemni" >' +
+      '<input id="swal-input34" class="swal2-input" placeholder="Mes_Ult_Rsva_Indemni" >' +
+      '<input id="swal-input35" class="swal2-input" placeholder="FormaCalculo13ro">' +
+      '<input id="swal-input36" class="swal2-input" placeholder="FormaCalculo14ro">' +
+      '<input id="swal-input37" class="swal2-input" placeholder="BoniComplementaria" >' +
+      '<input id="swal-input38" class="swal2-input" placeholder="BoniEspecial" >' +
+      '<input id="swal-input39" class="swal2-input" placeholder="Remuneracion_Minima" >' +
+      '<input id="swal-input40" class="swal2-input" placeholder="CuotaCuentaCorriente">' +
       '<input id="swal-input41" class="swal2-input" placeholder="Fondo_Reserva">' +
     '</div>',
       width: '95%',
@@ -345,28 +345,17 @@ export class TrabajadorComponent {
       didOpen: () => {
         const inputs = [
           'swal-input2',
-          'swal-input4',
-          'swal-input5',
           'swal-input6',
-          'swal-input7',
+          'swal-input8',
+          'swal-input10',
           'swal-input11',
           'swal-input12',
           'swal-input13',
-          'swal-input14',
-          'swal-input15',
           'swal-input16',
-          'swal-input17',
           'swal-input18',
           'swal-input19',
           'swal-input20',
           'swal-input21',
-          'swal-input22',
-          'swal-input23',
-          'swal-input24',
-          'swal-input25',
-          'swal-input26',
-          'swal-input27',
-          'swal-input28',
           'swal-input29',
           'swal-input30',
           'swal-input31',
@@ -379,7 +368,6 @@ export class TrabajadorComponent {
           'swal-input38',
           'swal-input39',
           'swal-input40',
-          'swal-input41',
         ];
         inputs.forEach((inputId) => {
           const input = document.getElementById(inputId) as HTMLInputElement;
@@ -443,10 +431,13 @@ export class TrabajadorComponent {
         const CuotaCuentaCorriente = parseInt((document.getElementById('swal-input40') as HTMLInputElement).value, 10);
         const Fondo_Reserva = (document.getElementById('swal-input41') as HTMLInputElement).value.trim();
         
-        // if (!concepto || !prioridad || !tipoOperacion || !cuenta1 || !cuenta2 || !cuenta3 || !cuenta4 || !movimientoExcepcion1 || !movimientoExcepcion2 || !movimientoExcepcion3 || !Traba_Aplica_iess || !Traba_Proyecto_imp_renta || !Aplica_Proy_Renta || !Empresa_Afecta_Iess) {
-        //   Swal.showValidationMessage('Todos los campos son requeridos');
-        //   return false;
-        // }
+        if (!Tipo_trabajador || !Apellido_Paterno || !Apellido_Materno || !Nombres || !Identificacion ||!Entidad_Bancaria || !CarnetIESS || !Direccion
+          || !Telefono_Fijo || !Telefono_Movil || !Centro_Costos || !Nivel_Salarial || !EstadoTrabajador || !Genero || !Nro_Cuenta_Bancaria
+          || !Codigo_Categoria_Ocupacion || !Ocupacion || !Tipo_Cese || !Tipo_Contrato || !EstadoCivil || !TipodeComision || !FechaNacimiento || !FechaReingreso
+          || !FechaIngreso || !FechaCese || !Fecha_Ult_Actualizacion || !EsReingreso || !Tipo_Cuenta || !Fondo_Reserva) {
+          Swal.showValidationMessage('Todos los campos son requeridos');
+          return false;
+        }
         
         this.guardarNuevoTrabajador(
           COMP_Codigo,
@@ -490,7 +481,7 @@ export class TrabajadorComponent {
           Remuneracion_Minima,
           CuotaCuentaCorriente,
           Fondo_Reserva
-        );
+        )
         return true;
       },
       willClose: () => {
@@ -549,7 +540,25 @@ export class TrabajadorComponent {
     RSV_Indem_Acumul: number, Año_Ult_Rsva_Indemni: number, Mes_Ult_Rsva_Indemni: number, FormaCalculo13ro: number, FormaCalculo14ro: number, 
     BoniComplementaria: number, BoniEspecial: number, Remuneracion_Minima: number, CuotaCuentaCorriente: number, Fondo_Reserva: string) 
   : void{
-    console.log(FechaNacimiento.toISOString())
+    if(Tipo_trabajador && Apellido_Paterno && Apellido_Materno && Nombres && Identificacion && Entidad_Bancaria && CarnetIESS && Direccion
+      && Telefono_Fijo && Telefono_Movil && Centro_Costos && Nivel_Salarial && EstadoTrabajador && Genero && Nro_Cuenta_Bancaria
+      && Codigo_Categoria_Ocupacion && Ocupacion && Tipo_Cese && Tipo_Contrato && EstadoCivil && TipodeComision && FechaNacimiento && FechaReingreso
+      && FechaIngreso && FechaCese && Fecha_Ult_Actualizacion && EsReingreso && Tipo_Cuenta && Fondo_Reserva){
+      const url = `api/ControladorAPI/trabajador/Insert?COMP_Codigo=${COMP_Codigo}&Tipo_trabajador=${Tipo_trabajador}&Apellido_Paterno=${Apellido_Paterno}&Apellido_Materno=${Apellido_Materno}&Nombres=${Nombres}&Identificacion=${Identificacion}&Entidad_Bancaria=${Entidad_Bancaria}&CarnetIESS=${CarnetIESS}&Direccion=${Direccion}&Telefono_Fijo=${Telefono_Fijo}&Telefono_Movil=${Telefono_Movil}&Genero=${Genero}&Nro_Cuenta_Bancaria=${Nro_Cuenta_Bancaria}&Codigo_Categoria_Ocupacion=${Codigo_Categoria_Ocupacion}&Ocupacion=${Ocupacion}&Centro_Costos=${Centro_Costos}&Nivel_Salarial=${Nivel_Salarial}&EstadoTrabajador=${EstadoTrabajador}&Tipo_Contrato=${Tipo_Contrato}&Tipo_Cese=${Tipo_Cese}&EstadoCivil=${EstadoCivil}&TipodeComision=${TipodeComision}&FechaNacimiento=${FechaNacimiento.toISOString()}&FechaIngreso=${FechaIngreso.toISOString()}&FechaCese=${FechaCese.toISOString()}&PeriododeVacaciones=${PeriododeVacaciones}&FechaReingreso=${FechaReingreso.toISOString()}&Fecha_Ult_Actualizacion=${Fecha_Ult_Actualizacion.toISOString()}&EsReingreso=${EsReingreso}&BancoCTA_CTE=${BancoCTA_CTE}&Tipo_Cuenta=${Tipo_Cuenta}&RSV_Indem_Acumul=${RSV_Indem_Acumul}&Año_Ult_Rsva_Indemni=${Año_Ult_Rsva_Indemni}&Mes_Ult_Rsva_Indemni=${Mes_Ult_Rsva_Indemni}&FormaCalculo13ro=${FormaCalculo13ro}&FormaCalculo14ro=${FormaCalculo14ro}&BoniComplementaria=${BoniComplementaria}&BoniEspecial=${BoniEspecial}&Remuneracion_Minima=${Remuneracion_Minima}&CuotaCuentaCorriente=${CuotaCuentaCorriente}&Fondo_Reserva=${Fondo_Reserva}`;
+  
+      this.http.get(url).subscribe(
+        () => {
+          Swal.fire('Éxito', 'El trabajador se ha creado correctamente', 'success');
+          this.fetchTrabajadores();
+        },
+        error => {
+          console.log(error);
+          Swal.fire('Error', 'Se produjo un error al crear el trabajador', 'error');
+        }
+      );
+    }else {
+        Swal.fire('Error', 'Todos los campos son requeridos', 'error');
+    }
   }
 
   onlyLettersAndNumbers(event: KeyboardEvent): void {
