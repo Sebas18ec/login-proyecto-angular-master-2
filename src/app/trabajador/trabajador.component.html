@@ -8,7 +8,9 @@
   </div>
 </div> -->
 
-  <br><br>
+  <br>
+  <input type="text" class="form-control" placeholder="Buscar por cédula" [(ngModel)]="identificacionBusqueda">
+  <br>
   <button class="btn btn-primary mb-3" (click)="nuevoTrabajador()">Crear nuevo Trabajador</button>
   
   <div class="formulario-nuevo-centro-costos">
@@ -62,7 +64,7 @@
                 </tr>
             </thead>
             <tbody>
-            <tr *ngFor="let cc of (datosTablaOriginal.length > 0 ? datosTablaOriginal : trabajadores) | paginate: { itemsPerPage: itemsPerPage, currentPage: currentPage }">
+            <tr *ngFor="let cc of (datosTablaOriginal.length > 0 ? datosTablaOriginal : trabajadores) | paginate: { itemsPerPage: itemsPerPage, currentPage: currentPage } | filter: identificacionBusqueda">
                 <td>{{ cc.COMP_Codigo }}</td>
                 <td>{{ cc.Id_Trabajador }}</td>
                 <td>{{ cc.Tipo_trabajador }}</td>

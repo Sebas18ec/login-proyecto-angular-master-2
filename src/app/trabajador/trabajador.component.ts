@@ -28,6 +28,7 @@ export class TrabajadorComponent {
   estadoCivilOptions: any[] = []
   esReingresoOptions: any[] = []
   tipoCuentaOptions: any[] = []
+  identificacionBusqueda: string = '';
 
   constructor(private http: HttpClient,private sanitizer: DomSanitizer,private emisorService: EmisorService,private router: Router) {} 
 
