@@ -255,6 +255,27 @@ export class MovimientoPlanillaComponent {
 
         //validaciones
         const validationErrors = [];
+        if (!concepto) {
+          validationErrors.push('Concepto es requerido');
+        }
+        if (!prioridad) {
+          validationErrors.push('Prioridad es requerido');
+        }
+        if (!tipoOperacion) {
+          validationErrors.push('Tipo operacion es requerido');
+        }
+        if (!cuenta1) {
+          validationErrors.push('cuenta 1 es requerido');
+        }
+        if (!cuenta2) {
+          validationErrors.push('cuenta 2 es requerido');
+        }
+        if (!cuenta3) {
+          validationErrors.push('cuenta 3 es requerido');
+        }
+        if (!cuenta4) {
+          validationErrors.push('cuenta 4 es requerido');
+        }
         if (!movimientoExcepcion1) {
           validationErrors.push('Mov. Excepcion 1 es requerido');
         }
@@ -460,6 +481,30 @@ export class MovimientoPlanillaComponent {
 
           //validaciones
           const validationErrors = [];
+          if (isNaN(codigoPlanilla)) {
+            validationErrors.push('cuenta 1 es requerido');
+          }
+          if (!conceptos) {
+            validationErrors.push('conceptos es requerido');
+          }
+          if (isNaN(prioridad)) {
+            validationErrors.push('prioridad es requerida');
+          }
+          if (tipoOperacion) {
+            validationErrors.push('tipo operacion es requerido');
+          }
+          if (isNaN(cuenta1)) {
+            validationErrors.push('cuenta 1 es requerido');
+          }
+          if (isNaN(cuenta2)) {
+            validationErrors.push('cuenta 2 es requerido');
+          }
+          if (isNaN(cuenta3)) {
+            validationErrors.push('cuenta 3 es requerido');
+          }
+          if (isNaN(cuenta4)) {
+            validationErrors.push('cuenta 4es requerido');
+          }
           if (!MovimientoExcepcion1) {
             validationErrors.push('Mov. Excepcion 1 es requerido');
           }
