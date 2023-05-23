@@ -433,33 +433,126 @@ export class TrabajadorComponent {
 
         //validaciones
         const validationErrors = [];
-        if (!Identificacion) {
-          validationErrors.push('Identificacion es requerida');
-        }
-        if (!FechaIngreso) {
-          validationErrors.push('Fecha de ingreso es requerida');
-        }
-        if (!Tipo_Contrato) {
-          validationErrors.push('Tipo de contrato es requerido');
+        if (!Tipo_trabajador) {
+          validationErrors.push('Tipo trabajador es requerida');
         }
         if (!Apellido_Paterno) {
           validationErrors.push('Apellido Paterno es requerido');
-        }          
+        } 
+        if (!Apellido_Materno) {
+          validationErrors.push('Apellido Materno es requerido');
+        } 
         if (!Nombres) {
           validationErrors.push('Los nombres son requeridos');
         }
-        if (!Nivel_Salarial) {
-          validationErrors.push('Nivel Salarial es requerido');
+        if (!Identificacion) {
+          validationErrors.push('Identificacion es requerida');
         }
-        if (!Nro_Cuenta_Bancaria) {
-          validationErrors.push('Nro. Cuenta bancaria es requerido');
+        if (!Entidad_Bancaria) {
+          validationErrors.push('Entidad Bancaria es requerido');
+        }
+        if (!CarnetIESS) {
+          validationErrors.push('Carnet IESS es requerido');
+        }
+        if (!Direccion) {
+          validationErrors.push('Direccion es requerido');
+        }
+        if (!Telefono_Fijo) {
+          validationErrors.push('Telefono Fijo es requerido');
         }
         if (!Telefono_Movil) {
           validationErrors.push('Telefono Movil es requerido');
         }
-        if (!Entidad_Bancaria) {
+        if (!Genero) {
+          validationErrors.push('Genero es requerido');
+        }
+        if (!Nro_Cuenta_Bancaria) {
+          validationErrors.push('Nro. Cuenta bancaria es requerido');
+        }
+        if (!Codigo_Categoria_Ocupacion) {
+          validationErrors.push('Cod. Categoria Ocupacion es requerido');
+        }
+        if (!Ocupacion) {
+          validationErrors.push('Ocupacion es requerido');
+        }
+        if (!Centro_Costos) {
+          validationErrors.push('Centro Costos es requerido');
+        }
+        if (!Nivel_Salarial) {
           validationErrors.push('Nivel Salarial es requerido');
         }
+        if (!EstadoTrabajador) {
+          validationErrors.push('Estado Trabajador es requerido');
+        } 
+        if (!Tipo_Contrato) {
+          validationErrors.push('Tipo de contrato es requerido');
+        }   
+        if (!Tipo_Cese) {
+          validationErrors.push('Tipo de cese es requerido');
+        }   
+        if (!EstadoCivil) {
+          validationErrors.push('Estado Civil es requerido');
+        }   
+        if (!TipodeComision) {
+          validationErrors.push('Tipo de comisión es requerido');
+        }   
+        if (!FechaNacimiento) {
+          validationErrors.push('Fecha de nacimiento es requerido');
+        }   
+        if (!FechaIngreso) {
+          validationErrors.push('Fecha de ingreso es requerido');
+        }   
+        if (!FechaCese) {
+          validationErrors.push('Fecha de cese es requerido');
+        } 
+        if (!PeriododeVacaciones) {
+          validationErrors.push('Periodo de vacaciones es requerido');
+        } 
+        if (!FechaReingreso) {
+          validationErrors.push('Fecha de reingreso es requerido');
+        } 
+        if (!Fecha_Ult_Actualizacion) {
+          validationErrors.push('Fecha ultima actualizacion es requerido');
+        } 
+        if (!EsReingreso) {
+          validationErrors.push('Es reingreso es requerido');
+        } 
+        if (!BancoCTA_CTE || BancoCTA_CTE===null) {
+          validationErrors.push('BancoCTA_CTE es requerido');
+        }
+        if (!Tipo_Cuenta) {
+          validationErrors.push('Tipo de cuenta es requerido');
+        } 
+        if (!RSV_Indem_Acumul) {
+          validationErrors.push('RSV Indem Acumul es requerido');
+        } 
+        if (!Año_Ult_Rsva_Indemni) {
+          validationErrors.push('Año ultima rsva Indeni es requerido');
+        } 
+        if (!Mes_Ult_Rsva_Indemni) {
+          validationErrors.push('Mes ult rsv Indemni es requerido');
+        } 
+        if (!FormaCalculo13ro) {
+          validationErrors.push('FormaCalculo13ro es requerido');
+        } 
+        if (!FormaCalculo14ro) {
+          validationErrors.push('FormaCalculo14ro es requerido');
+        } 
+        if (!BoniComplementaria) {
+          validationErrors.push('BoniComplementaria es requerido');
+        } 
+        if (!BoniEspecial) {
+          validationErrors.push('BoniEspecial es requerido');
+        } 
+        if (!Remuneracion_Minima) {
+          validationErrors.push('Remuneracion minima es requerido');
+        } 
+        if (!CuotaCuentaCorriente) {
+          validationErrors.push('Cuota cuenta corriente es requerido');
+        } 
+        if (!Fondo_Reserva) {
+          validationErrors.push('FormaCalculo14ro es requerido');
+        } 
 
         if (validationErrors.length > 0) {
           Swal.showValidationMessage(validationErrors.join('<br>'));
@@ -786,35 +879,128 @@ export class TrabajadorComponent {
         //validaciones
         const validationErrors = [];
         if (!Id_Trabajador) {
-          validationErrors.push('ID del trabajador es requerido');
+          validationErrors.push('ID trabajador es requeridO');
+        }
+        if (!Tipo_trabajador) {
+          validationErrors.push('Tipo trabajador es requerida');
+        }
+        if (!Apellido_Paterno) {
+          validationErrors.push('Apellido Paterno es requerido');
+        } 
+        if (!Apellido_Materno) {
+          validationErrors.push('Apellido Materno es requerido');
+        } 
+        if (!Nombres) {
+          validationErrors.push('Los nombres son requeridos');
         }
         if (!Identificacion) {
           validationErrors.push('Identificacion es requerida');
         }
-        if (!FechaIngreso) {
-          validationErrors.push('Fecha de ingreso es requerida');
+        if (!Entidad_Bancaria) {
+          validationErrors.push('Entidad Bancaria es requerido');
         }
-        if (!Tipo_Contrato) {
-          validationErrors.push('Tipo de contrato es requerido');
+        if (!CarnetIESS) {
+          validationErrors.push('Carnet IESS es requerido');
         }
-        if (!Apellido_Paterno) {
-          validationErrors.push('Apellido Paterno es requerido');
-        }          
-        if (!Nombres) {
-          validationErrors.push('Los nombres son requeridos');
+        if (!Direccion) {
+          validationErrors.push('Direccion es requerido');
         }
-        if (!Nivel_Salarial) {
-          validationErrors.push('Nivel Salarial es requerido');
-        }
-        if (!Nro_Cuenta_Bancaria) {
-          validationErrors.push('Nro. Cuenta bancaria es requerido');
+        if (!Telefono_Fijo) {
+          validationErrors.push('Telefono Fijo es requerido');
         }
         if (!Telefono_Movil) {
           validationErrors.push('Telefono Movil es requerido');
         }
-        if (!Entidad_Bancaria) {
+        if (!Genero) {
+          validationErrors.push('Genero es requerido');
+        }
+        if (!Nro_Cuenta_Bancaria) {
+          validationErrors.push('Nro. Cuenta bancaria es requerido');
+        }
+        if (!Codigo_Categoria_Ocupacion) {
+          validationErrors.push('Cod. Categoria Ocupacion es requerido');
+        }
+        if (!Ocupacion) {
+          validationErrors.push('Ocupacion es requerido');
+        }
+        if (!Centro_Costos) {
+          validationErrors.push('Centro Costos es requerido');
+        }
+        if (!Nivel_Salarial) {
           validationErrors.push('Nivel Salarial es requerido');
         }
+        if (!EstadoTrabajador) {
+          validationErrors.push('Estado Trabajador es requerido');
+        } 
+        if (!Tipo_Contrato) {
+          validationErrors.push('Tipo de contrato es requerido');
+        }   
+        if (!Tipo_Cese) {
+          validationErrors.push('Tipo de cese es requerido');
+        }   
+        if (!EstadoCivil) {
+          validationErrors.push('Estado Civil es requerido');
+        }   
+        if (!TipodeComision) {
+          validationErrors.push('Tipo de comisión es requerido');
+        }   
+        if (!FechaNacimiento) {
+          validationErrors.push('Fecha de nacimiento es requerido');
+        }   
+        if (!FechaIngreso) {
+          validationErrors.push('Fecha de ingreso es requerido');
+        }   
+        if (!FechaCese) {
+          validationErrors.push('Fecha de cese es requerido');
+        } 
+        if (!PeriododeVacaciones) {
+          validationErrors.push('Periodo de vacaciones es requerido');
+        } 
+        if (!FechaReingreso) {
+          validationErrors.push('Fecha de reingreso es requerido');
+        } 
+        if (!Fecha_Ult_Actualizacion) {
+          validationErrors.push('Fecha ultima actualizacion es requerido');
+        } 
+        if (!EsReingreso) {
+          validationErrors.push('Es reingreso es requerido');
+        } 
+        if (!BancoCTA_CTE || BancoCTA_CTE===null) {
+          validationErrors.push('BancoCTA_CTE es requerido');
+        }
+        if (!Tipo_Cuenta) {
+          validationErrors.push('Tipo de cuenta es requerido');
+        } 
+        if (!RSV_Indem_Acumul) {
+          validationErrors.push('RSV Indem Acumul es requerido');
+        } 
+        if (!Año_Ult_Rsva_Indemni) {
+          validationErrors.push('Año ultima rsva Indeni es requerido');
+        } 
+        if (!Mes_Ult_Rsva_Indemni) {
+          validationErrors.push('Mes ult rsv Indemni es requerido');
+        } 
+        if (!FormaCalculo13ro) {
+          validationErrors.push('FormaCalculo13ro es requerido');
+        } 
+        if (!FormaCalculo14ro) {
+          validationErrors.push('FormaCalculo14ro es requerido');
+        } 
+        if (!BoniComplementaria) {
+          validationErrors.push('BoniComplementaria es requerido');
+        } 
+        if (!BoniEspecial) {
+          validationErrors.push('BoniEspecial es requerido');
+        } 
+        if (!Remuneracion_Minima) {
+          validationErrors.push('Remuneracion minima es requerido');
+        } 
+        if (!CuotaCuentaCorriente) {
+          validationErrors.push('Cuota cuenta corriente es requerido');
+        } 
+        if (!Fondo_Reserva) {
+          validationErrors.push('FormaCalculo14ro es requerido');
+        } 
 
         if (validationErrors.length > 0) {
           Swal.showValidationMessage(validationErrors.join('<br>'));
