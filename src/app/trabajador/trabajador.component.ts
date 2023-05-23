@@ -496,22 +496,22 @@ export class TrabajadorComponent {
         if (!TipodeComision) {
           validationErrors.push('Tipo de comisión es requerido');
         }   
-        if (!FechaNacimiento) {
+        if (isNaN(FechaNacimiento.getTime())) {
           validationErrors.push('Fecha de nacimiento es requerido');
         }   
-        if (!FechaIngreso) {
+        if (isNaN(FechaIngreso.getTime())) {
           validationErrors.push('Fecha de ingreso es requerido');
         }   
-        if (!FechaCese) {
+        if (isNaN(FechaCese.getTime())) {
           validationErrors.push('Fecha de cese es requerido');
         } 
         if (isNaN(PeriododeVacaciones)) {
           validationErrors.push('Periodo de vacaciones es requerido');
         } 
-        if (!FechaReingreso) {
+        if (isNaN(FechaReingreso.getTime())) {
           validationErrors.push('Fecha de reingreso es requerido');
         } 
-        if (!Fecha_Ult_Actualizacion) {
+        if (isNaN(Fecha_Ult_Actualizacion.getTime())) {
           validationErrors.push('Fecha ultima actualizacion es requerido');
         } 
         if (!EsReingreso) {
@@ -947,19 +947,19 @@ export class TrabajadorComponent {
         if (isNaN(FechaNacimiento.getTime())) {
           validationErrors.push('Fecha de nacimiento es requerido');
         }   
-        if (!FechaIngreso) {
+        if (isNaN(FechaIngreso.getTime())) {
           validationErrors.push('Fecha de ingreso es requerido');
         }   
-        if (FechaCese) {
+        if (isNaN(FechaCese.getTime())) {
           validationErrors.push('Fecha de cese es requerido');
         } 
         if (isNaN(PeriododeVacaciones)) {
           validationErrors.push('Periodo de vacaciones es requerido');
         } 
-        if (!FechaReingreso) {
+        if (isNaN(FechaReingreso.getTime())) {
           validationErrors.push('Fecha de reingreso es requerido');
         } 
-        if (!Fecha_Ult_Actualizacion) {
+        if (isNaN(Fecha_Ult_Actualizacion.getTime())) {
           validationErrors.push('Fecha ultima actualizacion es requerido');
         } 
         if (!EsReingreso) {
