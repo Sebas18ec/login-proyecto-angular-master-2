@@ -291,6 +291,9 @@ export class MovimientoPlanillaComponent {
         if (!Traba_Proyecto_imp_renta) {
           validationErrors.push('Aplica Imp. Renta es requerido');
         }
+        if (!Aplica_Proy_Renta) {
+          validationErrors.push('Aplica Proy Renta es requerido');
+        }
         if (!Empresa_Afecta_Iess) {
           validationErrors.push('Empresa Afecta IESS es requerido');
         }
@@ -519,6 +522,9 @@ export class MovimientoPlanillaComponent {
           }          
           if (isNaN(Traba_Proyecto_imp_renta)) {
             validationErrors.push('Aplica Imp. Renta es requerido');
+          }
+          if (isNaN(Aplica_Proy_Renta)) {
+            validationErrors.push('Aplica Proy Renta es requerido');
           }
           if (isNaN(Empresa_Afecta_Iess)) {
             validationErrors.push('Empresa Afecta IESS es requerido');
