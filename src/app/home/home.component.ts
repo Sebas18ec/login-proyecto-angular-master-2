@@ -101,7 +101,7 @@ export class HomeComponent implements OnInit {
           const usuario = (document.getElementById('swal-input-usuario') as HTMLInputElement).value;
           const password = (document.getElementById('swal-input-password') as HTMLInputElement).value;
   
-          const endpoint = 'api/ControladorAPI/loginAutorizador';
+          const endpoint = 'https://aspnetback.azurewebsites.net/api/ControladorAPI/loginAutorizador';
           const url = new URL(endpoint, window.location.origin);
     
           url.searchParams.append('usuario', usuario);
