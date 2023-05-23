@@ -60,11 +60,14 @@ export class LoginComponent implements OnInit {
 
 
   ngOnInit() {
-
-    const fechaActual = new Date().toLocaleDateString();
     this.http.get<any>('https://aspnetback.azurewebsites.net/api/ControladorAPI/api/v1/emisores')
       .subscribe((data: any[]) => {
-        this.emisores = data.map(emisor => emisor.NombreEmisor);
+        this.emisores = data.map(emisor => {
+          return {
+            NombreEmisor: emisor.NombreEmisor,
+            Codigo: emisor.Codigo
+          };
+        });
       });
   }
 
@@ -72,10 +75,8 @@ export class LoginComponent implements OnInit {
   onChangeEmisor(event: Event) {
     const target = event.target as HTMLSelectElement;
     const selectedIndex = target.selectedIndex;
-    const emisorId = target.options[selectedIndex].value;
-    const emisorNombre = target.options[selectedIndex].textContent;
+    const emisorNombre = target.options[selectedIndex].value;
     this.emisorComp = emisorNombre;
-    this.selectedEmisor = emisorId;
   }
 
   loggedIn = false;

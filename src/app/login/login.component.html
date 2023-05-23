@@ -48,8 +48,7 @@
           <br>
           <select class="form-select" [(ngModel)]="selectedEmisor" name="emisorSelect"
             (change)="onChangeEmisor($event)">
-            <option *ngFor="let emisor of emisores" [value]="emisor.NombreEmisor"
-              [selected]="emisor.NombreEmisor === emisores[0].NombreEmisor">{{ emisor }}</option>
+            <option *ngFor="let emisor of emisores" [value]="emisor.NombreEmisor" [selected]="emisor.NombreEmisor === emisores[0].NombreEmisor"><strong>{{ emisor.Codigo }} -</strong> {{ emisor.NombreEmisor }}</option>
           </select>
         </div>
         <button type="submit" class="btn btn-primary">Iniciar Sesión</button>
