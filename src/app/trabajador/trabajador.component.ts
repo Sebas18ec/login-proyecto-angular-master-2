@@ -518,7 +518,7 @@ export class TrabajadorComponent {
           validationErrors.push('Es reingreso es requerido');
         } 
         if (isNaN(BancoCTA_CTE)) {
-          validationErrors.push('BancoCTA_CTE es requerido');
+          validationErrors.push('BancoCTA_CTE no puede ser null');
         }
         if (!Tipo_Cuenta) {
           validationErrors.push('Tipo de cuenta es requerido');
@@ -944,13 +944,13 @@ export class TrabajadorComponent {
         if (!TipodeComision) {
           validationErrors.push('Tipo de comisión es requerido');
         }   
-        if (!FechaNacimiento) {
+        if (isNaN(FechaNacimiento.getTime())) {
           validationErrors.push('Fecha de nacimiento es requerido');
         }   
         if (!FechaIngreso) {
           validationErrors.push('Fecha de ingreso es requerido');
         }   
-        if (!FechaCese) {
+        if (FechaCese) {
           validationErrors.push('Fecha de cese es requerido');
         } 
         if (isNaN(PeriododeVacaciones)) {
@@ -966,7 +966,7 @@ export class TrabajadorComponent {
           validationErrors.push('Es reingreso es requerido');
         } 
         if (isNaN(BancoCTA_CTE)) {
-          validationErrors.push('BancoCTA_CTE es requerido');
+          validationErrors.push('BancoCTA_CTE no puede ser null');
         }
         if (!Tipo_Cuenta) {
           validationErrors.push('Tipo de cuenta es requerido');
