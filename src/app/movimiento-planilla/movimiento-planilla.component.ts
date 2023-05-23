@@ -252,29 +252,50 @@ export class MovimientoPlanillaComponent {
         const Aplica_Proy_Renta = Aplica_Proy_RentaSelect.value.trim();
         const Empresa_Afecta_IessSelect = document.getElementById('swal-input14') as HTMLSelectElement;
         const Empresa_Afecta_Iess = Empresa_Afecta_IessSelect.value.trim();
-        
-        if (!concepto || !prioridad || !tipoOperacion || !cuenta1 || !cuenta2 || !cuenta3 || !cuenta4 || !movimientoExcepcion1 || !movimientoExcepcion2 || !movimientoExcepcion3 || !Traba_Aplica_iess || !Traba_Proyecto_imp_renta || !Aplica_Proy_Renta || !Empresa_Afecta_Iess) {
-          Swal.showValidationMessage('Todos los campos son requeridos');
-          return false;
+
+        //validaciones
+        const validationErrors = [];
+        if (!movimientoExcepcion1) {
+          validationErrors.push('Mov. Excepcion 1 es requerido');
         }
-        
-        this.guardarNuevoMovimientoPlanilla(
-          concepto,
-          prioridad,
-          tipoOperacion,
-          cuenta1,
-          cuenta2,
-          cuenta3,
-          cuenta4,
-          movimientoExcepcion1,
-          movimientoExcepcion2,
-          movimientoExcepcion3,
-          Traba_Aplica_iess,
-          Traba_Proyecto_imp_renta,
-          Aplica_Proy_Renta,
-          Empresa_Afecta_Iess
-        );
-        return true;
+        if (!movimientoExcepcion2) {
+          validationErrors.push('Mov. Excep 2 es requerido');
+        }
+        if (!movimientoExcepcion3) {
+          validationErrors.push('Mov. Excep 3 es requerido');
+        }
+        if (!Traba_Aplica_iess) {
+          validationErrors.push('Aplica IESS es requerido');
+        }          
+        if (!Traba_Proyecto_imp_renta) {
+          validationErrors.push('Aplica Imp. Renta es requerido');
+        }
+        if (!Empresa_Afecta_Iess) {
+          validationErrors.push('Empresa Afecta IESS es requerido');
+        }
+
+        if (validationErrors.length > 0) {
+          Swal.showValidationMessage(validationErrors.join('<br>'));
+          return false
+        }else{
+          this.guardarNuevoMovimientoPlanilla(
+            concepto,
+            prioridad,
+            tipoOperacion,
+            cuenta1,
+            cuenta2,
+            cuenta3,
+            cuenta4,
+            movimientoExcepcion1,
+            movimientoExcepcion2,
+            movimientoExcepcion3,
+            Traba_Aplica_iess,
+            Traba_Proyecto_imp_renta,
+            Aplica_Proy_Renta,
+            Empresa_Afecta_Iess
+          );
+          return true;
+        }
       },
       willClose: () => {
         const inputs = [
@@ -301,12 +322,7 @@ export class MovimientoPlanillaComponent {
     movimientoExcepcion1: string, movimientoExcepcion2: string, movimientoExcepcion3: string,
     trabajaAplicaIess: string, trabajaProyectoImpRenta: string, aplicaProyRenta: string, empresaAfectaIess: string
   ) {
-    if (
-      concepto && prioridad && tipoOperacion && cuenta1 && cuenta2 && cuenta3 && cuenta4 && movimientoExcepcion1 &&
-      movimientoExcepcion2 && movimientoExcepcion3 && trabajaAplicaIess && trabajaProyectoImpRenta && aplicaProyRenta && empresaAfectaIess
-    ) {
-      const url = `https://aspnetback.azurewebsites.net/api/ControladorAPI/MovimientoPlanillaInsert?conceptos=${encodeURIComponent(concepto)}&prioridad=${encodeURIComponent(prioridad)}&tipoOperacion=${encodeURIComponent(tipoOperacion)}&cuenta1=${encodeURIComponent(cuenta1)}&cuenta2=${encodeURIComponent(cuenta2)}&cuenta3=${encodeURIComponent(cuenta3)}&cuenta4=${encodeURIComponent(cuenta4)}&movimientoExcepcion1=${encodeURIComponent(movimientoExcepcion1)}&movimientoExcepcion2=${encodeURIComponent(movimientoExcepcion2)}&movimientoExcepcion3=${encodeURIComponent(movimientoExcepcion3)}&Traba_Aplica_iess=${encodeURIComponent(trabajaAplicaIess)}&Traba_Proyecto_imp_renta=${encodeURIComponent(trabajaProyectoImpRenta)}&Aplica_Proy_Renta=${encodeURIComponent(aplicaProyRenta)}&Empresa_Afecta_Iess=${encodeURIComponent(empresaAfectaIess)}`;
-  
+      const url = `https://aspnetback.azurewebsites.net/api/ControladorAPI/api/ControladorAPI/MovimientoPlanillaInsert?conceptos=${encodeURIComponent(concepto)}&prioridad=${encodeURIComponent(prioridad)}&tipoOperacion=${encodeURIComponent(tipoOperacion)}&cuenta1=${encodeURIComponent(cuenta1)}&cuenta2=${encodeURIComponent(cuenta2)}&cuenta3=${encodeURIComponent(cuenta3)}&cuenta4=${encodeURIComponent(cuenta4)}&movimientoExcepcion1=${encodeURIComponent(movimientoExcepcion1)}&movimientoExcepcion2=${encodeURIComponent(movimientoExcepcion2)}&movimientoExcepcion3=${encodeURIComponent(movimientoExcepcion3)}&Traba_Aplica_iess=${encodeURIComponent(trabajaAplicaIess)}&Traba_Proyecto_imp_renta=${encodeURIComponent(trabajaProyectoImpRenta)}&Aplica_Proy_Renta=${encodeURIComponent(aplicaProyRenta)}&Empresa_Afecta_Iess=${encodeURIComponent(empresaAfectaIess)}`;
       this.http.get(url).subscribe(
         () => {
           Swal.fire('Éxito', 'El movimiento de planilla se ha creado correctamente', 'success');
@@ -317,9 +333,6 @@ export class MovimientoPlanillaComponent {
           Swal.fire('Error', 'Se produjo un error al crear el movimiento de planilla', 'error');
         }
       );
-    } else {
-      Swal.fire('Error', 'Todos los campos son requeridos', 'error');
-    }
   }
 
   validarExcepciones1y2(movimientoExcepcionCodigo: string) {
@@ -445,15 +458,35 @@ export class MovimientoPlanillaComponent {
           const Aplica_Proy_Renta = parseInt((document.getElementById('swal-input14') as HTMLInputElement).value, 10);
           const Empresa_Afecta_Iess = parseInt((document.getElementById('swal-input15') as HTMLInputElement).value, 10);
 
-          if (!codigoPlanilla || !conceptos || !prioridad || !tipoOperacion || !cuenta1 || !cuenta2 || !cuenta3 || !cuenta4 || !MovimientoExcepcion1 
-            || !MovimientoExcepcion2 || !MovimientoExcepcion3) {
-            Swal.showValidationMessage('Todos los campos son requeridos');
-            return false;
+          //validaciones
+          const validationErrors = [];
+          if (!MovimientoExcepcion1) {
+            validationErrors.push('Mov. Excepcion 1 es requerido');
           }
-          this.guardarCambiosMovimientoPlanilla(codigoPlanilla,conceptos,prioridad,tipoOperacion,cuenta1,cuenta2,cuenta3,cuenta4
-            ,MovimientoExcepcion1,MovimientoExcepcion2,MovimientoExcepcion3,Traba_Aplica_iess,Traba_Proyecto_imp_renta
-            ,Aplica_Proy_Renta,Empresa_Afecta_Iess);
-          return true;
+          if (!MovimientoExcepcion2) {
+            validationErrors.push('Mov. Excep 2 es requerido');
+          }
+          if (!MovimientoExcepcion3) {
+            validationErrors.push('Mov. Excep 3 es requerido');
+          }
+          if (isNaN(Traba_Aplica_iess)) {
+            validationErrors.push('Aplica IESS es requerido');
+          }          
+          if (isNaN(Traba_Proyecto_imp_renta)) {
+            validationErrors.push('Aplica Imp. Renta es requerido');
+          }
+          if (isNaN(Empresa_Afecta_Iess)) {
+            validationErrors.push('Empresa Afecta IESS es requerido');
+          }
+
+          if (validationErrors.length > 0) {
+            Swal.showValidationMessage(validationErrors.join('<br>'));
+            return false
+          }else{
+            this.guardarCambiosMovimientoPlanilla(codigoPlanilla,conceptos,prioridad,tipoOperacion,cuenta1,cuenta2,cuenta3,cuenta4
+              ,MovimientoExcepcion1,MovimientoExcepcion2,MovimientoExcepcion3,Traba_Aplica_iess,Traba_Proyecto_imp_renta
+              ,Aplica_Proy_Renta,Empresa_Afecta_Iess);
+            return true;}
         },
         willClose: () => {
           const input2 = document.getElementById('swal-input2') as HTMLInputElement;
@@ -465,9 +498,7 @@ export class MovimientoPlanillaComponent {
     guardarCambiosMovimientoPlanilla(codigoPlanilla: number, conceptos: string, prioridad: number, tipooperacion: string
       ,cuenta1: number,cuenta2: number,cuenta3: number,cuenta4: number, MovimientoExcepcion1: string,MovimientoExcepcion2: string,MovimientoExcepcion3: string,Traba_Aplica_iess: number,Traba_Proyecto_imp_renta: number
       ,Aplica_Proy_Renta: number,Empresa_Afecta_Iess: number): void {
-      if(codigoPlanilla && conceptos && prioridad && tipooperacion && cuenta1 && cuenta2 && cuenta3 && cuenta4 && MovimientoExcepcion1
-        && MovimientoExcepcion2 && MovimientoExcepcion3){
-        const url = `https://aspnetback.azurewebsites.net/api/ControladorAPI/api/movimientoPlanilla/edit?codigoplanilla=${codigoPlanilla}&conceptos=${conceptos}&prioridad=${prioridad}&tipooperacion=${tipooperacion}&cuenta1=${cuenta1}&cuenta2=${cuenta2}&cuenta3=${cuenta3}&cuenta4=${cuenta4}
+        const url = `api/ControladorAPI/api/movimientoPlanilla/edit?codigoplanilla=${codigoPlanilla}&conceptos=${conceptos}&prioridad=${prioridad}&tipooperacion=${tipooperacion}&cuenta1=${cuenta1}&cuenta2=${cuenta2}&cuenta3=${cuenta3}&cuenta4=${cuenta4}
         &MovimientoExcepcion1=${MovimientoExcepcion1}&MovimientoExcepcion2=${MovimientoExcepcion2}&MovimientoExcepcion3=${MovimientoExcepcion3}&Traba_Aplica_iess=${Traba_Aplica_iess}&Traba_Proyecto_imp_renta=${Traba_Proyecto_imp_renta}&Aplica_Proy_Renta=${Aplica_Proy_Renta}&Empresa_Afecta_Iess=${Empresa_Afecta_Iess}`;
         this.http.get(url).subscribe(
           (response) => {
@@ -484,10 +515,7 @@ export class MovimientoPlanillaComponent {
             console.error(error);
             Swal.fire('Error al guardar los cambios', '', 'error');
           }
-        );
-      }else {
-        Swal.fire('Error', 'Todos los campos son requeridos', 'error');
-      }
+      );
     }
 
 
