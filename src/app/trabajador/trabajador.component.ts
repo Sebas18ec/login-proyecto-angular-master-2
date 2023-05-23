@@ -505,7 +505,7 @@ export class TrabajadorComponent {
         if (!FechaCese) {
           validationErrors.push('Fecha de cese es requerido');
         } 
-        if (!PeriododeVacaciones) {
+        if (isNaN(PeriododeVacaciones)) {
           validationErrors.push('Periodo de vacaciones es requerido');
         } 
         if (!FechaReingreso) {
@@ -517,37 +517,37 @@ export class TrabajadorComponent {
         if (!EsReingreso) {
           validationErrors.push('Es reingreso es requerido');
         } 
-        if (!BancoCTA_CTE || BancoCTA_CTE===null) {
+        if (isNaN(BancoCTA_CTE)) {
           validationErrors.push('BancoCTA_CTE es requerido');
         }
         if (!Tipo_Cuenta) {
           validationErrors.push('Tipo de cuenta es requerido');
         } 
-        if (!RSV_Indem_Acumul) {
+        if (isNaN(RSV_Indem_Acumul)) {
           validationErrors.push('RSV Indem Acumul es requerido');
         } 
-        if (!Año_Ult_Rsva_Indemni) {
+        if (isNaN(Año_Ult_Rsva_Indemni)) {
           validationErrors.push('Año ultima rsva Indeni es requerido');
         } 
-        if (!Mes_Ult_Rsva_Indemni) {
+        if (isNaN(Mes_Ult_Rsva_Indemni)) {
           validationErrors.push('Mes ult rsv Indemni es requerido');
         } 
-        if (!FormaCalculo13ro) {
+        if (isNaN(FormaCalculo13ro)) {
           validationErrors.push('FormaCalculo13ro es requerido');
         } 
-        if (!FormaCalculo14ro) {
+        if (isNaN(FormaCalculo14ro)) {
           validationErrors.push('FormaCalculo14ro es requerido');
         } 
-        if (!BoniComplementaria) {
+        if (isNaN(BoniComplementaria)) {
           validationErrors.push('BoniComplementaria es requerido');
         } 
-        if (!BoniEspecial) {
+        if (isNaN(BoniEspecial)) {
           validationErrors.push('BoniEspecial es requerido');
         } 
-        if (!Remuneracion_Minima) {
+        if (isNaN(Remuneracion_Minima)) {
           validationErrors.push('Remuneracion minima es requerido');
         } 
-        if (!CuotaCuentaCorriente) {
+        if (isNaN(CuotaCuentaCorriente)) {
           validationErrors.push('Cuota cuenta corriente es requerido');
         } 
         if (!Fondo_Reserva) {
@@ -878,7 +878,7 @@ export class TrabajadorComponent {
 
         //validaciones
         const validationErrors = [];
-        if (!Id_Trabajador) {
+        if (isNaN(Id_Trabajador)) {
           validationErrors.push('ID trabajador es requeridO');
         }
         if (!Tipo_trabajador) {
@@ -953,7 +953,7 @@ export class TrabajadorComponent {
         if (!FechaCese) {
           validationErrors.push('Fecha de cese es requerido');
         } 
-        if (!PeriododeVacaciones) {
+        if (isNaN(PeriododeVacaciones)) {
           validationErrors.push('Periodo de vacaciones es requerido');
         } 
         if (!FechaReingreso) {
@@ -965,37 +965,37 @@ export class TrabajadorComponent {
         if (!EsReingreso) {
           validationErrors.push('Es reingreso es requerido');
         } 
-        if (!BancoCTA_CTE || BancoCTA_CTE===null) {
+        if (isNaN(BancoCTA_CTE)) {
           validationErrors.push('BancoCTA_CTE es requerido');
         }
         if (!Tipo_Cuenta) {
           validationErrors.push('Tipo de cuenta es requerido');
         } 
-        if (!RSV_Indem_Acumul) {
+        if (isNaN(RSV_Indem_Acumul)) {
           validationErrors.push('RSV Indem Acumul es requerido');
         } 
-        if (!Año_Ult_Rsva_Indemni) {
+        if (isNaN(Año_Ult_Rsva_Indemni)) {
           validationErrors.push('Año ultima rsva Indeni es requerido');
         } 
-        if (!Mes_Ult_Rsva_Indemni) {
+        if (isNaN(Mes_Ult_Rsva_Indemni)) {
           validationErrors.push('Mes ult rsv Indemni es requerido');
         } 
-        if (!FormaCalculo13ro) {
+        if (isNaN(FormaCalculo13ro)) {
           validationErrors.push('FormaCalculo13ro es requerido');
         } 
-        if (!FormaCalculo14ro) {
+        if (isNaN(FormaCalculo14ro)) {
           validationErrors.push('FormaCalculo14ro es requerido');
         } 
-        if (!BoniComplementaria) {
+        if (isNaN(BoniComplementaria)) {
           validationErrors.push('BoniComplementaria es requerido');
         } 
-        if (!BoniEspecial) {
+        if (isNaN(BoniEspecial)) {
           validationErrors.push('BoniEspecial es requerido');
         } 
-        if (!Remuneracion_Minima) {
+        if (isNaN(Remuneracion_Minima)) {
           validationErrors.push('Remuneracion minima es requerido');
         } 
-        if (!CuotaCuentaCorriente) {
+        if (isNaN(CuotaCuentaCorriente)) {
           validationErrors.push('Cuota cuenta corriente es requerido');
         } 
         if (!Fondo_Reserva) {
