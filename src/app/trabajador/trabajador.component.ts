@@ -431,58 +431,85 @@ export class TrabajadorComponent {
         const CuotaCuentaCorriente = parseInt((document.getElementById('swal-input40') as HTMLInputElement).value, 10);
         const Fondo_Reserva = (document.getElementById('swal-input41') as HTMLInputElement).value.trim();
 
-        if (!Tipo_trabajador || !Apellido_Paterno || !Apellido_Materno || !Nombres || !Identificacion ||!Entidad_Bancaria || !CarnetIESS || !Direccion
-          || !Telefono_Fijo || !Telefono_Movil || !Centro_Costos || !Nivel_Salarial || !EstadoTrabajador || !Genero || !Nro_Cuenta_Bancaria
-          || !Codigo_Categoria_Ocupacion || !Ocupacion || !Tipo_Cese || !Tipo_Contrato || !EstadoCivil || !TipodeComision || !FechaNacimiento || !FechaReingreso
-          || !FechaIngreso || !FechaCese || !Fecha_Ult_Actualizacion || !EsReingreso || !Tipo_Cuenta || !Fondo_Reserva) {
-          Swal.showValidationMessage('Todos los campos son requeridos');
-          return false;
+        //validaciones
+        const validationErrors = [];
+        if (!Identificacion) {
+          validationErrors.push('Identificacion es requerida');
         }
-        
-        this.guardarNuevoTrabajador(
-          COMP_Codigo,
-          Tipo_trabajador,
-          Apellido_Paterno,
-          Apellido_Materno,
-          Nombres,
-          Identificacion,
-          Entidad_Bancaria,
-          CarnetIESS,
-          Direccion,
-          Telefono_Fijo,
-          Telefono_Movil,
-          Genero,
-          Nro_Cuenta_Bancaria,
-          Codigo_Categoria_Ocupacion,
-          Ocupacion,
-          Centro_Costos,
-          Nivel_Salarial,
-          EstadoTrabajador,
-          Tipo_Contrato,
-          Tipo_Cese,
-          EstadoCivil,
-          TipodeComision,
-          FechaNacimiento,
-          FechaIngreso,
-          FechaCese, 
-          PeriododeVacaciones,
-          FechaReingreso, 
-          Fecha_Ult_Actualizacion, 
-          EsReingreso, 
-          BancoCTA_CTE,
-          Tipo_Cuenta, 
-          RSV_Indem_Acumul,
-          Año_Ult_Rsva_Indemni,
-          Mes_Ult_Rsva_Indemni,
-          FormaCalculo13ro, 
-          FormaCalculo14ro,
-          BoniComplementaria, 
-          BoniEspecial,
-          Remuneracion_Minima,
-          CuotaCuentaCorriente,
-          Fondo_Reserva
-        )
-        return true;
+        if (!FechaIngreso) {
+          validationErrors.push('Fecha de ingreso es requerida');
+        }
+        if (!Tipo_Contrato) {
+          validationErrors.push('Tipo de contrato es requerido');
+        }
+        if (!Apellido_Paterno) {
+          validationErrors.push('Apellido Paterno es requerido');
+        }          
+        if (!Nombres) {
+          validationErrors.push('Los nombres son requeridos');
+        }
+        if (!Nivel_Salarial) {
+          validationErrors.push('Nivel Salarial es requerido');
+        }
+        if (!Nro_Cuenta_Bancaria) {
+          validationErrors.push('Nro. Cuenta bancaria es requerido');
+        }
+        if (!Telefono_Movil) {
+          validationErrors.push('Telefono Movil es requerido');
+        }
+        if (!Entidad_Bancaria) {
+          validationErrors.push('Nivel Salarial es requerido');
+        }
+
+        if (validationErrors.length > 0) {
+          Swal.showValidationMessage(validationErrors.join('<br>'));
+          return false
+        }else{
+          this.guardarNuevoTrabajador(
+            COMP_Codigo,
+            Tipo_trabajador,
+            Apellido_Paterno,
+            Apellido_Materno,
+            Nombres,
+            Identificacion,
+            Entidad_Bancaria,
+            CarnetIESS,
+            Direccion,
+            Telefono_Fijo,
+            Telefono_Movil,
+            Genero,
+            Nro_Cuenta_Bancaria,
+            Codigo_Categoria_Ocupacion,
+            Ocupacion,
+            Centro_Costos,
+            Nivel_Salarial,
+            EstadoTrabajador,
+            Tipo_Contrato,
+            Tipo_Cese,
+            EstadoCivil,
+            TipodeComision,
+            FechaNacimiento,
+            FechaIngreso,
+            FechaCese, 
+            PeriododeVacaciones,
+            FechaReingreso, 
+            Fecha_Ult_Actualizacion, 
+            EsReingreso, 
+            BancoCTA_CTE,
+            Tipo_Cuenta, 
+            RSV_Indem_Acumul,
+            Año_Ult_Rsva_Indemni,
+            Mes_Ult_Rsva_Indemni,
+            FormaCalculo13ro, 
+            FormaCalculo14ro,
+            BoniComplementaria, 
+            BoniEspecial,
+            Remuneracion_Minima,
+            CuotaCuentaCorriente,
+            Fondo_Reserva
+          )
+          return true;
+        }
       },
       willClose: () => {
         const inputs = [
@@ -540,10 +567,6 @@ export class TrabajadorComponent {
     RSV_Indem_Acumul: number, Año_Ult_Rsva_Indemni: number, Mes_Ult_Rsva_Indemni: number, FormaCalculo13ro: number, FormaCalculo14ro: number, 
     BoniComplementaria: number, BoniEspecial: number, Remuneracion_Minima: number, CuotaCuentaCorriente: number, Fondo_Reserva: string) 
   : void{
-    if(Tipo_trabajador && Apellido_Paterno && Apellido_Materno && Nombres && Identificacion && Entidad_Bancaria && CarnetIESS && Direccion
-      && Telefono_Fijo && Telefono_Movil && Centro_Costos && Nivel_Salarial && EstadoTrabajador && Genero && Nro_Cuenta_Bancaria
-      && Codigo_Categoria_Ocupacion && Ocupacion && Tipo_Cese && Tipo_Contrato && EstadoCivil && TipodeComision && FechaNacimiento && FechaReingreso
-      && FechaIngreso && FechaCese && Fecha_Ult_Actualizacion && EsReingreso && Tipo_Cuenta && Fondo_Reserva){
       const url = `https://aspnetback.azurewebsites.net/api/ControladorAPI/trabajador/Insert?COMP_Codigo=${COMP_Codigo}&Tipo_trabajador=${Tipo_trabajador}&Apellido_Paterno=${Apellido_Paterno}&Apellido_Materno=${Apellido_Materno}&Nombres=${Nombres}&Identificacion=${Identificacion}&Entidad_Bancaria=${Entidad_Bancaria}&CarnetIESS=${CarnetIESS}&Direccion=${Direccion}&Telefono_Fijo=${Telefono_Fijo}&Telefono_Movil=${Telefono_Movil}&Genero=${Genero}&Nro_Cuenta_Bancaria=${Nro_Cuenta_Bancaria}&Codigo_Categoria_Ocupacion=${Codigo_Categoria_Ocupacion}&Ocupacion=${Ocupacion}&Centro_Costos=${Centro_Costos}&Nivel_Salarial=${Nivel_Salarial}&EstadoTrabajador=${EstadoTrabajador}&Tipo_Contrato=${Tipo_Contrato}&Tipo_Cese=${Tipo_Cese}&EstadoCivil=${EstadoCivil}&TipodeComision=${TipodeComision}&FechaNacimiento=${FechaNacimiento.toISOString()}&FechaIngreso=${FechaIngreso.toISOString()}&FechaCese=${FechaCese.toISOString()}&PeriododeVacaciones=${PeriododeVacaciones}&FechaReingreso=${FechaReingreso.toISOString()}&Fecha_Ult_Actualizacion=${Fecha_Ult_Actualizacion.toISOString()}&EsReingreso=${EsReingreso}&BancoCTA_CTE=${BancoCTA_CTE}&Tipo_Cuenta=${Tipo_Cuenta}&RSV_Indem_Acumul=${RSV_Indem_Acumul}&Año_Ult_Rsva_Indemni=${Año_Ult_Rsva_Indemni}&Mes_Ult_Rsva_Indemni=${Mes_Ult_Rsva_Indemni}&FormaCalculo13ro=${FormaCalculo13ro}&FormaCalculo14ro=${FormaCalculo14ro}&BoniComplementaria=${BoniComplementaria}&BoniEspecial=${BoniEspecial}&Remuneracion_Minima=${Remuneracion_Minima}&CuotaCuentaCorriente=${CuotaCuentaCorriente}&Fondo_Reserva=${Fondo_Reserva}`;
   
       this.http.get(url).subscribe(
@@ -556,9 +579,6 @@ export class TrabajadorComponent {
           Swal.fire('Error', 'Se produjo un error al crear el trabajador', 'error');
         }
       );
-    }else {
-        Swal.fire('Error', 'Todos los campos son requeridos', 'error');
-    }
   }
 
   validarTipoCese(tipo_cese: string) {
@@ -763,59 +783,89 @@ export class TrabajadorComponent {
         const CuotaCuentaCorriente = parseInt((document.getElementById('swal-input41') as HTMLInputElement).value, 10);
         const Fondo_Reserva = (document.getElementById('swal-input42') as HTMLInputElement).value.trim();
 
-        // if (!Tipo_trabajador || !Apellido_Paterno || !Apellido_Materno || !Nombres || !Identificacion ||!Entidad_Bancaria || !CarnetIESS || !Direccion
-        //   || !Telefono_Fijo || !Telefono_Movil || !Centro_Costos || !Nivel_Salarial || !EstadoTrabajador || !Genero || !Nro_Cuenta_Bancaria
-        //   || !Codigo_Categoria_Ocupacion || !Ocupacion || !Tipo_Cese || !Tipo_Contrato || !EstadoCivil || !TipodeComision || !FechaNacimiento || !FechaReingreso
-        //   || !FechaIngreso || !FechaCese || !Fecha_Ult_Actualizacion || !EsReingreso || !Tipo_Cuenta || !Fondo_Reserva) {
-        //   Swal.showValidationMessage('Todos los campos son requeridos');
-        //   return false;
-        // }
-        
-        this.guardarCambiosTrabajador(
-          COMP_Codigo,
-          Id_Trabajador,
-          Tipo_trabajador,
-          Apellido_Paterno,
-          Apellido_Materno,
-          Nombres,
-          Identificacion,
-          Entidad_Bancaria,
-          CarnetIESS,
-          Direccion,
-          Telefono_Fijo,
-          Telefono_Movil,
-          Genero,
-          Nro_Cuenta_Bancaria,
-          Codigo_Categoria_Ocupacion,
-          Ocupacion,
-          Centro_Costos,
-          Nivel_Salarial,
-          EstadoTrabajador,
-          Tipo_Contrato,
-          Tipo_Cese,
-          EstadoCivil,
-          TipodeComision,
-          FechaNacimiento,
-          FechaIngreso,
-          FechaCese, 
-          PeriododeVacaciones,
-          FechaReingreso, 
-          Fecha_Ult_Actualizacion, 
-          EsReingreso, 
-          BancoCTA_CTE,
-          Tipo_Cuenta, 
-          RSV_Indem_Acumul,
-          Año_Ult_Rsva_Indemni,
-          Mes_Ult_Rsva_Indemni,
-          FormaCalculo13ro, 
-          FormaCalculo14ro,
-          BoniComplementaria, 
-          BoniEspecial,
-          Remuneracion_Minima,
-          CuotaCuentaCorriente,
-          Fondo_Reserva
-        )
-        return true;
+        //validaciones
+        const validationErrors = [];
+        if (!Id_Trabajador) {
+          validationErrors.push('ID del trabajador es requerido');
+        }
+        if (!Identificacion) {
+          validationErrors.push('Identificacion es requerida');
+        }
+        if (!FechaIngreso) {
+          validationErrors.push('Fecha de ingreso es requerida');
+        }
+        if (!Tipo_Contrato) {
+          validationErrors.push('Tipo de contrato es requerido');
+        }
+        if (!Apellido_Paterno) {
+          validationErrors.push('Apellido Paterno es requerido');
+        }          
+        if (!Nombres) {
+          validationErrors.push('Los nombres son requeridos');
+        }
+        if (!Nivel_Salarial) {
+          validationErrors.push('Nivel Salarial es requerido');
+        }
+        if (!Nro_Cuenta_Bancaria) {
+          validationErrors.push('Nro. Cuenta bancaria es requerido');
+        }
+        if (!Telefono_Movil) {
+          validationErrors.push('Telefono Movil es requerido');
+        }
+        if (!Entidad_Bancaria) {
+          validationErrors.push('Nivel Salarial es requerido');
+        }
+
+        if (validationErrors.length > 0) {
+          Swal.showValidationMessage(validationErrors.join('<br>'));
+          return false
+        }else{
+          this.guardarCambiosTrabajador(
+            COMP_Codigo,
+            Id_Trabajador,
+            Tipo_trabajador,
+            Apellido_Paterno,
+            Apellido_Materno,
+            Nombres,
+            Identificacion,
+            Entidad_Bancaria,
+            CarnetIESS,
+            Direccion,
+            Telefono_Fijo,
+            Telefono_Movil,
+            Genero,
+            Nro_Cuenta_Bancaria,
+            Codigo_Categoria_Ocupacion,
+            Ocupacion,
+            Centro_Costos,
+            Nivel_Salarial,
+            EstadoTrabajador,
+            Tipo_Contrato,
+            Tipo_Cese,
+            EstadoCivil,
+            TipodeComision,
+            FechaNacimiento,
+            FechaIngreso,
+            FechaCese, 
+            PeriododeVacaciones,
+            FechaReingreso, 
+            Fecha_Ult_Actualizacion, 
+            EsReingreso, 
+            BancoCTA_CTE,
+            Tipo_Cuenta, 
+            RSV_Indem_Acumul,
+            Año_Ult_Rsva_Indemni,
+            Mes_Ult_Rsva_Indemni,
+            FormaCalculo13ro, 
+            FormaCalculo14ro,
+            BoniComplementaria, 
+            BoniEspecial,
+            Remuneracion_Minima,
+            CuotaCuentaCorriente,
+            Fondo_Reserva
+          )
+          return true;
+        }
       },
       willClose: () => {
         const inputs = [
@@ -872,10 +922,6 @@ export class TrabajadorComponent {
     FechaReingreso: Date, Fecha_Ult_Actualizacion: Date, EsReingreso: string, BancoCTA_CTE: number, Tipo_Cuenta: string, 
     RSV_Indem_Acumul: number, Año_Ult_Rsva_Indemni: number, Mes_Ult_Rsva_Indemni: number, FormaCalculo13ro: number, FormaCalculo14ro: number, 
     BoniComplementaria: number, BoniEspecial: number, Remuneracion_Minima: number, CuotaCuentaCorriente: number, Fondo_Reserva: string):void{
-      // if(Tipo_trabajador && Apellido_Paterno && Apellido_Materno && Nombres && Identificacion && Entidad_Bancaria && CarnetIESS && Direccion
-      //   && Telefono_Fijo && Telefono_Movil && Centro_Costos && Nivel_Salarial && EstadoTrabajador && Genero && Nro_Cuenta_Bancaria
-      //   && Codigo_Categoria_Ocupacion && Ocupacion &&Tipo_Cese && Tipo_Contrato && EstadoCivil && TipodeComision && FechaNacimiento && FechaReingreso
-      //   && FechaIngreso && FechaCese && Fecha_Ult_Actualizacion &&EsReingreso && Tipo_Cuenta && Fondo_Reserva){
 
           const url = `https://aspnetback.azurewebsites.net/api/ControladorAPI/trabajador/Edit?COMP_Codigo=${COMP_Codigo}&Id_Trabajador=${Id_Trabajador}&Tipo_trabajador=${Tipo_trabajador}&Apellido_Paterno=${Apellido_Paterno}&Apellido_Materno=${Apellido_Materno}&Nombres=${Nombres}&Identificacion=${Identificacion}&Entidad_Bancaria=${Entidad_Bancaria}&CarnetIESS=${CarnetIESS}&Direccion=${Direccion}&Telefono_Fijo=${Telefono_Fijo}&Telefono_Movil=${Telefono_Movil}&Genero=${Genero}&Nro_Cuenta_Bancaria=${Nro_Cuenta_Bancaria}&Codigo_Categoria_Ocupacion=${Codigo_Categoria_Ocupacion}&Ocupacion=${Ocupacion}&Centro_Costos=${Centro_Costos}&Nivel_Salarial=${Nivel_Salarial}&EstadoTrabajador=${EstadoTrabajador}&Tipo_Contrato=${Tipo_Contrato}&Tipo_Cese=${Tipo_Cese}&EstadoCivil=${EstadoCivil}&TipodeComision=${TipodeComision}&FechaNacimiento=${FechaNacimiento.toISOString()}&FechaIngreso=${FechaIngreso.toISOString()}&FechaCese=${FechaCese.toISOString()}&PeriododeVacaciones=${PeriododeVacaciones}&FechaReingreso=${FechaReingreso.toISOString()}&Fecha_Ult_Actualizacion=${Fecha_Ult_Actualizacion.toISOString()}&EsReingreso=${EsReingreso}&BancoCTA_CTE=${BancoCTA_CTE}&Tipo_Cuenta=${Tipo_Cuenta}&RSV_Indem_Acumul=${RSV_Indem_Acumul}&Año_Ult_Rsva_Indemni=${Año_Ult_Rsva_Indemni}&Mes_Ult_Rsva_Indemni=${Mes_Ult_Rsva_Indemni}&FormaCalculo13ro=${FormaCalculo13ro}&FormaCalculo14ro=${FormaCalculo14ro}&BoniComplementaria=${BoniComplementaria}&BoniEspecial=${BoniEspecial}&Remuneracion_Minima=${Remuneracion_Minima}&CuotaCuentaCorriente=${CuotaCuentaCorriente}&Fondo_Reserva=${Fondo_Reserva}`;
           this.http.get(url).subscribe(
@@ -894,9 +940,6 @@ export class TrabajadorComponent {
               Swal.fire('Error al guardar los cambios', '', 'error');
             }
           );
-        // }else {
-        //   Swal.fire('Error', 'Todos los campos son requeridos', 'error');
-        // }
   }
 
   onlyLettersAndNumbers(event: KeyboardEvent): void {
