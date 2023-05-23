@@ -34,7 +34,7 @@ export class TrabajadorComponent {
   ngOnInit() {
     this.fetchTrabajadores()
 
-    this.http.get<any[]>('api/ControladorAPI/trabajador/GetTipoTrabajador')
+    this.http.get<any[]>('https://aspnetback.azurewebsites.net/api/ControladorAPI/trabajador/GetTipoTrabajador')
       .pipe(
         map(data => data.map(item => ({
           value: item.Descripcion, // Usar DesripMovimientoExce como valor
@@ -49,7 +49,7 @@ export class TrabajadorComponent {
           }
       );
 
-      this.http.get<any[]>('api/ControladorAPI/trabajador/GetGenero')
+      this.http.get<any[]>('https://aspnetback.azurewebsites.net/api/ControladorAPI/trabajador/GetGenero')
       .pipe(
         map(data => data.map(item => ({
           value: item.Descripcion, // Usar DesripMovimientoExce como valor
@@ -64,7 +64,7 @@ export class TrabajadorComponent {
           }
       );
 
-      this.http.get<any[]>('api/ControladorAPI/api/v1/centrocostos')
+      this.http.get<any[]>('https://aspnetback.azurewebsites.net/api/ControladorAPI/api/v1/centrocostos')
       .pipe(
         map(data => data.map(item => ({
           value: item.Codigo, // Usar DesripMovimientoExce como valor
@@ -79,7 +79,7 @@ export class TrabajadorComponent {
           }
       );
 
-      this.http.get<any[]>('api/ControladorAPI/trabajador/GetEstadoTrabajador')
+      this.http.get<any[]>('https://aspnetback.azurewebsites.net/api/ControladorAPI/trabajador/GetEstadoTrabajador')
       .pipe(
         map(data => data.map(item => ({
           value: item.Descripcion, // Usar DesripMovimientoExce como valor
@@ -94,7 +94,7 @@ export class TrabajadorComponent {
           }
       );
 
-      this.http.get<any[]>('api/ControladorAPI/trabajador/GetTipoContrato')
+      this.http.get<any[]>('https://aspnetback.azurewebsites.net/api/ControladorAPI/trabajador/GetTipoContrato')
       .pipe(
         map(data => data.map(item => ({
           value: item.Descripcion, // Usar DesripMovimientoExce como valor
@@ -109,7 +109,7 @@ export class TrabajadorComponent {
           }
       );
 
-      this.http.get<any[]>('api/ControladorAPI/trabajador/GetTipoCese')
+      this.http.get<any[]>('https://aspnetback.azurewebsites.net/api/ControladorAPI/trabajador/GetTipoCese')
       .pipe(
         map(data => data.map(item => ({
           value: item.Descripcion, // Usar DesripMovimientoExce como valor
@@ -124,7 +124,7 @@ export class TrabajadorComponent {
           }
       );
 
-      this.http.get<any[]>('api/ControladorAPI/trabajador/GetEstadoCivil')
+      this.http.get<any[]>('https://aspnetback.azurewebsites.net/api/ControladorAPI/trabajador/GetEstadoCivil')
       .pipe(
         map(data => data.map(item => ({
           value: item.Descripcion, // Usar DesripMovimientoExce como valor
@@ -139,7 +139,7 @@ export class TrabajadorComponent {
           }
       );
 
-      this.http.get<any[]>('api/ControladorAPI/trabajador/GetEsReingreso')
+      this.http.get<any[]>('https://aspnetback.azurewebsites.net/api/ControladorAPI/trabajador/GetEsReingreso')
       .pipe(
         map(data => data.map(item => ({
           value: item.Descripcion, // Usar DesripMovimientoExce como valor
@@ -154,7 +154,7 @@ export class TrabajadorComponent {
           }
       );
 
-      this.http.get<any[]>('api/ControladorAPI/trabajador/GetTipoCuenta')
+      this.http.get<any[]>('https://aspnetback.azurewebsites.net/api/ControladorAPI/trabajador/GetTipoCuenta')
       .pipe(
         map(data => data.map(item => ({
           value: item.Descripcion, // Usar DesripMovimientoExce como valor
@@ -176,7 +176,7 @@ export class TrabajadorComponent {
       .set('page', this.currentPage.toString())
       .set('itemsPerPage', this.itemsPerPage.toString());
   
-    this.http.get<any[]>(`api/ControladorAPI/trabajador/select?sucursal=${codigoEmisorSeleccionado}`).subscribe(
+    this.http.get<any[]>(`https://aspnetback.azurewebsites.net/api/ControladorAPI/trabajador/select?sucursal=${codigoEmisorSeleccionado}`).subscribe(
       data => {
         this.trabajadores = data;
         this.datosTablaOriginal = data;
@@ -203,7 +203,7 @@ export class TrabajadorComponent {
       cancelButtonText: 'Cancelar'
     }).then((result) => {
       if (result.isConfirmed) {
-        this.http.get('api/ControladorAPI/trabajador/delete', { params }).subscribe(
+        this.http.get('https://aspnetback.azurewebsites.net/api/ControladorAPI/trabajador/delete', { params }).subscribe(
           result => {
             Swal.fire('Se ha eliminado exitosamente').then(() => {
               // Realizar acciones adicionales después de eliminar
@@ -543,7 +543,7 @@ export class TrabajadorComponent {
       && Telefono_Fijo && Telefono_Movil && Centro_Costos && Nivel_Salarial && EstadoTrabajador && Genero && Nro_Cuenta_Bancaria
       && Codigo_Categoria_Ocupacion && Ocupacion && Tipo_Cese && Tipo_Contrato && EstadoCivil && TipodeComision && FechaNacimiento && FechaReingreso
       && FechaIngreso && FechaCese && Fecha_Ult_Actualizacion && EsReingreso && Tipo_Cuenta && Fondo_Reserva){
-      const url = `api/ControladorAPI/trabajador/Insert?COMP_Codigo=${COMP_Codigo}&Tipo_trabajador=${Tipo_trabajador}&Apellido_Paterno=${Apellido_Paterno}&Apellido_Materno=${Apellido_Materno}&Nombres=${Nombres}&Identificacion=${Identificacion}&Entidad_Bancaria=${Entidad_Bancaria}&CarnetIESS=${CarnetIESS}&Direccion=${Direccion}&Telefono_Fijo=${Telefono_Fijo}&Telefono_Movil=${Telefono_Movil}&Genero=${Genero}&Nro_Cuenta_Bancaria=${Nro_Cuenta_Bancaria}&Codigo_Categoria_Ocupacion=${Codigo_Categoria_Ocupacion}&Ocupacion=${Ocupacion}&Centro_Costos=${Centro_Costos}&Nivel_Salarial=${Nivel_Salarial}&EstadoTrabajador=${EstadoTrabajador}&Tipo_Contrato=${Tipo_Contrato}&Tipo_Cese=${Tipo_Cese}&EstadoCivil=${EstadoCivil}&TipodeComision=${TipodeComision}&FechaNacimiento=${FechaNacimiento.toISOString()}&FechaIngreso=${FechaIngreso.toISOString()}&FechaCese=${FechaCese.toISOString()}&PeriododeVacaciones=${PeriododeVacaciones}&FechaReingreso=${FechaReingreso.toISOString()}&Fecha_Ult_Actualizacion=${Fecha_Ult_Actualizacion.toISOString()}&EsReingreso=${EsReingreso}&BancoCTA_CTE=${BancoCTA_CTE}&Tipo_Cuenta=${Tipo_Cuenta}&RSV_Indem_Acumul=${RSV_Indem_Acumul}&Año_Ult_Rsva_Indemni=${Año_Ult_Rsva_Indemni}&Mes_Ult_Rsva_Indemni=${Mes_Ult_Rsva_Indemni}&FormaCalculo13ro=${FormaCalculo13ro}&FormaCalculo14ro=${FormaCalculo14ro}&BoniComplementaria=${BoniComplementaria}&BoniEspecial=${BoniEspecial}&Remuneracion_Minima=${Remuneracion_Minima}&CuotaCuentaCorriente=${CuotaCuentaCorriente}&Fondo_Reserva=${Fondo_Reserva}`;
+      const url = `https://aspnetback.azurewebsites.net/api/ControladorAPI/trabajador/Insert?COMP_Codigo=${COMP_Codigo}&Tipo_trabajador=${Tipo_trabajador}&Apellido_Paterno=${Apellido_Paterno}&Apellido_Materno=${Apellido_Materno}&Nombres=${Nombres}&Identificacion=${Identificacion}&Entidad_Bancaria=${Entidad_Bancaria}&CarnetIESS=${CarnetIESS}&Direccion=${Direccion}&Telefono_Fijo=${Telefono_Fijo}&Telefono_Movil=${Telefono_Movil}&Genero=${Genero}&Nro_Cuenta_Bancaria=${Nro_Cuenta_Bancaria}&Codigo_Categoria_Ocupacion=${Codigo_Categoria_Ocupacion}&Ocupacion=${Ocupacion}&Centro_Costos=${Centro_Costos}&Nivel_Salarial=${Nivel_Salarial}&EstadoTrabajador=${EstadoTrabajador}&Tipo_Contrato=${Tipo_Contrato}&Tipo_Cese=${Tipo_Cese}&EstadoCivil=${EstadoCivil}&TipodeComision=${TipodeComision}&FechaNacimiento=${FechaNacimiento.toISOString()}&FechaIngreso=${FechaIngreso.toISOString()}&FechaCese=${FechaCese.toISOString()}&PeriododeVacaciones=${PeriododeVacaciones}&FechaReingreso=${FechaReingreso.toISOString()}&Fecha_Ult_Actualizacion=${Fecha_Ult_Actualizacion.toISOString()}&EsReingreso=${EsReingreso}&BancoCTA_CTE=${BancoCTA_CTE}&Tipo_Cuenta=${Tipo_Cuenta}&RSV_Indem_Acumul=${RSV_Indem_Acumul}&Año_Ult_Rsva_Indemni=${Año_Ult_Rsva_Indemni}&Mes_Ult_Rsva_Indemni=${Mes_Ult_Rsva_Indemni}&FormaCalculo13ro=${FormaCalculo13ro}&FormaCalculo14ro=${FormaCalculo14ro}&BoniComplementaria=${BoniComplementaria}&BoniEspecial=${BoniEspecial}&Remuneracion_Minima=${Remuneracion_Minima}&CuotaCuentaCorriente=${CuotaCuentaCorriente}&Fondo_Reserva=${Fondo_Reserva}`;
   
       this.http.get(url).subscribe(
         () => {
@@ -876,7 +876,7 @@ export class TrabajadorComponent {
       //   && Codigo_Categoria_Ocupacion && Ocupacion &&Tipo_Cese && Tipo_Contrato && EstadoCivil && TipodeComision && FechaNacimiento && FechaReingreso
       //   && FechaIngreso && FechaCese && Fecha_Ult_Actualizacion &&EsReingreso && Tipo_Cuenta && Fondo_Reserva){
 
-          const url = `api/ControladorAPI/trabajador/Edit?COMP_Codigo=${COMP_Codigo}&Id_Trabajador=${Id_Trabajador}&Tipo_trabajador=${Tipo_trabajador}&Apellido_Paterno=${Apellido_Paterno}&Apellido_Materno=${Apellido_Materno}&Nombres=${Nombres}&Identificacion=${Identificacion}&Entidad_Bancaria=${Entidad_Bancaria}&CarnetIESS=${CarnetIESS}&Direccion=${Direccion}&Telefono_Fijo=${Telefono_Fijo}&Telefono_Movil=${Telefono_Movil}&Genero=${Genero}&Nro_Cuenta_Bancaria=${Nro_Cuenta_Bancaria}&Codigo_Categoria_Ocupacion=${Codigo_Categoria_Ocupacion}&Ocupacion=${Ocupacion}&Centro_Costos=${Centro_Costos}&Nivel_Salarial=${Nivel_Salarial}&EstadoTrabajador=${EstadoTrabajador}&Tipo_Contrato=${Tipo_Contrato}&Tipo_Cese=${Tipo_Cese}&EstadoCivil=${EstadoCivil}&TipodeComision=${TipodeComision}&FechaNacimiento=${FechaNacimiento.toISOString()}&FechaIngreso=${FechaIngreso.toISOString()}&FechaCese=${FechaCese.toISOString()}&PeriododeVacaciones=${PeriododeVacaciones}&FechaReingreso=${FechaReingreso.toISOString()}&Fecha_Ult_Actualizacion=${Fecha_Ult_Actualizacion.toISOString()}&EsReingreso=${EsReingreso}&BancoCTA_CTE=${BancoCTA_CTE}&Tipo_Cuenta=${Tipo_Cuenta}&RSV_Indem_Acumul=${RSV_Indem_Acumul}&Año_Ult_Rsva_Indemni=${Año_Ult_Rsva_Indemni}&Mes_Ult_Rsva_Indemni=${Mes_Ult_Rsva_Indemni}&FormaCalculo13ro=${FormaCalculo13ro}&FormaCalculo14ro=${FormaCalculo14ro}&BoniComplementaria=${BoniComplementaria}&BoniEspecial=${BoniEspecial}&Remuneracion_Minima=${Remuneracion_Minima}&CuotaCuentaCorriente=${CuotaCuentaCorriente}&Fondo_Reserva=${Fondo_Reserva}`;
+          const url = `https://aspnetback.azurewebsites.net/api/ControladorAPI/trabajador/Edit?COMP_Codigo=${COMP_Codigo}&Id_Trabajador=${Id_Trabajador}&Tipo_trabajador=${Tipo_trabajador}&Apellido_Paterno=${Apellido_Paterno}&Apellido_Materno=${Apellido_Materno}&Nombres=${Nombres}&Identificacion=${Identificacion}&Entidad_Bancaria=${Entidad_Bancaria}&CarnetIESS=${CarnetIESS}&Direccion=${Direccion}&Telefono_Fijo=${Telefono_Fijo}&Telefono_Movil=${Telefono_Movil}&Genero=${Genero}&Nro_Cuenta_Bancaria=${Nro_Cuenta_Bancaria}&Codigo_Categoria_Ocupacion=${Codigo_Categoria_Ocupacion}&Ocupacion=${Ocupacion}&Centro_Costos=${Centro_Costos}&Nivel_Salarial=${Nivel_Salarial}&EstadoTrabajador=${EstadoTrabajador}&Tipo_Contrato=${Tipo_Contrato}&Tipo_Cese=${Tipo_Cese}&EstadoCivil=${EstadoCivil}&TipodeComision=${TipodeComision}&FechaNacimiento=${FechaNacimiento.toISOString()}&FechaIngreso=${FechaIngreso.toISOString()}&FechaCese=${FechaCese.toISOString()}&PeriododeVacaciones=${PeriododeVacaciones}&FechaReingreso=${FechaReingreso.toISOString()}&Fecha_Ult_Actualizacion=${Fecha_Ult_Actualizacion.toISOString()}&EsReingreso=${EsReingreso}&BancoCTA_CTE=${BancoCTA_CTE}&Tipo_Cuenta=${Tipo_Cuenta}&RSV_Indem_Acumul=${RSV_Indem_Acumul}&Año_Ult_Rsva_Indemni=${Año_Ult_Rsva_Indemni}&Mes_Ult_Rsva_Indemni=${Mes_Ult_Rsva_Indemni}&FormaCalculo13ro=${FormaCalculo13ro}&FormaCalculo14ro=${FormaCalculo14ro}&BoniComplementaria=${BoniComplementaria}&BoniEspecial=${BoniEspecial}&Remuneracion_Minima=${Remuneracion_Minima}&CuotaCuentaCorriente=${CuotaCuentaCorriente}&Fondo_Reserva=${Fondo_Reserva}`;
           this.http.get(url).subscribe(
             (response) => {
               console.log(response);
