@@ -493,7 +493,7 @@ export class MovimientoPlanillaComponent {
           if (isNaN(prioridad)) {
             validationErrors.push('prioridad es requerida');
           }
-          if (tipoOperacion) {
+          if (!tipoOperacion) {
             validationErrors.push('tipo operacion es requerido');
           }
           if (isNaN(cuenta1)) {
