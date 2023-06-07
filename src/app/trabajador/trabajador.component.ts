@@ -1107,33 +1107,113 @@ export class TrabajadorComponent {
     });
   }
 
-  guardarCambiosTrabajador(COMP_Codigo: number, Id_Trabajador: number,Tipo_trabajador: string, Apellido_Paterno: string, Apellido_Materno: string, 
-    Nombres : string, Identificacion: string, Entidad_Bancaria: string, CarnetIESS: string, Direccion: string, Telefono_Fijo: string, 
-    Telefono_Movil: string, Genero: string , Nro_Cuenta_Bancaria: string, Codigo_Categoria_Ocupacion: string, Ocupacion: string, 
-    Centro_Costos: string, Nivel_Salarial: string, EstadoTrabajador: string, Tipo_Contrato: string, Tipo_Cese: string, 
-    EstadoCivil: string, TipodeComision: string, FechaNacimiento: Date, FechaIngreso: Date, FechaCese: Date, PeriododeVacaciones: number, 
-    FechaReingreso: Date, Fecha_Ult_Actualizacion: Date, EsReingreso: string, BancoCTA_CTE: number, Tipo_Cuenta: string, 
-    RSV_Indem_Acumul: number, Año_Ult_Rsva_Indemni: number, Mes_Ult_Rsva_Indemni: number, FormaCalculo13ro: number, FormaCalculo14ro: number, 
-    BoniComplementaria: number, BoniEspecial: number, Remuneracion_Minima: number, CuotaCuentaCorriente: number, Fondo_Reserva: string):void{
-
-          const url = `https://aspnetback.azurewebsites.net/api/ControladorAPI/trabajador/Edit?COMP_Codigo=${COMP_Codigo}&Id_Trabajador=${Id_Trabajador}&Tipo_trabajador=${Tipo_trabajador}&Apellido_Paterno=${Apellido_Paterno}&Apellido_Materno=${Apellido_Materno}&Nombres=${Nombres}&Identificacion=${Identificacion}&Entidad_Bancaria=${Entidad_Bancaria}&CarnetIESS=${CarnetIESS}&Direccion=${Direccion}&Telefono_Fijo=${Telefono_Fijo}&Telefono_Movil=${Telefono_Movil}&Genero=${Genero}&Nro_Cuenta_Bancaria=${Nro_Cuenta_Bancaria}&Codigo_Categoria_Ocupacion=${Codigo_Categoria_Ocupacion}&Ocupacion=${Ocupacion}&Centro_Costos=${Centro_Costos}&Nivel_Salarial=${Nivel_Salarial}&EstadoTrabajador=${EstadoTrabajador}&Tipo_Contrato=${Tipo_Contrato}&Tipo_Cese=${Tipo_Cese}&EstadoCivil=${EstadoCivil}&TipodeComision=${TipodeComision}&FechaNacimiento=${FechaNacimiento.toISOString()}&FechaIngreso=${FechaIngreso.toISOString()}&FechaCese=${FechaCese.toISOString()}&PeriododeVacaciones=${PeriododeVacaciones}&FechaReingreso=${FechaReingreso.toISOString()}&Fecha_Ult_Actualizacion=${Fecha_Ult_Actualizacion.toISOString()}&EsReingreso=${EsReingreso}&BancoCTA_CTE=${BancoCTA_CTE}&Tipo_Cuenta=${Tipo_Cuenta}&RSV_Indem_Acumul=${RSV_Indem_Acumul}&Año_Ult_Rsva_Indemni=${Año_Ult_Rsva_Indemni}&Mes_Ult_Rsva_Indemni=${Mes_Ult_Rsva_Indemni}&FormaCalculo13ro=${FormaCalculo13ro}&FormaCalculo14ro=${FormaCalculo14ro}&BoniComplementaria=${BoniComplementaria}&BoniEspecial=${BoniEspecial}&Remuneracion_Minima=${Remuneracion_Minima}&CuotaCuentaCorriente=${CuotaCuentaCorriente}&Fondo_Reserva=${Fondo_Reserva}`;
-          this.http.get(url).subscribe(
-            (response) => {
-              console.log(response);
-              Swal.fire({
-                title: 'Cambios guardados',
-                icon: 'success',
-                showCancelButton: false,
-              }).then(() => {
-                this.fetchTrabajadores();
-              });
-            },
-            (error) => {
-              console.error(error);
-              Swal.fire('Error al guardar los cambios', '', 'error');
-            }
-          );
+  guardarCambiosTrabajador(
+    COMP_Codigo: number,
+    Id_Trabajador: number,
+    Tipo_trabajador: string,
+    Apellido_Paterno: string,
+    Apellido_Materno: string,
+    Nombres: string,
+    Identificacion: string,
+    Entidad_Bancaria: string,
+    CarnetIESS: string,
+    Direccion: string,
+    Telefono_Fijo: string,
+    Telefono_Movil: string,
+    Genero: string,
+    Nro_Cuenta_Bancaria: string,
+    Codigo_Categoria_Ocupacion: string,
+    Ocupacion: string,
+    Centro_Costos: string,
+    Nivel_Salarial: string,
+    EstadoTrabajador: string,
+    Tipo_Contrato: string,
+    Tipo_Cese: string,
+    EstadoCivil: string,
+    TipodeComision: string,
+    FechaNacimiento: Date,
+    FechaIngreso: Date,
+    FechaCese: Date,
+    PeriododeVacaciones: number,
+    FechaReingreso: Date,
+    Fecha_Ult_Actualizacion: Date,
+    EsReingreso: string,
+    BancoCTA_CTE: number,
+    Tipo_Cuenta: string,
+    RSV_Indem_Acumul: number,
+    Año_Ult_Rsva_Indemni: number,
+    Mes_Ult_Rsva_Indemni: number,
+    FormaCalculo13ro: number,
+    FormaCalculo14ro: number,
+    BoniComplementaria: number,
+    BoniEspecial: number,
+    Remuneracion_Minima: number,
+    CuotaCuentaCorriente: number,
+    Fondo_Reserva: string
+  ): void {
+    const data = {
+      COMP_Codigo: COMP_Codigo,
+      Id_Trabajador: Id_Trabajador,
+      Tipo_trabajador: Tipo_trabajador,
+      Apellido_Paterno: Apellido_Paterno,
+      Apellido_Materno: Apellido_Materno,
+      Nombres: Nombres,
+      Identificacion: Identificacion,
+      Entidad_Bancaria: Entidad_Bancaria,
+      CarnetIESS: CarnetIESS,
+      Direccion: Direccion,
+      Telefono_Fijo: Telefono_Fijo,
+      Telefono_Movil: Telefono_Movil,
+      Genero: Genero,
+      Nro_Cuenta_Bancaria: Nro_Cuenta_Bancaria,
+      Codigo_Categoria_Ocupacion: Codigo_Categoria_Ocupacion,
+      Ocupacion: Ocupacion,
+      Centro_Costos: Centro_Costos,
+      Nivel_Salarial: Nivel_Salarial,
+      EstadoTrabajador: EstadoTrabajador,
+      Tipo_Contrato: Tipo_Contrato,
+      Tipo_Cese: Tipo_Cese,
+      EstadoCivil: EstadoCivil,
+      TipodeComision: TipodeComision,
+      FechaNacimiento: FechaNacimiento.toISOString(),
+      FechaIngreso: FechaIngreso.toISOString(),
+      FechaCese: FechaCese.toISOString(),
+      PeriododeVacaciones: PeriododeVacaciones,
+      FechaReingreso: FechaReingreso.toISOString(),
+      Fecha_Ult_Actualizacion: Fecha_Ult_Actualizacion.toISOString(),
+      EsReingreso: EsReingreso,
+      BancoCTA_CTE: BancoCTA_CTE,
+      Tipo_Cuenta: Tipo_Cuenta,
+      RSV_Indem_Acumul: RSV_Indem_Acumul,
+      Año_Ult_Rsva_Indemni: Año_Ult_Rsva_Indemni,
+      Mes_Ult_Rsva_Indemni: Mes_Ult_Rsva_Indemni,
+      FormaCalculo13ro: FormaCalculo13ro,
+      FormaCalculo14ro: FormaCalculo14ro,
+      BoniComplementaria: BoniComplementaria,
+      BoniEspecial: BoniEspecial,
+      Remuneracion_Minima: Remuneracion_Minima,
+      CuotaCuentaCorriente: CuotaCuentaCorriente,
+      Fondo_Reserva: Fondo_Reserva
+    };
+  
+    this.http.post('https://aspnetback.azurewebsites.net/api/ControladorAPI/trabajador/Edit', data).subscribe(
+      (response) => {
+        console.log(response);
+        Swal.fire({
+          title: 'Cambios guardados',
+          icon: 'success',
+          showCancelButton: false,
+        }).then(() => {
+          this.fetchTrabajadores();
+        });
+      },
+      (error) => {
+        console.error(error);
+        Swal.fire('Error al guardar los cambios', '', 'error');
+      }
+    );
   }
+  
 
   onlyLettersAndNumbers(event: KeyboardEvent): void {
     const input = event.key;
