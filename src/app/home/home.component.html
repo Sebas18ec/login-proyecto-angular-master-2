@@ -76,7 +76,10 @@
                             </li>
                             <li>
                               <a class="nav-link px-0"> <span class="d-none d-sm-inline"(click)="TipoContrato()">Tipo Contrato</span></a>
-                          </li>
+                            </li>
+                            <li>
+                              <a class="nav-link px-0"> <span class="d-none d-sm-inline"(click)="TipoCese()">Tipo Cese</span></a>
+                            </li>
                         </ul>
                     </li>
                 </ul>
@@ -102,6 +105,9 @@
             </div>
             <div *ngIf="mostrarTipoContrato">
               <app-tipo-contrato></app-tipo-contrato>
+            </div>
+            <div *ngIf="mostrarTipoCese">
+              <app-tipo-cese></app-tipo-cese>
             </div>
           </div>
     </div>
