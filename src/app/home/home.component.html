@@ -74,6 +74,9 @@
                             <li>
                                 <a class="nav-link px-0"> <span class="d-none d-sm-inline"(click)="EstadoTrabajador()">Estado</span></a>
                             </li>
+                            <li>
+                              <a class="nav-link px-0"> <span class="d-none d-sm-inline"(click)="TipoContrato()">Tipo Contrato</span></a>
+                          </li>
                         </ul>
                     </li>
                 </ul>
@@ -96,6 +99,9 @@
             </div>
             <div *ngIf="mostrarEstadoTrabajador">
               <app-estado-trabajador></app-estado-trabajador>
+            </div>
+            <div *ngIf="mostrarTipoContrato">
+              <app-tipo-contrato></app-tipo-contrato>
             </div>
           </div>
     </div>

@@ -29,6 +29,7 @@ export class HomeComponent implements OnInit {
   mostrarTrabajadores: boolean = false;
   mostrarTipoTrabajador: boolean = false;
   mostrarEstadoTrabajador: boolean = false;
+  mostrarTipoContrato: boolean = false;
 
   constructor(private emisorService: EmisorService,private sanitizer: DomSanitizer, private http: HttpClient,private router: Router) {
     this.logoUrl = this.sanitizer.bypassSecurityTrustUrl('assets/img/logo-taller.svg');  
@@ -171,6 +172,7 @@ export class HomeComponent implements OnInit {
       this.mostrarTrabajadores = false;
       this.mostrarTipoTrabajador = false;
       this.mostrarEstadoTrabajador = false;
+      this.mostrarTipoContrato  = false;
     }
   }
 
@@ -184,6 +186,7 @@ export class HomeComponent implements OnInit {
       this.mostrarTrabajadores = false;
       this.mostrarTipoTrabajador = false;
       this.mostrarEstadoTrabajador = false;
+      this.mostrarTipoContrato  = false;
     }
   }
 
@@ -196,6 +199,7 @@ export class HomeComponent implements OnInit {
       this.mostrarMovimientosPlanilla = false;
       this.mostrarTipoTrabajador = false;
       this.mostrarEstadoTrabajador = false;
+      this.mostrarTipoContrato  = false;
     }
   }
 
@@ -205,6 +209,7 @@ export class HomeComponent implements OnInit {
       this.mostrarTrabajadores = false;
       this.mostrarTipoTrabajador = true;
       this.mostrarEstadoTrabajador = false;
+      this.mostrarTipoContrato  = false;
   }
 
   EstadoTrabajador(): void {
@@ -213,7 +218,17 @@ export class HomeComponent implements OnInit {
     this.mostrarTrabajadores = false;
     this.mostrarTipoTrabajador = false;
     this.mostrarEstadoTrabajador = true;
-}
+    this.mostrarTipoContrato  = false;
+  }
+
+  TipoContrato(): void {
+    this.mostrarMovimientosPlanilla = false;
+    this.mostrarFormularioCentroCostos = false;
+    this.mostrarTrabajadores = false;
+    this.mostrarTipoTrabajador = false;
+    this.mostrarEstadoTrabajador = false;
+    this.mostrarTipoContrato  = true;
+  }
 
   cerrarSesionAutorizador(): void {
     Swal.fire({
