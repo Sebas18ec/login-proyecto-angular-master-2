@@ -27,7 +27,9 @@ export class HomeComponent implements OnInit {
   sesionIniciada: boolean = false;
   mostrarMovimientosPlanilla: boolean = false;
   mostrarTrabajadores: boolean = false;
-  
+  mostrarTipoTrabajador: boolean = false;
+  mostrarEstadoTrabajador: boolean = false;
+
   constructor(private emisorService: EmisorService,private sanitizer: DomSanitizer, private http: HttpClient,private router: Router) {
     this.logoUrl = this.sanitizer.bypassSecurityTrustUrl('assets/img/logo-taller.svg');  
     this.fechaActual = new Date().toLocaleDateString();
@@ -38,7 +40,7 @@ export class HomeComponent implements OnInit {
     if (nombreUsuarioGuardado !== null) {
       this.nombreUsuario = nombreUsuarioGuardado;
     }    
-   }
+  }
 
   ngOnInit(): void {
     const emisorData = this.emisorService.getEmisorData();
@@ -101,7 +103,7 @@ export class HomeComponent implements OnInit {
           const usuario = (document.getElementById('swal-input-usuario') as HTMLInputElement).value;
           const password = (document.getElementById('swal-input-password') as HTMLInputElement).value;
   
-          const endpoint = 'https://aspnetback.azurewebsites.net/api/ControladorAPI/loginAutorizador';
+          const endpoint = 'api/ControladorAPI/loginAutorizador';
           const url = new URL(endpoint, window.location.origin);
     
           url.searchParams.append('usuario', usuario);
@@ -167,6 +169,8 @@ export class HomeComponent implements OnInit {
       this.mostrarFormularioCentroCostos = true;
       this.mostrarMovimientosPlanilla = false;
       this.mostrarTrabajadores = false;
+      this.mostrarTipoTrabajador = false;
+      this.mostrarEstadoTrabajador = false;
     }
   }
 
@@ -178,6 +182,8 @@ export class HomeComponent implements OnInit {
       this.mostrarMovimientosPlanilla = true;
       this.mostrarFormularioCentroCostos = false;
       this.mostrarTrabajadores = false;
+      this.mostrarTipoTrabajador = false;
+      this.mostrarEstadoTrabajador = false;
     }
   }
 
@@ -188,8 +194,26 @@ export class HomeComponent implements OnInit {
       this.mostrarTrabajadores = true;
       this.mostrarFormularioCentroCostos = false;
       this.mostrarMovimientosPlanilla = false;
+      this.mostrarTipoTrabajador = false;
+      this.mostrarEstadoTrabajador = false;
     }
   }
+
+  TipoTrabajador(): void {
+      this.mostrarMovimientosPlanilla = false;
+      this.mostrarFormularioCentroCostos = false;
+      this.mostrarTrabajadores = false;
+      this.mostrarTipoTrabajador = true;
+      this.mostrarEstadoTrabajador = false;
+  }
+
+  EstadoTrabajador(): void {
+    this.mostrarMovimientosPlanilla = false;
+    this.mostrarFormularioCentroCostos = false;
+    this.mostrarTrabajadores = false;
+    this.mostrarTipoTrabajador = false;
+    this.mostrarEstadoTrabajador = true;
+}
 
   cerrarSesionAutorizador(): void {
     Swal.fire({

@@ -69,10 +69,10 @@
                             <i class="fs-4 bi-person-vcard"></i> <span class="ms-1 d-none d-sm-inline"(click)="Trabajadores()">Trabajadores</span></a>
                         <ul class="collapse nav flex-column ms-1" id="submenu2" data-bs-parent="#menu">
                             <li class="w-100">
-                                <a class="nav-link px-0"> <span class="d-none d-sm-inline"(click)="TipoTrabajador()">Tipo Trabajador</span></a>
+                                <a class="nav-link px-0"> <span class="d-none d-sm-inline"(click)="TipoTrabajador()">Tipo</span></a>
                             </li>
                             <li>
-                                <a class="nav-link px-0"> <span class="d-none d-sm-inline">Item</span></a>
+                                <a class="nav-link px-0"> <span class="d-none d-sm-inline"(click)="EstadoTrabajador()">Estado</span></a>
                             </li>
                         </ul>
                     </li>
@@ -93,6 +93,9 @@
             </div>
             <div *ngIf="mostrarTipoTrabajador">
               <app-tipo-trabajador></app-tipo-trabajador>
+            </div>
+            <div *ngIf="mostrarEstadoTrabajador">
+              <app-estado-trabajador></app-estado-trabajador>
             </div>
           </div>
     </div>
