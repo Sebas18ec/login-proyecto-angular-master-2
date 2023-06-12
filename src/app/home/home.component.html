@@ -89,6 +89,9 @@
                             <li>
                               <a class="nav-link px-0"> <span class="d-none d-sm-inline"(click)="Genero()">Genero</span></a>
                             </li>
+                            <li>
+                              <a class="nav-link px-0"> <span class="d-none d-sm-inline"(click)="Reingreso()">Reingreso</span></a>
+                            </li>
                         </ul>
                     </li>
                 </ul>
@@ -126,6 +129,9 @@
             </div>
             <div *ngIf="mostrarGenero">
               <app-genero></app-genero>
+            </div>
+            <div *ngIf="mostrarReingreso">
+              <app-reingreso></app-reingreso>
             </div>
           </div>
     </div>
