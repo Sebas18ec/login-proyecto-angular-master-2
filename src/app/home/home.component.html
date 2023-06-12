@@ -80,6 +80,9 @@
                             <li>
                               <a class="nav-link px-0"> <span class="d-none d-sm-inline"(click)="TipoCese()">Tipo Cese</span></a>
                             </li>
+                            <li>
+                              <a class="nav-link px-0"> <span class="d-none d-sm-inline"(click)="TipoCuenta()">Tipo Cuenta</span></a>
+                            </li>
                         </ul>
                     </li>
                 </ul>
@@ -108,6 +111,9 @@
             </div>
             <div *ngIf="mostrarTipoCese">
               <app-tipo-cese></app-tipo-cese>
+            </div>
+            <div *ngIf="mostrarTipoCuenta">
+              <app-tipo-cuenta></app-tipo-cuenta>
             </div>
           </div>
     </div>
