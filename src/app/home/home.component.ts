@@ -32,6 +32,7 @@ export class HomeComponent implements OnInit {
   mostrarTipoContrato: boolean = false;
   mostrarTipoCese: boolean = false;
   mostrarTipoCuenta: boolean = false;
+  mostrarEstadoCivil: boolean = false;
 
   constructor(private emisorService: EmisorService,private sanitizer: DomSanitizer, private http: HttpClient,private router: Router) {
     this.logoUrl = this.sanitizer.bypassSecurityTrustUrl('assets/img/logo-taller.svg');  
@@ -177,6 +178,7 @@ export class HomeComponent implements OnInit {
       this.mostrarTipoContrato  = false;
       this.mostrarTipoCese  = false;
       this.mostrarTipoCuenta = false;
+      this.mostrarEstadoCivil = false;
     }
   }
 
@@ -193,6 +195,7 @@ export class HomeComponent implements OnInit {
       this.mostrarTipoContrato  = false;
       this.mostrarTipoCese  = false;
       this.mostrarTipoCuenta = false;
+      this.mostrarEstadoCivil = false;
     }
   }
 
@@ -208,6 +211,7 @@ export class HomeComponent implements OnInit {
       this.mostrarTipoContrato  = false;
       this.mostrarTipoCese  = false;
       this.mostrarTipoCuenta = false;
+      this.mostrarEstadoCivil = false;
     }
   }
 
@@ -220,6 +224,7 @@ export class HomeComponent implements OnInit {
       this.mostrarTipoContrato  = false;
       this.mostrarTipoCese  = false;
       this.mostrarTipoCuenta = false;
+      this.mostrarEstadoCivil = false;
   }
 
   EstadoTrabajador(): void {
@@ -231,6 +236,7 @@ export class HomeComponent implements OnInit {
     this.mostrarTipoContrato  = false;
     this.mostrarTipoCese  = false;
     this.mostrarTipoCuenta = false;
+    this.mostrarEstadoCivil = false;
   }
 
   TipoContrato(): void {
@@ -242,6 +248,7 @@ export class HomeComponent implements OnInit {
     this.mostrarTipoContrato  = true;
     this.mostrarTipoCese  = false;
     this.mostrarTipoCuenta = false;
+    this.mostrarEstadoCivil = false;
   }
 
   TipoCese(): void {
@@ -253,6 +260,7 @@ export class HomeComponent implements OnInit {
     this.mostrarTipoContrato  = false;
     this.mostrarTipoCese  = true;
     this.mostrarTipoCuenta = false;
+    this.mostrarEstadoCivil = false;
   }
 
   TipoCuenta(): void {
@@ -264,6 +272,19 @@ export class HomeComponent implements OnInit {
     this.mostrarTipoContrato  = false;
     this.mostrarTipoCese  = false;
     this.mostrarTipoCuenta = true;
+    this.mostrarEstadoCivil = false;
+  }
+
+  EstadoCivil(): void {
+    this.mostrarMovimientosPlanilla = false;
+    this.mostrarFormularioCentroCostos = false;
+    this.mostrarTrabajadores = false;
+    this.mostrarTipoTrabajador = false;
+    this.mostrarEstadoTrabajador = false;
+    this.mostrarTipoContrato  = false;
+    this.mostrarTipoCese  = false;
+    this.mostrarTipoCuenta = false;
+    this.mostrarEstadoCivil = true;
   }
 
   cerrarSesionAutorizador(): void {
