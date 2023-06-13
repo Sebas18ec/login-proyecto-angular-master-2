@@ -39,6 +39,7 @@ export class HomeComponent implements OnInit {
   mostrarMovExcepcion1y2: boolean= false;
   mostrarMovExcepcion3: boolean = false;
   mostrarAfectaIESS: boolean = false;
+  mostrarAfectaImpRenta: boolean = false;
 
   constructor(private emisorService: EmisorService,private sanitizer: DomSanitizer, private http: HttpClient,private router: Router) {
     this.logoUrl = this.sanitizer.bypassSecurityTrustUrl('assets/img/logo-taller.svg');  
@@ -191,6 +192,7 @@ export class HomeComponent implements OnInit {
       this.mostrarMovExcepcion1y2 = false;
       this.mostrarMovExcepcion3 = false;
       this.mostrarAfectaIESS = false;
+      this.mostrarAfectaImpRenta = false;
     }
   }
 
@@ -214,6 +216,7 @@ export class HomeComponent implements OnInit {
       this.mostrarMovExcepcion1y2 = false;
       this.mostrarMovExcepcion3 = false;
       this.mostrarAfectaIESS = false;
+      this.mostrarAfectaImpRenta = false;
     }
   }
 
@@ -236,6 +239,7 @@ export class HomeComponent implements OnInit {
       this.mostrarMovExcepcion1y2 = false;
       this.mostrarMovExcepcion3 = false;
       this.mostrarAfectaIESS = false;
+      this.mostrarAfectaImpRenta = false;
     }
   }
 
@@ -255,6 +259,7 @@ export class HomeComponent implements OnInit {
       this.mostrarMovExcepcion1y2 = false;
       this.mostrarMovExcepcion3 = false;
       this.mostrarAfectaIESS = false;
+      this.mostrarAfectaImpRenta = false;
   }
 
   EstadoTrabajador(): void {
@@ -273,6 +278,7 @@ export class HomeComponent implements OnInit {
     this.mostrarMovExcepcion1y2 = false;
     this.mostrarMovExcepcion3 = false;
     this.mostrarAfectaIESS = false;
+    this.mostrarAfectaImpRenta = false;
   }
 
   TipoContrato(): void {
@@ -291,6 +297,7 @@ export class HomeComponent implements OnInit {
     this.mostrarMovExcepcion1y2 = false;
     this.mostrarMovExcepcion3 = false;
     this.mostrarAfectaIESS = false;
+    this.mostrarAfectaImpRenta = false;
   }
 
   TipoCese(): void {
@@ -309,6 +316,7 @@ export class HomeComponent implements OnInit {
     this.mostrarMovExcepcion1y2 = false;
     this.mostrarMovExcepcion3 = false;
     this.mostrarAfectaIESS = false;
+    this.mostrarAfectaImpRenta = false;
   }
 
   TipoCuenta(): void {
@@ -327,6 +335,7 @@ export class HomeComponent implements OnInit {
     this.mostrarMovExcepcion1y2 = false;
     this.mostrarMovExcepcion3 = false;
     this.mostrarAfectaIESS = false;
+    this.mostrarAfectaImpRenta = false;
   }
 
   EstadoCivil(): void {
@@ -345,6 +354,7 @@ export class HomeComponent implements OnInit {
     this.mostrarMovExcepcion1y2 = false;
     this.mostrarMovExcepcion3 = false;
     this.mostrarAfectaIESS = false;
+    this.mostrarAfectaImpRenta = false;
   }
 
   Genero(): void {
@@ -363,6 +373,7 @@ export class HomeComponent implements OnInit {
     this.mostrarMovExcepcion1y2 = false;
     this.mostrarMovExcepcion3 = false;
     this.mostrarAfectaIESS = false;
+    this.mostrarAfectaImpRenta = false;
   }
 
   Reingreso(): void {
@@ -381,6 +392,7 @@ export class HomeComponent implements OnInit {
     this.mostrarMovExcepcion1y2 = false;
     this.mostrarMovExcepcion3 = false;
     this.mostrarAfectaIESS = false;
+    this.mostrarAfectaImpRenta = false;
   }
 
   TipoOperacion(): void {
@@ -399,6 +411,7 @@ export class HomeComponent implements OnInit {
     this.mostrarMovExcepcion1y2 = false;
     this.mostrarMovExcepcion3 = false;
     this.mostrarAfectaIESS = false;
+    this.mostrarAfectaImpRenta = false;
   }
 
   MovimientoExcepcion1y2(): void {
@@ -417,6 +430,7 @@ export class HomeComponent implements OnInit {
     this.mostrarMovExcepcion1y2 = true;
     this.mostrarMovExcepcion3 = false;
     this.mostrarAfectaIESS = false;
+    this.mostrarAfectaImpRenta = false;
   }
 
   MovimientoExcepcion3(): void {
@@ -435,6 +449,7 @@ export class HomeComponent implements OnInit {
     this.mostrarMovExcepcion1y2 = false;
     this.mostrarMovExcepcion3 = true;
     this.mostrarAfectaIESS = false;
+    this.mostrarAfectaImpRenta = false;
   }
 
   AfectaIESS(): void {
@@ -453,6 +468,26 @@ export class HomeComponent implements OnInit {
     this.mostrarMovExcepcion1y2 = false;
     this.mostrarMovExcepcion3 = false;
     this.mostrarAfectaIESS = true;
+    this.mostrarAfectaImpRenta = false;
+  }
+
+  AfectaImpRenta(): void {
+    this.mostrarMovimientosPlanilla = false;
+    this.mostrarFormularioCentroCostos = false;
+    this.mostrarTrabajadores = false;
+    this.mostrarTipoTrabajador = false;
+    this.mostrarEstadoTrabajador = false;
+    this.mostrarTipoContrato  = false;
+    this.mostrarTipoCese  = false;
+    this.mostrarTipoCuenta = false;
+    this.mostrarEstadoCivil = false;
+    this.mostrarGenero = false;
+    this.mostrarReingreso = false;
+    this.mostrarTipoOperacion = false;
+    this.mostrarMovExcepcion1y2 = false;
+    this.mostrarMovExcepcion3 = false;
+    this.mostrarAfectaIESS = false;
+    this.mostrarAfectaImpRenta = true;
   }
 
   cerrarSesionAutorizador(): void {

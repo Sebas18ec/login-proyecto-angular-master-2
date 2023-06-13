@@ -68,7 +68,7 @@
                               <a class="nav-link px-0 bi-explicit"> <span class="d-none d-sm-inline"(click)="AfectaIESS()">Afecta IESS</span></a>
                             </li>
                             <li>
-                              <a class="nav-link px-0 bi-explicit"> <span class="d-none d-sm-inline"(click)="MovimientoExcepcion3()">Afecta Impuesto Renta</span></a>
+                              <a class="nav-link px-0 bi-explicit"> <span class="d-none d-sm-inline"(click)="AfectaImpRenta()">Afecta Impuesto Renta</span></a>
                             </li>
                         </ul>
                     </li>
@@ -153,6 +153,9 @@
             </div>
             <div *ngIf="mostrarAfectaIESS">
               <app-afecta-iess></app-afecta-iess>
+            </div>
+            <div *ngIf="mostrarAfectaImpRenta">
+              <app-afecta-imp-renta></app-afecta-imp-renta>
             </div>
           </div>
     </div>
