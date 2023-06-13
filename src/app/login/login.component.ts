@@ -95,7 +95,7 @@ export class LoginComponent implements OnInit {
       contrasena: this.password
     };
 
-    this.http.post('https://aspnetback.azurewebsites.net/api/ControladorAPI/api/ControladorAPI/login', loginData)
+    this.http.post('https://aspnetback.azurewebsites.net/api/ControladorAPI/login', loginData)
       .subscribe(response => {
         const data = JSON.stringify(response);
         const responseObj = JSON.parse(data);
