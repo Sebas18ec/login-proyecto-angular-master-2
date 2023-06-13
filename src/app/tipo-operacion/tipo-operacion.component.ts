@@ -16,7 +16,7 @@ export class TipoOperacionComponent {
   }
   
   getTipoOperacion(): void {
-    this.http.get<any[]>('api/ControladorAPI/GetTipoOperacion').subscribe(
+    this.http.get<any[]>('https://aspnetback.azurewebsites.net/api/ControladorAPI/GetTipoOperacion').subscribe(
       data => {
         this.tipoOperacion = data;
       },

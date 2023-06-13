@@ -16,7 +16,7 @@ export class EstadoCivilComponent {
   }
   
   getEstadoCivil(): void {
-    this.http.get<any[]>('api/ControladorAPI/trabajador/GetEstadoCivil').subscribe(
+    this.http.get<any[]>('https://aspnetback.azurewebsites.net/api/ControladorAPI/trabajador/GetEstadoCivil').subscribe(
       data => {
         this.estadoCivil = data;
       },

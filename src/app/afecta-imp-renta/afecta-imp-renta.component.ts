@@ -16,7 +16,7 @@ export class AfectaImpRentaComponent {
   }
   
   getAfectaImpRenta(): void {
-    this.http.get<any[]>('api/ControladorAPI/GetTrabAfecImpuestoRenta').subscribe(
+    this.http.get<any[]>('https://aspnetback.azurewebsites.net/api/ControladorAPI/GetTrabAfecImpuestoRenta').subscribe(
       data => {
         this.afectaImpRenta = data;
       },

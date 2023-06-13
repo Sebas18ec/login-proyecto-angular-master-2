@@ -16,7 +16,7 @@ export class TipoCuentaComponent {
   }
   
   getTipoCuenta(): void {
-    this.http.get<any[]>('api/ControladorAPI/trabajador/GetTipoCuenta').subscribe(
+    this.http.get<any[]>('https://aspnetback.azurewebsites.net/api/ControladorAPI/trabajador/GetTipoCuenta').subscribe(
       data => {
         this.tipoCuenta = data;
       },

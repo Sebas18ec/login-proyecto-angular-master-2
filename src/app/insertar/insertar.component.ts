@@ -19,7 +19,7 @@ export class InsertarComponent {
   constructor(private http: HttpClient,private router: Router) { } // Inyecta HttpClient en el constructor
   
   ngOnInit(): void {
-    const apiUrl = 'https://aspnetback.azurewebsites.net/api/ControladorAPI/api/v1/emisores';
+    const apiUrl = 'https://aspnetback.azurewebsites.net/api/v1/emisores';
     this.http.get(apiUrl).subscribe((response) => {
       this.apiResponse = response;
       console.log(this.apiResponse)

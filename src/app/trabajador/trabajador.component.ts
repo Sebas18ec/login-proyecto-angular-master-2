@@ -6,11 +6,6 @@ import { map } from 'rxjs';
 import { DomSanitizer } from '@angular/platform-browser';  
 import Swal from 'sweetalert2';
 
-  
-
-
-
-
 @Component({
   selector: 'app-trabajador',
   templateUrl: './trabajador.component.html',
@@ -453,7 +448,7 @@ export class TrabajadorComponent {
           validationErrors.push('Los nombres son requeridos');
         }
         if (!this.validarCedula(Identificacion)) {
-          validationErrors.push('Cedula no valida');
+          validationErrors.push('Cedula invalida');
         }
         if (!Entidad_Bancaria) {
           validationErrors.push('Entidad Bancaria es requerido');
@@ -658,59 +653,112 @@ export class TrabajadorComponent {
     });
   }
 
-  guardarNuevoTrabajador(COMP_Codigo: number, Tipo_trabajador: string, Apellido_Paterno: string, Apellido_Materno: string, 
-    Nombres : string, Identificacion: string, Entidad_Bancaria: string, CarnetIESS: string, Direccion: string, Telefono_Fijo: string, 
-    Telefono_Movil: string, Genero: string , Nro_Cuenta_Bancaria: string, Codigo_Categoria_Ocupacion: string, Ocupacion: string, 
-    Centro_Costos: string, Nivel_Salarial: string, EstadoTrabajador: string, Tipo_Contrato: string, Tipo_Cese: string, 
-    EstadoCivil: string, TipodeComision: string, FechaNacimiento: Date, FechaIngreso: Date, FechaCese: Date, PeriododeVacaciones: number, 
-    FechaReingreso: Date, Fecha_Ult_Actualizacion: Date, EsReingreso: string, BancoCTA_CTE: number, Tipo_Cuenta: string, 
-    RSV_Indem_Acumul: number, Año_Ult_Rsva_Indemni: number, Mes_Ult_Rsva_Indemni: number, FormaCalculo13ro: number, FormaCalculo14ro: number, 
-    BoniComplementaria: number, BoniEspecial: number, Remuneracion_Minima: number, CuotaCuentaCorriente: number, Fondo_Reserva: string) 
-  : void{
-      const url = `https://aspnetback.azurewebsites.net/api/ControladorAPI/trabajador/Insert?COMP_Codigo=${COMP_Codigo}&Tipo_trabajador=${Tipo_trabajador}&Apellido_Paterno=${Apellido_Paterno}&Apellido_Materno=${Apellido_Materno}&Nombres=${Nombres}&Identificacion=${Identificacion}&Entidad_Bancaria=${Entidad_Bancaria}&CarnetIESS=${CarnetIESS}&Direccion=${Direccion}&Telefono_Fijo=${Telefono_Fijo}&Telefono_Movil=${Telefono_Movil}&Genero=${Genero}&Nro_Cuenta_Bancaria=${Nro_Cuenta_Bancaria}&Codigo_Categoria_Ocupacion=${Codigo_Categoria_Ocupacion}&Ocupacion=${Ocupacion}&Centro_Costos=${Centro_Costos}&Nivel_Salarial=${Nivel_Salarial}&EstadoTrabajador=${EstadoTrabajador}&Tipo_Contrato=${Tipo_Contrato}&Tipo_Cese=${Tipo_Cese}&EstadoCivil=${EstadoCivil}&TipodeComision=${TipodeComision}&FechaNacimiento=${FechaNacimiento.toISOString()}&FechaIngreso=${FechaIngreso.toISOString()}&FechaCese=${FechaCese.toISOString()}&PeriododeVacaciones=${PeriododeVacaciones}&FechaReingreso=${FechaReingreso.toISOString()}&Fecha_Ult_Actualizacion=${Fecha_Ult_Actualizacion.toISOString()}&EsReingreso=${EsReingreso}&BancoCTA_CTE=${BancoCTA_CTE}&Tipo_Cuenta=${Tipo_Cuenta}&RSV_Indem_Acumul=${RSV_Indem_Acumul}&Año_Ult_Rsva_Indemni=${Año_Ult_Rsva_Indemni}&Mes_Ult_Rsva_Indemni=${Mes_Ult_Rsva_Indemni}&FormaCalculo13ro=${FormaCalculo13ro}&FormaCalculo14ro=${FormaCalculo14ro}&BoniComplementaria=${BoniComplementaria}&BoniEspecial=${BoniEspecial}&Remuneracion_Minima=${Remuneracion_Minima}&CuotaCuentaCorriente=${CuotaCuentaCorriente}&Fondo_Reserva=${Fondo_Reserva}`;
-  
-      this.http.get(url).subscribe(
-        () => {
-          Swal.fire('Éxito', 'El trabajador se ha creado correctamente', 'success');
+
+  guardarNuevoTrabajador(
+    COMP_Codigo: number,
+    Tipo_trabajador: string,
+    Apellido_Paterno: string,
+    Apellido_Materno: string,
+    Nombres: string,
+    Identificacion: string,
+    Entidad_Bancaria: string,
+    CarnetIESS: string,
+    Direccion: string,
+    Telefono_Fijo: string,
+    Telefono_Movil: string,
+    Genero: string,
+    Nro_Cuenta_Bancaria: string,
+    Codigo_Categoria_Ocupacion: string,
+    Ocupacion: string,
+    Centro_Costos: string,
+    Nivel_Salarial: string,
+    EstadoTrabajador: string,
+    Tipo_Contrato: string,
+    Tipo_Cese: string,
+    EstadoCivil: string,
+    TipodeComision: string,
+    FechaNacimiento: Date,
+    FechaIngreso: Date,
+    FechaCese: Date,
+    PeriododeVacaciones: number,
+    FechaReingreso: Date,
+    Fecha_Ult_Actualizacion: Date,
+    EsReingreso: string,
+    BancoCTA_CTE: number,
+    Tipo_Cuenta: string,
+    RSV_Indem_Acumul: number,
+    Año_Ult_Rsva_Indemni: number,
+    Mes_Ult_Rsva_Indemni: number,
+    FormaCalculo13ro: number,
+    FormaCalculo14ro: number,
+    BoniComplementaria: number,
+    BoniEspecial: number,
+    Remuneracion_Minima: number,
+    CuotaCuentaCorriente: number,
+    Fondo_Reserva: string
+  ): void {
+    const url = `https://aspnetback.azurewebsites.net/api/ControladorAPI/trabajador/Insert?` +
+      `COMP_Codigo=${COMP_Codigo}` +
+      `&Tipo_trabajador=${Tipo_trabajador}` +
+      `&Apellido_Paterno=${Apellido_Paterno}` +
+      `&Apellido_Materno=${Apellido_Materno}` +
+      `&Nombres=${Nombres}` +
+      `&Identificacion=${Identificacion}` +
+      `&Entidad_Bancaria=${Entidad_Bancaria}` +
+      `&CarnetIESS=${CarnetIESS}` +
+      `&Direccion=${Direccion}` +
+      `&Telefono_Fijo=${Telefono_Fijo}` +
+      `&Telefono_Movil=${Telefono_Movil}` +
+      `&Genero=${Genero}` +
+      `&Nro_Cuenta_Bancaria=${Nro_Cuenta_Bancaria}` +
+      `&Codigo_Categoria_Ocupacion=${Codigo_Categoria_Ocupacion}` +
+      `&Ocupacion=${Ocupacion}` +
+      `&Centro_Costos=${Centro_Costos}` +
+      `&Nivel_Salarial=${Nivel_Salarial}` +
+      `&EstadoTrabajador=${EstadoTrabajador}` +
+      `&Tipo_Contrato=${Tipo_Contrato}` +
+      `&Tipo_Cese=${Tipo_Cese}` +
+      `&EstadoCivil=${EstadoCivil}` +
+      `&TipodeComision=${TipodeComision}` +
+      `&FechaNacimiento=${FechaNacimiento.toISOString()}` +
+      `&FechaIngreso=${FechaIngreso.toISOString()}` +
+      `&FechaCese=${FechaCese.toISOString()}` +
+      `&PeriododeVacaciones=${PeriododeVacaciones}` +
+      `&FechaReingreso=${FechaReingreso.toISOString()}` +
+      `&Fecha_Ult_Actualizacion=${Fecha_Ult_Actualizacion.toISOString()}` +
+      `&EsReingreso=${EsReingreso}` +
+      `&BancoCTA_CTE=${BancoCTA_CTE}` +
+      `&Tipo_Cuenta=${Tipo_Cuenta}` +
+      `&RSV_Indem_Acumul=${RSV_Indem_Acumul}` +
+      `&Año_Ult_Rsva_Indemni=${Año_Ult_Rsva_Indemni}` +
+      `&Mes_Ult_Rsva_Indemni=${Mes_Ult_Rsva_Indemni}` +
+      `&FormaCalculo13ro=${FormaCalculo13ro}` +
+      `&FormaCalculo14ro=${FormaCalculo14ro}` +
+      `&BoniComplementaria=${BoniComplementaria}` +
+      `&BoniEspecial=${BoniEspecial}` +
+      `&Remuneracion_Minima=${Remuneracion_Minima}` +
+      `&CuotaCuentaCorriente=${CuotaCuentaCorriente}` +
+      `&Fondo_Reserva=${Fondo_Reserva}`;
+    this.http.post(url, null).subscribe(
+      (response) => {
+        Swal.fire({
+          title: 'El trabajador se ha creado correctamente',
+          icon: 'success',
+          showCancelButton: false,
+        }).then(() => {
           this.fetchTrabajadores();
-        },
-        error => {
-          console.log(error);
-          Swal.fire('Error', 'Se produjo un error al crear el trabajador', 'error');
-        }
-      );
-  }
-
-  validarTipoCese(tipo_cese: string) {
-    const opciones = [
-      { Codigo: "Reduccion Personal", Descripcion: "2" },
-      { Codigo: "Renuncia Voluntaria", Descripcion: "1" },
-      { Codigo: "Renuncia Exigida", Descripcion: "3"}
-    ];
-    const validarTipoCese = opciones.find(item => item.Codigo === tipo_cese);
-    if (validarTipoCese) {
-      return validarTipoCese.Descripcion;
-    }
-    return tipo_cese;
-  }
-
-
-  validarTipoCuenta(tipo_cuenta: string) {
-    const opciones = [
-      { Codigo: "Cuenta Ahorros", Descripcion: "1" },
-      { Codigo: "Cuenta Corriente", Descripcion: "2" },
-    ];
-    const validarTipoCuenta = opciones.find(item => item.Codigo === tipo_cuenta);
-    if (validarTipoCuenta) {
-      return validarTipoCuenta.Descripcion;
-    }
-    return tipo_cuenta;
+        });
+      },
+      (error) => {
+        console.error(error);
+        Swal.fire('Error al crear el trabajador', '', 'error');
+      }
+    );
   }
 
   editarTrabajador(sucursal: number, idEmpleado: number){
     const trabajador = this.trabajadores.find(cc => cc.Id_Trabajador === idEmpleado);
     const codigoEmisorSeleccionado = this.emisorService.getEmisorData().compania;
-    console.log(trabajador)
     Swal.fire({
       title: 'Editar Trabajador',
       html:
@@ -720,7 +768,7 @@ export class TrabajadorComponent {
       '<input id="swal-input2" class="swal2-input" placeholder="Cod. Empleado" value="' + trabajador.Id_Trabajador + '" readonly>' +
       '<select id="swal-input3" class="swal2-input">' +
         '<option value="">Tipo Trabajador</option>' +
-        this.getOptionsTipoTrabajador().map(option => `<option value="${option.value}" ${option.label === trabajador.Tipo_trabajador.trim() ? "selected" : ""}>${option.label}</option>`).join('') +
+        this.getOptionsTipoTrabajador().map(option => `<option value="${option.value}" ${option.value === trabajador.Tipo_trabajador.trim() ? "selected" : ""}>${option.label}</option>`).join('') +
       '</select>' +
       '<input id="swal-input4" class="swal2-input" placeholder="Apellido Paterno" value="'+ trabajador.Apellido_Paterno.trim() +'">' +
       '<input id="swal-input5" class="swal2-input" placeholder="Apellido Materno" value="'+ trabajador.Apellido_Materno.trim() +'">' +
@@ -733,31 +781,31 @@ export class TrabajadorComponent {
       '<input id="swal-input12" class="swal2-input" placeholder="Telefono movil" value="'+ trabajador.Telefono_Movil.trim() +'">' +
       '<select id="swal-input13" class="swal2-input">' +
         '<option value="">Genero</option>' +
-        this.getOptionsGenero().map(option => `<option value="${option.value}" ${option.label === trabajador.Genero.trim() ? "selected" : ""}>${option.label}</option>`).join('') +
+        this.getOptionsGenero().map(option => `<option value="${option.value}" ${option.value === trabajador.Genero.trim() ? "selected" : ""}>${option.label}</option>`).join('') +
       '</select>' +
       '<input id="swal-input14" class="swal2-input" placeholder="Nro. Cta. Bancaria" value="'+ trabajador.Nro_Cuenta_Bancaria.trim() +'">' +
       '<input id="swal-input15" class="swal2-input" placeholder="Codigo Categoria Ocupacion" value="'+ trabajador.Codigo_Categoria_Ocupacion.trim() +'">' +
       '<input id="swal-input16" class="swal2-input" placeholder="Ocupación" value="'+ trabajador.Ocupacion.trim() +'">' +
       '<select id="swal-input17" class="swal2-input">' +
         '<option value="">Centro Costos</option>' +
-        this.getOptionsCentroCostos().map(option => `<option value="${option.value}" ${option.label === trabajador.Centro_Costos.trim() ? "selected" : ""}>${option.label}</option>`).join('') +
+        this.getOptionsCentroCostos().map(option => `<option value="${option.value}" ${option.value == trabajador.Centro_Costos.trim() ? "selected" : ""}>${option.label}</option>`).join('') +
       '</select>' +
       '<input id="swal-input18" class="swal2-input" placeholder="Nivel Salarial" value="'+ trabajador.Nivel_Salarial.trim() +'">' +
       '<select id="swal-input19" class="swal2-input">' +
         '<option value="">Estado Trabajador</option>' +
-        this.getOptionsEstadoTrabajador().map(option => `<option value="${option.value}" ${option.label === trabajador.EstadoTrabajador.trim() ? "selected" : ""}>${option.label}</option>`).join('') +
+        this.getOptionsEstadoTrabajador().map(option => `<option value="${option.value}" ${option.value === trabajador.EstadoTrabajador.trim() ? "selected" : ""}>${option.label}</option>`).join('') +
       '</select>' +
       '<select id="swal-input20" class="swal2-input">' +
         '<option value="">Tipo Contrato</option>' +
-        this.getOptionsTipoContrato().map(option => `<option value="${option.value}" ${option.label === trabajador.Tipo_Contrato.trim() ? "selected" : ""}>${option.label}</option>`).join('') +
+        this.getOptionsTipoContrato().map(option => `<option value="${option.value}" ${option.value === trabajador.Tipo_Contrato.trim() ? "selected" : ""}>${option.label}</option>`).join('') +
       '</select>' +
       '<select id="swal-input21" class="swal2-input">' +
         '<option value="">Tipo Cese</option>' +
-        this.getOptionsTipoCese().map(option => `<option value="${option.value}" ${option.value === this.validarTipoCese(trabajador.Tipo_Cese) ? "selected" : ""}>${option.label}</option>`).join('') +
+        this.getOptionsTipoCese().map(option => `<option value="${option.value}" ${option.value === trabajador.Tipo_Cese.trim() ? "selected" : ""}>${option.label}</option>`).join('') +
       '</select><br>' +
       '<select id="swal-input22" class="swal2-input">' +
         '<option value="">Estado Civil</option>' +
-        this.getOptionsEstadoCivil().map(option => `<option value="${option.value}" ${option.label === trabajador.EstadoCivil.trim() ? "selected" : ""}>${option.label}</option>`).join('') +
+        this.getOptionsEstadoCivil().map(option => `<option value="${option.value}" ${option.value === trabajador.EstadoCivil.trim() ? "selected" : ""}>${option.label}</option>`).join('') +
       '</select>' +
       '<input id="swal-input23" class="swal2-input" placeholder="Tipo Comisión" value="'+ trabajador.TipodeComision.trim() +'">' +
       '<label for="swal-input24">Fecha Nacimiento</label>' +
@@ -773,12 +821,12 @@ export class TrabajadorComponent {
       '<input id="swal-input29" class="swal2-input" type="date" value="'+ trabajador.Fecha_Ult_Actualizacion.substring(0, 10) +'">' +
       '<select id="swal-input30" class="swal2-input">' +
         '<option value="">¿Es reingreso?</option>' +
-        this.getOptionsEsReingreso().map(option => `<option value="${option.value}" ${option.label === trabajador.EsReingreso.trim() ? "selected" : ""}>${option.label}</option>`).join('') +
+        this.getOptionsEsReingreso().map(option => `<option value="${option.value}" ${option.value === trabajador.EsReingreso.trim() ? "selected" : ""}>${option.label}</option>`).join('') +
       '</select><br>' +
       '<input id="swal-input31" class="swal2-input" placeholder="Banco CTA. CTE" value="'+ trabajador.BancoCTA_CTE +'">' +
       '<select id="swal-input32" class="swal2-input">' +
         '<option value="">Tipo Cuenta</option>' +
-        this.getOptionsTipoCuenta().map(option => `<option value="${option.value}" ${option.value === this.validarTipoCuenta(trabajador.Tipo_Cuenta) ? "selected" : ""}>${option.label}</option>`).join('') +
+        this.getOptionsTipoCuenta().map(option => `<option value="${option.value}" ${option.value === trabajador.Tipo_Cuenta.trim() ? "selected" : ""}>${option.label}</option>`).join('') +
       '</select><br>' +
       '<input id="swal-input33" class="swal2-input" placeholder="RSV_Indem_Acumul" value="'+ trabajador.RSV_Indem_Acumul +'">' +
       '<input id="swal-input34" class="swal2-input" placeholder="Año_Ult_Rsva_Indemni" value="'+ trabajador.Año_Ult_Rsva_Indemni +'">' +
@@ -900,8 +948,8 @@ export class TrabajadorComponent {
         if (!Nombres) {
           validationErrors.push('Los nombres son requeridos');
         }
-        if (!Identificacion) {
-          validationErrors.push('Identificacion es requerida');
+        if (!this.validarCedula(Identificacion)) {
+          validationErrors.push('Cédula invalida');
         }
         if (!Entidad_Bancaria) {
           validationErrors.push('Entidad Bancaria es requerido');
@@ -1151,54 +1199,51 @@ export class TrabajadorComponent {
     CuotaCuentaCorriente: number,
     Fondo_Reserva: string
   ): void {
-    const data = {
-      COMP_Codigo: COMP_Codigo,
-      Id_Trabajador: Id_Trabajador,
-      Tipo_trabajador: Tipo_trabajador,
-      Apellido_Paterno: Apellido_Paterno,
-      Apellido_Materno: Apellido_Materno,
-      Nombres: Nombres,
-      Identificacion: Identificacion,
-      Entidad_Bancaria: Entidad_Bancaria,
-      CarnetIESS: CarnetIESS,
-      Direccion: Direccion,
-      Telefono_Fijo: Telefono_Fijo,
-      Telefono_Movil: Telefono_Movil,
-      Genero: Genero,
-      Nro_Cuenta_Bancaria: Nro_Cuenta_Bancaria,
-      Codigo_Categoria_Ocupacion: Codigo_Categoria_Ocupacion,
-      Ocupacion: Ocupacion,
-      Centro_Costos: Centro_Costos,
-      Nivel_Salarial: Nivel_Salarial,
-      EstadoTrabajador: EstadoTrabajador,
-      Tipo_Contrato: Tipo_Contrato,
-      Tipo_Cese: Tipo_Cese,
-      EstadoCivil: EstadoCivil,
-      TipodeComision: TipodeComision,
-      FechaNacimiento: FechaNacimiento.toISOString(),
-      FechaIngreso: FechaIngreso.toISOString(),
-      FechaCese: FechaCese.toISOString(),
-      PeriododeVacaciones: PeriododeVacaciones,
-      FechaReingreso: FechaReingreso.toISOString(),
-      Fecha_Ult_Actualizacion: Fecha_Ult_Actualizacion.toISOString(),
-      EsReingreso: EsReingreso,
-      BancoCTA_CTE: BancoCTA_CTE,
-      Tipo_Cuenta: Tipo_Cuenta,
-      RSV_Indem_Acumul: RSV_Indem_Acumul,
-      Año_Ult_Rsva_Indemni: Año_Ult_Rsva_Indemni,
-      Mes_Ult_Rsva_Indemni: Mes_Ult_Rsva_Indemni,
-      FormaCalculo13ro: FormaCalculo13ro,
-      FormaCalculo14ro: FormaCalculo14ro,
-      BoniComplementaria: BoniComplementaria,
-      BoniEspecial: BoniEspecial,
-      Remuneracion_Minima: Remuneracion_Minima,
-      CuotaCuentaCorriente: CuotaCuentaCorriente,
-      Fondo_Reserva: Fondo_Reserva
-    };
-  
-    this.http.post('https://aspnetback.azurewebsites.net/api/ControladorAPI/trabajador/Edit', data).subscribe(
+    const url = `https://aspnetback.azurewebsites.net/api/ControladorAPI/trabajador/Edit?` +
+      `COMP_Codigo=${COMP_Codigo}` +
+      `&Id_Trabajador=${Id_Trabajador}` +
+      `&Tipo_trabajador=${Tipo_trabajador}` +
+      `&Apellido_Paterno=${Apellido_Paterno}` +
+      `&Apellido_Materno=${Apellido_Materno}` +
+      `&Nombres=${Nombres}` +
+      `&Identificacion=${Identificacion}` +
+      `&Entidad_Bancaria=${Entidad_Bancaria}` +
+      `&CarnetIESS=${CarnetIESS}` +
+      `&Direccion=${Direccion}` +
+      `&Telefono_Fijo=${Telefono_Fijo}` +
+      `&Telefono_Movil=${Telefono_Movil}` +
+      `&Genero=${Genero}` +
+      `&Nro_Cuenta_Bancaria=${Nro_Cuenta_Bancaria}` +
+      `&Codigo_Categoria_Ocupacion=${Codigo_Categoria_Ocupacion}` +
+      `&Ocupacion=${Ocupacion}` +
+      `&Centro_Costos=${Centro_Costos}` +
+      `&Nivel_Salarial=${Nivel_Salarial}` +
+      `&EstadoTrabajador=${EstadoTrabajador}` +
+      `&Tipo_Contrato=${Tipo_Contrato}` +
+      `&Tipo_Cese=${Tipo_Cese}` +
+      `&EstadoCivil=${EstadoCivil}` +
+      `&TipodeComision=${TipodeComision}` +
+      `&FechaNacimiento=${FechaNacimiento.toISOString()}` +
+      `&FechaIngreso=${FechaIngreso.toISOString()}` +
+      `&FechaCese=${FechaCese.toISOString()}` +
+      `&PeriododeVacaciones=${PeriododeVacaciones}` +
+      `&FechaReingreso=${FechaReingreso.toISOString()}` +
+      `&Fecha_Ult_Actualizacion=${Fecha_Ult_Actualizacion.toISOString()}` +
+      `&EsReingreso=${EsReingreso}` +
+      `&BancoCTA_CTE=${BancoCTA_CTE}` +
+      `&Tipo_Cuenta=${Tipo_Cuenta}` +
+      `&RSV_Indem_Acumul=${RSV_Indem_Acumul}` +
+      `&Año_Ult_Rsva_Indemni=${Año_Ult_Rsva_Indemni}` +
+      `&Mes_Ult_Rsva_Indemni=${Mes_Ult_Rsva_Indemni}` +
+      `&FormaCalculo13ro=${FormaCalculo13ro}` +
+      `&FormaCalculo14ro=${FormaCalculo14ro}` +
+      `&BoniComplementaria=${BoniComplementaria}` +
+      `&BoniEspecial=${BoniEspecial}` +
+      `&Remuneracion_Minima=${Remuneracion_Minima}` +
+      `&CuotaCuentaCorriente=${CuotaCuentaCorriente}` +
+      `&Fondo_Reserva=${Fondo_Reserva}`;
+    this.http.post(url, null).subscribe(
       (response) => {
-        console.log(response);
         Swal.fire({
           title: 'Cambios guardados',
           icon: 'success',
@@ -1213,6 +1258,7 @@ export class TrabajadorComponent {
       }
     );
   }
+  
   
 
   onlyLettersAndNumbers(event: KeyboardEvent): void {
@@ -1235,92 +1281,33 @@ export class TrabajadorComponent {
     }
   }
 
-  validarCedula(cedula: string) {
-    
-    
-    // Preguntamos si la cedula consta de 10 digitos
-    if (cedula.length === 10) {
+  validarCedula(cad: string) {
+    let total = 0;
+    let longitud = cad.length;
+    let longcheck = longitud - 1;
+    let i = 0;
   
-      // Obtenemos el digito de la region que sonlos dos primeros digitos
-      const digitoRegion = cedula.substring(0, 2);
-  
-      // Pregunto si la region existe ecuador se divide en 24 regiones
-      if (digitoRegion >= String(1) && digitoRegion <= String(24)) {
-  
-        // Extraigo el ultimo digito
-        const ultimoDigito = Number(cedula.substring(9, 10));
-  
-        // Agrupo todos los pares y los sumo
-        const pares = Number(cedula.substring(1, 2)) + Number(cedula.substring(3, 4)) + Number(cedula.substring(5, 6)) + Number(cedula.substring(7, 8));
-  
-        // Agrupo los impares, los multiplico por un factor de 2, si la resultante es > que 9 le restamos el 9 a la resultante
-        let numeroUno: any = cedula.substring(0, 1);
-        numeroUno = (numeroUno * 2);
-        if (numeroUno > 9) {
-          numeroUno = (numeroUno - 9);
-        }
-  
-        let numeroTres: any = cedula.substring(2, 3);
-        numeroTres = (numeroTres * 2);
-        if (numeroTres > 9) {
-          numeroTres = (numeroTres - 9);
-        }
-  
-        let numeroCinco: any = cedula.substring(4, 5);
-        numeroCinco = (numeroCinco * 2);
-        if (numeroCinco > 9) {
-          numeroCinco = (numeroCinco - 9);
-        }
-  
-        let numeroSiete: any = cedula.substring(6, 7);
-        numeroSiete = (numeroSiete * 2);
-        if (numeroSiete > 9) {
-          numeroSiete = (numeroSiete - 9);
-        }
-  
-        let numeroNueve: any = cedula.substring(8, 9);
-        numeroNueve = (numeroNueve * 2);
-        if (numeroNueve > 9) {
-          numeroNueve = (numeroNueve - 9);
-        }
-  
-        const impares = numeroUno + numeroTres + numeroCinco + numeroSiete + numeroNueve;
-  
-        // Suma total
-        const sumaTotal = (pares + impares);
-  
-        // extraemos el primero digito
-        const primerDigitoSuma = String(sumaTotal).substring(0, 1);
-  
-        // Obtenemos la decena inmediata
-        const decena = (Number(primerDigitoSuma) + 1) * 10;
-  
-        // Obtenemos la resta de la decena inmediata - la suma_total esto nos da el digito validador
-        let digitoValidador = decena - sumaTotal;
-  
-        // Si el digito validador es = a 10 toma el valor de 0
-        if (digitoValidador === 10) {
-          digitoValidador = 0;
-        }
-  
-        // Validamos que el digito validador sea igual al de la cedula
-        if (digitoValidador === ultimoDigito) {
-          return true;
+    if (cad !== "" && longitud === 10) {
+      for (i = 0; i < longcheck; i++) {
+        if (i % 2 === 0) {
+          var aux = parseInt(cad.charAt(i)) * 2;
+          if (aux > 9) aux -= 9;
+          total += aux;
         } else {
-          return false;
+          total += parseInt(cad.charAt(i));
         }
-  
-      } else {
-        // imprimimos en consola si la region no pertenece
-        return false;
       }
-    } else {
-      // Imprimimos en consola si la cedula tiene mas o menos de 10 digitos
-      return false;
+      total = total % 10 ? 10 - (total % 10) : 0;
+      if (parseInt(cad.charAt(longitud - 1)) === total) {
+        console.log("cedula valida");
+        return true
+      } else {
+        console.log("cedula invalida");
+        return false
+      }
+    }else{
+      console.log("la cédula debe tener 10 digitos")
+      return false
     }
-  
   }
-  
-  
-  
 }

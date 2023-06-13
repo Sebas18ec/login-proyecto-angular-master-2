@@ -16,7 +16,7 @@ export class AfectaIessComponent {
   }
   
   getAfectaIESS(): void {
-    this.http.get<any[]>('api/ControladorAPI/GetTrabaAfectaIESS').subscribe(
+    this.http.get<any[]>('https://aspnetback.azurewebsites.net/api/ControladorAPI/GetTrabaAfectaIESS').subscribe(
       data => {
         this.afectaIESS = data;
       },

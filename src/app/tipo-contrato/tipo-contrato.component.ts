@@ -16,7 +16,7 @@ export class TipoContratoComponent {
   }
   
   getTipoContrato(): void {
-    this.http.get<any[]>('api/ControladorAPI/trabajador/GetTipoContrato').subscribe(
+    this.http.get<any[]>('https://aspnetback.azurewebsites.net/api/ControladorAPI/trabajador/GetTipoContrato').subscribe(
       data => {
         this.tipoContrato = data;
       },

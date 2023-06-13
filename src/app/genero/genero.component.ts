@@ -16,7 +16,7 @@ export class GeneroComponent {
   }
   
   getGenero(): void {
-    this.http.get<any[]>('api/ControladorAPI/trabajador/GetGenero').subscribe(
+    this.http.get<any[]>('https://aspnetback.azurewebsites.net/api/ControladorAPI/trabajador/GetGenero').subscribe(
       data => {
         this.genero = data;
       },

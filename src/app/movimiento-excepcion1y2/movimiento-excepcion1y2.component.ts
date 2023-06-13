@@ -16,7 +16,7 @@ export class MovimientoExcepcion1y2Component {
   }
   
   getMovExcepcion1y2(): void {
-    this.http.get<any[]>('api/ControladorAPI/ObtenerMovimientosExcepcion1y2').subscribe(
+    this.http.get<any[]>('https://aspnetback.azurewebsites.net/api/ControladorAPI/ObtenerMovimientosExcepcion1y2').subscribe(
       data => {
         this.movExcepcion1y2 = data;
       },

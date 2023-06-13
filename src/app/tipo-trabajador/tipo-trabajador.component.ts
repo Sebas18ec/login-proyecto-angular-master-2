@@ -16,7 +16,7 @@ export class TipoTrabajadorComponent {
   }
   
   getTipoTrabajador(): void {
-    this.http.get<any[]>('api/ControladorAPI/trabajador/GetTipoTrabajador').subscribe(
+    this.http.get<any[]>('https://aspnetback.azurewebsites.net/api/ControladorAPI/trabajador/GetTipoTrabajador').subscribe(
       data => {
         this.tipoTrabajador = data;
       },

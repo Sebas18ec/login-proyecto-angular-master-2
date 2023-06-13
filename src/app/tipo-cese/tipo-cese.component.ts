@@ -16,7 +16,7 @@ export class TipoCeseComponent {
   }
   
   getTipoCese(): void {
-    this.http.get<any[]>('api/ControladorAPI/trabajador/GetTipoCese').subscribe(
+    this.http.get<any[]>('https://aspnetback.azurewebsites.net/api/ControladorAPI/trabajador/GetTipoCese').subscribe(
       data => {
         this.tipoCese = data;
       },

@@ -16,7 +16,7 @@ export class EstadoTrabajadorComponent {
   }
   
   getEstadoTrabajador(): void {
-    this.http.get<any[]>('api/ControladorAPI/trabajador/GetEstadoTrabajador').subscribe(
+    this.http.get<any[]>('https://aspnetback.azurewebsites.net/api/ControladorAPI/trabajador/GetEstadoTrabajador').subscribe(
       data => {
         this.estadoTrabajador = data;
       },

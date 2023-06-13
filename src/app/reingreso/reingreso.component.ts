@@ -16,7 +16,7 @@ export class ReingresoComponent {
   }
   
   getReingreso(): void {
-    this.http.get<any[]>('api/ControladorAPI/trabajador/GetEsReingreso').subscribe(
+    this.http.get<any[]>('https://aspnetback.azurewebsites.net/api/ControladorAPI/trabajador/GetEsReingreso').subscribe(
       data => {
         this.reingreso = data;
       },
