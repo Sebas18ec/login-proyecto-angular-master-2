@@ -59,7 +59,7 @@
                                 <a class="nav-link px-0 bi-gear"> <span class="d-none d-sm-inline"(click)="TipoOperacion()">Tipo Operacion</span></a>
                             </li>
                             <li>
-                                <a href="#" class="nav-link px-0"> <span class="d-none d-sm-inline"(click)="MovimientoPlanilla1()">Movimiento planilla</span></a>
+                                <a href="#" class="nav-link px-0"> <span class="d-none d-sm-inline"(click)="MovimientoPlanilla1y2()">Movimiento planilla 1 y 2</span></a>
                             </li>
                         </ul>
                     </li>
@@ -136,8 +136,8 @@
             <div *ngIf="mostrarTipoOperacion">
               <app-tipo-operacion></app-tipo-operacion>
             </div>
-            <div *ngIf="mostrarMovPlanilla1"> //este otro
-              <app-movimiento-planilla1></app-movimiento-planilla1>
+            <div *ngIf="mostrarMovExcepcion1y2">
+              <app-movimiento-excepcion1y2></app-movimiento-excepcion1y2>
             </div>
           </div>
     </div>

@@ -36,7 +36,7 @@ export class HomeComponent implements OnInit {
   mostrarGenero: boolean = false;
   mostrarReingreso: boolean = false;
   mostrarTipoOperacion: boolean = false;
-  mostrarMovPlanilla1: boolean= false;
+  mostrarMovExcepcion1y2: boolean= false;
 
   constructor(private emisorService: EmisorService,private sanitizer: DomSanitizer, private http: HttpClient,private router: Router) {
     this.logoUrl = this.sanitizer.bypassSecurityTrustUrl('assets/img/logo-taller.svg');  
@@ -186,7 +186,7 @@ export class HomeComponent implements OnInit {
       this.mostrarGenero = false;
       this.mostrarReingreso = false;
       this.mostrarTipoOperacion = false;
-      this.mostrarMovPlanilla1 = false;
+      this.mostrarMovExcepcion1y2 = false;
     }
   }
 
@@ -207,7 +207,7 @@ export class HomeComponent implements OnInit {
       this.mostrarGenero = false;
       this.mostrarReingreso = false;
       this.mostrarTipoOperacion = false;
-      this.mostrarMovPlanilla1 = false;
+      this.mostrarMovExcepcion1y2 = false;
     }
   }
 
@@ -227,7 +227,7 @@ export class HomeComponent implements OnInit {
       this.mostrarGenero = false;
       this.mostrarReingreso = false;
       this.mostrarTipoOperacion = false;
-      this.mostrarMovPlanilla1 = false;
+      this.mostrarMovExcepcion1y2 = false;
     }
   }
 
@@ -244,7 +244,7 @@ export class HomeComponent implements OnInit {
       this.mostrarGenero = false;
       this.mostrarReingreso = false;
       this.mostrarTipoOperacion = false;
-      this.mostrarMovPlanilla1 = false;
+      this.mostrarMovExcepcion1y2 = false;
   }
 
   EstadoTrabajador(): void {
@@ -260,7 +260,7 @@ export class HomeComponent implements OnInit {
     this.mostrarGenero = false;
     this.mostrarReingreso = false;
     this.mostrarTipoOperacion = false;
-    this.mostrarMovPlanilla1 = false;
+    this.mostrarMovExcepcion1y2 = false;
   }
 
   TipoContrato(): void {
@@ -276,7 +276,7 @@ export class HomeComponent implements OnInit {
     this.mostrarGenero = false;
     this.mostrarReingreso = false;
     this.mostrarTipoOperacion = false;
-    this.mostrarMovPlanilla1 = false;
+    this.mostrarMovExcepcion1y2 = false;
   }
 
   TipoCese(): void {
@@ -292,7 +292,7 @@ export class HomeComponent implements OnInit {
     this.mostrarGenero = false;
     this.mostrarReingreso = false;
     this.mostrarTipoOperacion = false;
-    this.mostrarMovPlanilla1 = false;
+    this.mostrarMovExcepcion1y2 = false;
   }
 
   TipoCuenta(): void {
@@ -308,7 +308,7 @@ export class HomeComponent implements OnInit {
     this.mostrarGenero = false;
     this.mostrarReingreso = false;
     this.mostrarTipoOperacion = false;
-    this.mostrarMovPlanilla1 = false;
+    this.mostrarMovExcepcion1y2 = false;
   }
 
   EstadoCivil(): void {
@@ -324,7 +324,7 @@ export class HomeComponent implements OnInit {
     this.mostrarGenero = false;
     this.mostrarReingreso = false;
     this.mostrarTipoOperacion = false;
-    this.mostrarMovPlanilla1 = false;
+    this.mostrarMovExcepcion1y2 = false;
   }
 
   Genero(): void {
@@ -340,7 +340,7 @@ export class HomeComponent implements OnInit {
     this.mostrarGenero = true;
     this.mostrarReingreso = false;
     this.mostrarTipoOperacion = false;
-    this.mostrarMovPlanilla1 = false;
+    this.mostrarMovExcepcion1y2 = false;
   }
 
   Reingreso(): void {
@@ -356,7 +356,7 @@ export class HomeComponent implements OnInit {
     this.mostrarGenero = false;
     this.mostrarReingreso = true;
     this.mostrarTipoOperacion = false;
-    this.mostrarMovPlanilla1 = false;
+    this.mostrarMovExcepcion1y2 = false;
   }
 
   TipoOperacion(): void {
@@ -372,10 +372,10 @@ export class HomeComponent implements OnInit {
     this.mostrarGenero = false;
     this.mostrarReingreso = false;
     this.mostrarTipoOperacion = true;
-    this.mostrarMovPlanilla1 = false;
+    this.mostrarMovExcepcion1y2 = false;
   }
 
-  MovimientoPlanilla1(): void {
+  MovimientoPlanilla1y2(): void {
     this.mostrarMovimientosPlanilla = false;
     this.mostrarFormularioCentroCostos = false;
     this.mostrarTrabajadores = false;
@@ -388,7 +388,7 @@ export class HomeComponent implements OnInit {
     this.mostrarGenero = false;
     this.mostrarReingreso = false;
     this.mostrarTipoOperacion = false;
-    this.mostrarMovPlanilla1 = true;
+    this.mostrarMovExcepcion1y2 = true;
   }
 
   cerrarSesionAutorizador(): void {

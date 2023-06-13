@@ -14,7 +14,18 @@ import { MovimientoPlanillaComponent } from './movimiento-planilla/movimiento-pl
 import { NgxPaginationModule } from 'ngx-pagination';
 import { AuthGuard } from './auth.guard';
 import { CentroCostosComponent } from './centro-costos/centro-costos.component';
-import { TrabajadorComponent } from './trabajador/trabajador.component';  
+import { TrabajadorComponent } from './trabajador/trabajador.component';
+import { TipoTrabajadorComponent } from './tipo-trabajador/tipo-trabajador.component';
+import { EstadoTrabajadorComponent } from './estado-trabajador/estado-trabajador.component';
+import { TipoContratoComponent } from './tipo-contrato/tipo-contrato.component';
+import { TipoCeseComponent } from './tipo-cese/tipo-cese.component';
+import { EstadoCivilComponent } from './estado-civil/estado-civil.component';
+import { TipoCuentaComponent } from './tipo-cuenta/tipo-cuenta.component';
+import { GeneroComponent } from './genero/genero.component';
+import { ReingresoComponent } from './reingreso/reingreso.component';
+import { TipoOperacionComponent } from './tipo-operacion/tipo-operacion.component';
+import { MovimientoExcepcion1y2Component } from './movimiento-excepcion1y2/movimiento-excepcion1y2.component';
+import { MovimientoExcepcion3Component } from './movimiento-excepcion3/movimiento-excepcion3.component';
 
 
 @NgModule({
@@ -29,6 +40,17 @@ import { TrabajadorComponent } from './trabajador/trabajador.component';
     MovimientoPlanillaComponent,
     CentroCostosComponent,
     TrabajadorComponent,
+    TipoTrabajadorComponent,
+    EstadoTrabajadorComponent,
+    TipoContratoComponent,
+    TipoCeseComponent,
+    EstadoCivilComponent,
+    TipoCuentaComponent,
+    GeneroComponent,
+    ReingresoComponent,
+    TipoOperacionComponent,
+    MovimientoExcepcion1y2Component,
+    MovimientoExcepcion3Component,
   ],
   imports: [
     BrowserModule,
