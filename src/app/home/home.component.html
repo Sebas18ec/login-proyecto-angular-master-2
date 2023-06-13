@@ -59,10 +59,16 @@
                                 <a class="nav-link px-0 bi-gear"> <span class="d-none d-sm-inline"(click)="TipoOperacion()">Tipo Operacion</span></a>
                             </li>
                             <li>
-                                <a class="nav-link px-0"> <span class="d-none d-sm-inline"(click)="MovimientoExcepcion1y2()">Movimiento excepcion 1 y 2</span></a>
+                                <a class="nav-link px-0 bi-explicit"> <span class="d-none d-sm-inline"(click)="MovimientoExcepcion1y2()">Movimiento excepcion 1 y 2</span></a>
                             </li>
                             <li>
-                              <a class="nav-link px-0"> <span class="d-none d-sm-inline"(click)="MovimientoExcepcion3()">Movimiento excepcion 3</span></a>
+                              <a class="nav-link px-0 bi-explicit"> <span class="d-none d-sm-inline"(click)="MovimientoExcepcion3()">Movimiento excepcion 3</span></a>
+                            </li>
+                            <li>
+                              <a class="nav-link px-0 bi-explicit"> <span class="d-none d-sm-inline"(click)="AfectaIESS()">Afecta IESS</span></a>
+                            </li>
+                            <li>
+                              <a class="nav-link px-0 bi-explicit"> <span class="d-none d-sm-inline"(click)="MovimientoExcepcion3()">Afecta Impuesto Renta</span></a>
                             </li>
                         </ul>
                     </li>
@@ -144,6 +150,9 @@
             </div>
             <div *ngIf="mostrarMovExcepcion3">
               <app-movimiento-excepcion3></app-movimiento-excepcion3>
+            </div>
+            <div *ngIf="mostrarAfectaIESS">
+              <app-afecta-iess></app-afecta-iess>
             </div>
           </div>
     </div>

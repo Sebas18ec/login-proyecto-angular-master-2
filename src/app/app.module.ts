@@ -26,6 +26,8 @@ import { ReingresoComponent } from './reingreso/reingreso.component';
 import { TipoOperacionComponent } from './tipo-operacion/tipo-operacion.component';
 import { MovimientoExcepcion1y2Component } from './movimiento-excepcion1y2/movimiento-excepcion1y2.component';
 import { MovimientoExcepcion3Component } from './movimiento-excepcion3/movimiento-excepcion3.component';
+import { AfectaIessComponent } from './afecta-iess/afecta-iess.component';
+import { AfectaImpRentaComponent } from './afecta-imp-renta/afecta-imp-renta.component';
 
 
 @NgModule({
@@ -51,6 +53,8 @@ import { MovimientoExcepcion3Component } from './movimiento-excepcion3/movimient
     TipoOperacionComponent,
     MovimientoExcepcion1y2Component,
     MovimientoExcepcion3Component,
+    AfectaIessComponent,
+    AfectaImpRentaComponent,
   ],
   imports: [
     BrowserModule,

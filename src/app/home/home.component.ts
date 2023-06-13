@@ -38,6 +38,7 @@ export class HomeComponent implements OnInit {
   mostrarTipoOperacion: boolean = false;
   mostrarMovExcepcion1y2: boolean= false;
   mostrarMovExcepcion3: boolean = false;
+  mostrarAfectaIESS: boolean = false;
 
   constructor(private emisorService: EmisorService,private sanitizer: DomSanitizer, private http: HttpClient,private router: Router) {
     this.logoUrl = this.sanitizer.bypassSecurityTrustUrl('assets/img/logo-taller.svg');  
@@ -189,6 +190,7 @@ export class HomeComponent implements OnInit {
       this.mostrarTipoOperacion = false;
       this.mostrarMovExcepcion1y2 = false;
       this.mostrarMovExcepcion3 = false;
+      this.mostrarAfectaIESS = false;
     }
   }
 
@@ -211,6 +213,7 @@ export class HomeComponent implements OnInit {
       this.mostrarTipoOperacion = false;
       this.mostrarMovExcepcion1y2 = false;
       this.mostrarMovExcepcion3 = false;
+      this.mostrarAfectaIESS = false;
     }
   }
 
@@ -232,6 +235,7 @@ export class HomeComponent implements OnInit {
       this.mostrarTipoOperacion = false;
       this.mostrarMovExcepcion1y2 = false;
       this.mostrarMovExcepcion3 = false;
+      this.mostrarAfectaIESS = false;
     }
   }
 
@@ -250,6 +254,7 @@ export class HomeComponent implements OnInit {
       this.mostrarTipoOperacion = false;
       this.mostrarMovExcepcion1y2 = false;
       this.mostrarMovExcepcion3 = false;
+      this.mostrarAfectaIESS = false;
   }
 
   EstadoTrabajador(): void {
@@ -267,6 +272,7 @@ export class HomeComponent implements OnInit {
     this.mostrarTipoOperacion = false;
     this.mostrarMovExcepcion1y2 = false;
     this.mostrarMovExcepcion3 = false;
+    this.mostrarAfectaIESS = false;
   }
 
   TipoContrato(): void {
@@ -284,6 +290,7 @@ export class HomeComponent implements OnInit {
     this.mostrarTipoOperacion = false;
     this.mostrarMovExcepcion1y2 = false;
     this.mostrarMovExcepcion3 = false;
+    this.mostrarAfectaIESS = false;
   }
 
   TipoCese(): void {
@@ -301,6 +308,7 @@ export class HomeComponent implements OnInit {
     this.mostrarTipoOperacion = false;
     this.mostrarMovExcepcion1y2 = false;
     this.mostrarMovExcepcion3 = false;
+    this.mostrarAfectaIESS = false;
   }
 
   TipoCuenta(): void {
@@ -318,6 +326,7 @@ export class HomeComponent implements OnInit {
     this.mostrarTipoOperacion = false;
     this.mostrarMovExcepcion1y2 = false;
     this.mostrarMovExcepcion3 = false;
+    this.mostrarAfectaIESS = false;
   }
 
   EstadoCivil(): void {
@@ -335,6 +344,7 @@ export class HomeComponent implements OnInit {
     this.mostrarTipoOperacion = false;
     this.mostrarMovExcepcion1y2 = false;
     this.mostrarMovExcepcion3 = false;
+    this.mostrarAfectaIESS = false;
   }
 
   Genero(): void {
@@ -352,6 +362,7 @@ export class HomeComponent implements OnInit {
     this.mostrarTipoOperacion = false;
     this.mostrarMovExcepcion1y2 = false;
     this.mostrarMovExcepcion3 = false;
+    this.mostrarAfectaIESS = false;
   }
 
   Reingreso(): void {
@@ -369,6 +380,7 @@ export class HomeComponent implements OnInit {
     this.mostrarTipoOperacion = false;
     this.mostrarMovExcepcion1y2 = false;
     this.mostrarMovExcepcion3 = false;
+    this.mostrarAfectaIESS = false;
   }
 
   TipoOperacion(): void {
@@ -386,6 +398,7 @@ export class HomeComponent implements OnInit {
     this.mostrarTipoOperacion = true;
     this.mostrarMovExcepcion1y2 = false;
     this.mostrarMovExcepcion3 = false;
+    this.mostrarAfectaIESS = false;
   }
 
   MovimientoExcepcion1y2(): void {
@@ -403,6 +416,7 @@ export class HomeComponent implements OnInit {
     this.mostrarTipoOperacion = false;
     this.mostrarMovExcepcion1y2 = true;
     this.mostrarMovExcepcion3 = false;
+    this.mostrarAfectaIESS = false;
   }
 
   MovimientoExcepcion3(): void {
@@ -420,6 +434,25 @@ export class HomeComponent implements OnInit {
     this.mostrarTipoOperacion = false;
     this.mostrarMovExcepcion1y2 = false;
     this.mostrarMovExcepcion3 = true;
+    this.mostrarAfectaIESS = false;
+  }
+
+  AfectaIESS(): void {
+    this.mostrarMovimientosPlanilla = false;
+    this.mostrarFormularioCentroCostos = false;
+    this.mostrarTrabajadores = false;
+    this.mostrarTipoTrabajador = false;
+    this.mostrarEstadoTrabajador = false;
+    this.mostrarTipoContrato  = false;
+    this.mostrarTipoCese  = false;
+    this.mostrarTipoCuenta = false;
+    this.mostrarEstadoCivil = false;
+    this.mostrarGenero = false;
+    this.mostrarReingreso = false;
+    this.mostrarTipoOperacion = false;
+    this.mostrarMovExcepcion1y2 = false;
+    this.mostrarMovExcepcion3 = false;
+    this.mostrarAfectaIESS = true;
   }
 
   cerrarSesionAutorizador(): void {
