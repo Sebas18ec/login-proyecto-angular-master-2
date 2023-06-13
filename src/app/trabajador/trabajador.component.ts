@@ -356,6 +356,7 @@ export class TrabajadorComponent {
         this.fondoReserva
       )
     } else {
+      console.log("formulario invalido")
       // El formulario es inválido, muestra la alerta
       Swal.fire({
         icon: 'warning',

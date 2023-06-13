@@ -184,11 +184,10 @@
           <label for="fondoReserva">Fondo Reserva</label>
           <input id="fondoReserva" class="form-control" [(ngModel)]="fondoReserva" name="fondoReserva" required (keydown)="onlyLettersAndNumbers($event)">
         </div>
-        
+        <button type="submit" [disabled]="!myForm.valid || identificacionInvalid" class="btn btn-primary">Crear nuevo</button>
       </form>
     </div>
     <div class="modal-footer">
-      <button type="submit" [disabled]="!myForm.valid || identificacionInvalid" class="btn btn-primary">Crear nuevo</button>
       <button type="button" class="btn btn-secondary" (click)="modalRef?.hide()">Cerrar</button>
       <!-- <button type="button" class="btn btn-primary" (click)="crearTrabajador()">Crear</button> -->
     </div>
