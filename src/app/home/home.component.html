@@ -59,7 +59,10 @@
                                 <a class="nav-link px-0 bi-gear"> <span class="d-none d-sm-inline"(click)="TipoOperacion()">Tipo Operacion</span></a>
                             </li>
                             <li>
-                                <a href="#" class="nav-link px-0"> <span class="d-none d-sm-inline"(click)="MovimientoPlanilla1y2()">Movimiento planilla 1 y 2</span></a>
+                                <a class="nav-link px-0"> <span class="d-none d-sm-inline"(click)="MovimientoExcepcion1y2()">Movimiento excepcion 1 y 2</span></a>
+                            </li>
+                            <li>
+                              <a class="nav-link px-0"> <span class="d-none d-sm-inline"(click)="MovimientoExcepcion3()">Movimiento excepcion 3</span></a>
                             </li>
                         </ul>
                     </li>
@@ -138,6 +141,9 @@
             </div>
             <div *ngIf="mostrarMovExcepcion1y2">
               <app-movimiento-excepcion1y2></app-movimiento-excepcion1y2>
+            </div>
+            <div *ngIf="mostrarMovExcepcion3">
+              <app-movimiento-excepcion3></app-movimiento-excepcion3>
             </div>
           </div>
     </div>

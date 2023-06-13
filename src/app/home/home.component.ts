@@ -37,6 +37,7 @@ export class HomeComponent implements OnInit {
   mostrarReingreso: boolean = false;
   mostrarTipoOperacion: boolean = false;
   mostrarMovExcepcion1y2: boolean= false;
+  mostrarMovExcepcion3: boolean = false;
 
   constructor(private emisorService: EmisorService,private sanitizer: DomSanitizer, private http: HttpClient,private router: Router) {
     this.logoUrl = this.sanitizer.bypassSecurityTrustUrl('assets/img/logo-taller.svg');  
@@ -187,6 +188,7 @@ export class HomeComponent implements OnInit {
       this.mostrarReingreso = false;
       this.mostrarTipoOperacion = false;
       this.mostrarMovExcepcion1y2 = false;
+      this.mostrarMovExcepcion3 = false;
     }
   }
 
@@ -208,6 +210,7 @@ export class HomeComponent implements OnInit {
       this.mostrarReingreso = false;
       this.mostrarTipoOperacion = false;
       this.mostrarMovExcepcion1y2 = false;
+      this.mostrarMovExcepcion3 = false;
     }
   }
 
@@ -228,6 +231,7 @@ export class HomeComponent implements OnInit {
       this.mostrarReingreso = false;
       this.mostrarTipoOperacion = false;
       this.mostrarMovExcepcion1y2 = false;
+      this.mostrarMovExcepcion3 = false;
     }
   }
 
@@ -245,6 +249,7 @@ export class HomeComponent implements OnInit {
       this.mostrarReingreso = false;
       this.mostrarTipoOperacion = false;
       this.mostrarMovExcepcion1y2 = false;
+      this.mostrarMovExcepcion3 = false;
   }
 
   EstadoTrabajador(): void {
@@ -261,6 +266,7 @@ export class HomeComponent implements OnInit {
     this.mostrarReingreso = false;
     this.mostrarTipoOperacion = false;
     this.mostrarMovExcepcion1y2 = false;
+    this.mostrarMovExcepcion3 = false;
   }
 
   TipoContrato(): void {
@@ -277,6 +283,7 @@ export class HomeComponent implements OnInit {
     this.mostrarReingreso = false;
     this.mostrarTipoOperacion = false;
     this.mostrarMovExcepcion1y2 = false;
+    this.mostrarMovExcepcion3 = false;
   }
 
   TipoCese(): void {
@@ -293,6 +300,7 @@ export class HomeComponent implements OnInit {
     this.mostrarReingreso = false;
     this.mostrarTipoOperacion = false;
     this.mostrarMovExcepcion1y2 = false;
+    this.mostrarMovExcepcion3 = false;
   }
 
   TipoCuenta(): void {
@@ -309,6 +317,7 @@ export class HomeComponent implements OnInit {
     this.mostrarReingreso = false;
     this.mostrarTipoOperacion = false;
     this.mostrarMovExcepcion1y2 = false;
+    this.mostrarMovExcepcion3 = false;
   }
 
   EstadoCivil(): void {
@@ -325,6 +334,7 @@ export class HomeComponent implements OnInit {
     this.mostrarReingreso = false;
     this.mostrarTipoOperacion = false;
     this.mostrarMovExcepcion1y2 = false;
+    this.mostrarMovExcepcion3 = false;
   }
 
   Genero(): void {
@@ -341,6 +351,7 @@ export class HomeComponent implements OnInit {
     this.mostrarReingreso = false;
     this.mostrarTipoOperacion = false;
     this.mostrarMovExcepcion1y2 = false;
+    this.mostrarMovExcepcion3 = false;
   }
 
   Reingreso(): void {
@@ -357,6 +368,7 @@ export class HomeComponent implements OnInit {
     this.mostrarReingreso = true;
     this.mostrarTipoOperacion = false;
     this.mostrarMovExcepcion1y2 = false;
+    this.mostrarMovExcepcion3 = false;
   }
 
   TipoOperacion(): void {
@@ -373,9 +385,10 @@ export class HomeComponent implements OnInit {
     this.mostrarReingreso = false;
     this.mostrarTipoOperacion = true;
     this.mostrarMovExcepcion1y2 = false;
+    this.mostrarMovExcepcion3 = false;
   }
 
-  MovimientoPlanilla1y2(): void {
+  MovimientoExcepcion1y2(): void {
     this.mostrarMovimientosPlanilla = false;
     this.mostrarFormularioCentroCostos = false;
     this.mostrarTrabajadores = false;
@@ -389,6 +402,24 @@ export class HomeComponent implements OnInit {
     this.mostrarReingreso = false;
     this.mostrarTipoOperacion = false;
     this.mostrarMovExcepcion1y2 = true;
+    this.mostrarMovExcepcion3 = false;
+  }
+
+  MovimientoExcepcion3(): void {
+    this.mostrarMovimientosPlanilla = false;
+    this.mostrarFormularioCentroCostos = false;
+    this.mostrarTrabajadores = false;
+    this.mostrarTipoTrabajador = false;
+    this.mostrarEstadoTrabajador = false;
+    this.mostrarTipoContrato  = false;
+    this.mostrarTipoCese  = false;
+    this.mostrarTipoCuenta = false;
+    this.mostrarEstadoCivil = false;
+    this.mostrarGenero = false;
+    this.mostrarReingreso = false;
+    this.mostrarTipoOperacion = false;
+    this.mostrarMovExcepcion1y2 = false;
+    this.mostrarMovExcepcion3 = true;
   }
 
   cerrarSesionAutorizador(): void {
