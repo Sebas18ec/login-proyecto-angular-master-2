@@ -28,7 +28,8 @@ import { MovimientoExcepcion1y2Component } from './movimiento-excepcion1y2/movim
 import { MovimientoExcepcion3Component } from './movimiento-excepcion3/movimiento-excepcion3.component';
 import { AfectaIessComponent } from './afecta-iess/afecta-iess.component';
 import { AfectaImpRentaComponent } from './afecta-imp-renta/afecta-imp-renta.component';
-
+// Importa el módulo ModalModule desde ngx-bootstrap
+import { ModalModule } from 'ngx-bootstrap/modal';
 
 @NgModule({
   declarations: [
@@ -61,7 +62,8 @@ import { AfectaImpRentaComponent } from './afecta-imp-renta/afecta-imp-renta.com
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
-    NgxPaginationModule
+    NgxPaginationModule,
+    ModalModule.forRoot(),
   ],
   providers: [AuthGuard],
   bootstrap: [AppComponent]
