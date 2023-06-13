@@ -1,8 +1,5 @@
 import { Component } from '@angular/core';
 import { HttpClient, HttpErrorResponse, HttpParams } from '@angular/common/http';
-import Swal from 'sweetalert2';
-import { Router } from '@angular/router';
-import { map } from 'rxjs/operators';
 
 @Component({
   selector: 'app-tipo-trabajador',
