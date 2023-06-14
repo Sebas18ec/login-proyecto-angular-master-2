@@ -86,7 +86,7 @@ export class LoginComponent implements OnInit {
 
   onSubmit() {
     if (!this.username || !this.password || !this.emisorComp) {
-      Swal.fire('Error');
+      Swal.fire('Datos incorrectos, intenta de nuevo con estas credenciles');
       return;
     }
 
