@@ -54,29 +54,29 @@ export class TrabajadorComponent {
   tipoTrabajadorSeleccionado: any
   generoSeleccionado: any
   nroCtaBancaria: any
-  codCatOcupacion: any
+  codigoCatOcupacionSeleccionado: any
   ocupacion: any
   centroCostosSeleccionado: any
   estadoTrabajadorSeleccionado: any
-  nivelSalarial: any
+  nivelSalarialSeleccionado: any
   tipoContratoSeleccionado: any
   estadoCivilSeleccionado: any
   tipoCeseSeleccionado: any
   fechaNacimiento: any
-  tipoComision: any
-  periodoVacaciones: any
+  tipoComisionSeleccionado: any
+  periodoVacacionesSeleccionado: any
   fechaIngreso: any
   fechaCese: any
   esReingresoSeleccionado: any
   fechaUltActualizacion: any
   fechaReingreso: any
   tipoCuentaSeleccionado: any
-  formaCalculo14ro: any
-  formaCalculo13ro: any
+  decimo14roSeleccionado: any
+  decimo13roSeleccionado: any
   remuneracionMinima: any
   boniEspecial: any
   boniComplementaria: any
-  fondoReserva: any
+  fondoReservaSeleccionado: any
 
   constructor(private modalService: BsModalService,private http: HttpClient,private sanitizer: DomSanitizer,private emisorService: EmisorService,private router: Router) {
   } 
@@ -228,7 +228,7 @@ export class TrabajadorComponent {
       .pipe(
         map(data => data.map(item => ({
           value: item.Descripcion, // Usar DesripMovimientoExce como valor
-          label: item.Codigo.trim() // Mostrar CodigoMovimientoExce en la interfaz
+          label: item.Descripcion + " - " + item.Codigo.trim() // Mostrar CodigoMovimientoExce en la interfaz
         })))
       ).subscribe(
         data => {
@@ -243,7 +243,7 @@ export class TrabajadorComponent {
       .pipe(
         map(data => data.map(item => ({
           value: item.Descripcion, // Usar DesripMovimientoExce como valor
-          label: item.Codigo.trim() // Mostrar CodigoMovimientoExce en la interfaz
+          label: item.Descripcion + " - " +item.Codigo.trim() // Mostrar CodigoMovimientoExce en la interfaz
         })))
       ).subscribe(
         data => {
@@ -258,7 +258,7 @@ export class TrabajadorComponent {
       .pipe(
         map(data => data.map(item => ({
           value: item.Descripcion, // Usar DesripMovimientoExce como valor
-          label: item.Codigo.trim() // Mostrar CodigoMovimientoExce en la interfaz
+          label: item.Descripcion + " - " +item.Codigo.trim() // Mostrar CodigoMovimientoExce en la interfaz
         })))
       ).subscribe(
         data => {
@@ -273,7 +273,7 @@ export class TrabajadorComponent {
       .pipe(
         map(data => data.map(item => ({
           value: item.Descripcion, // Usar DesripMovimientoExce como valor
-          label: item.Codigo.trim() // Mostrar CodigoMovimientoExce en la interfaz
+          label: item.Descripcion + " - " +item.Codigo.trim() // Mostrar CodigoMovimientoExce en la interfaz
         })))
       ).subscribe(
         data => {
@@ -287,8 +287,8 @@ export class TrabajadorComponent {
       this.http.get<any[]>('api/ControladorAPI/trabajador/GetCategoriaOcupacional')
       .pipe(
         map(data => data.map(item => ({
-          value: item.Descripcion, // Usar DesripMovimientoExce como valor
-          label: item.Codigo.trim() // Mostrar CodigoMovimientoExce en la interfaz
+          value: item.Codigo, // Usar DesripMovimientoExce como valor
+          label: item.Codigo + " - " +  item.Descripcion // Mostrar CodigoMovimientoExce en la interfaz
         })))
       ).subscribe(
         data => {
@@ -303,7 +303,7 @@ export class TrabajadorComponent {
       .pipe(
         map(data => data.map(item => ({
           value: item.Descripcion, // Usar DesripMovimientoExce como valor
-          label: item.Codigo.trim() // Mostrar CodigoMovimientoExce en la interfaz
+          label: item.Codigo + " - " +  item.Descripcion // Mostrar CodigoMovimientoExce en la interfaz
         })))
       ).subscribe(
         data => {
@@ -427,29 +427,29 @@ export class TrabajadorComponent {
         this.telefonoMovil,
         this.generoSeleccionado,
         this.nroCtaBancaria,
-        this.codCatOcupacion,
+        this.codigoCatOcupacionSeleccionado,
         this.ocupacion,
         this.centroCostosSeleccionado,
-        this.nivelSalarial,
+        this.nivelSalarialSeleccionado,
         this.estadoTrabajadorSeleccionado,
         this.tipoContratoSeleccionado,
         this.tipoCeseSeleccionado,
         this.estadoCivilSeleccionado,
-        this.tipoComision,
+        this.tipoComisionSeleccionado,
         new Date(this.fechaNacimiento),
         new Date(this.fechaIngreso),
         new Date(this.fechaCese), 
-        this.periodoVacaciones,
+        this.periodoVacacionesSeleccionado,
         new Date(this.fechaReingreso), 
         new Date(this.fechaUltActualizacion), 
         this.esReingresoSeleccionado, 
         this.tipoCuentaSeleccionado,
-        this.formaCalculo13ro,
-        this.formaCalculo14ro,
+        this.decimo13roSeleccionado,
+        this.decimo14roSeleccionado,
         this.boniComplementaria,
         this.boniEspecial, 
         this.remuneracionMinima,
-        this.fondoReserva
+        this.fondoReservaSeleccionado
       )
     } else {
       console.log("formulario invalido")
