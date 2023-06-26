@@ -93,7 +93,7 @@ export class TrabajadorComponent {
       .pipe(
         map(data => data.map(item => ({
           value: item.Descripcion, // Usar DesripMovimientoExce como valor
-          label: item.Codigo.trim() // Mostrar CodigoMovimientoExce en la interfaz
+          label: item.Descripcion + " - " +item.Codigo.trim() // Mostrar CodigoMovimientoExce en la interfaz
         })))
       ).subscribe(
         data => {
@@ -108,7 +108,7 @@ export class TrabajadorComponent {
       .pipe(
         map(data => data.map(item => ({
           value: item.Descripcion, // Usar DesripMovimientoExce como valor
-          label: item.Codigo.trim() // Mostrar CodigoMovimientoExce en la interfaz
+          label: item.Descripcion + " - " +item.Codigo.trim() // Mostrar CodigoMovimientoExce en la interfaz
         })))
       ).subscribe(
         data => {
@@ -123,7 +123,7 @@ export class TrabajadorComponent {
       .pipe(
         map(data => data.map(item => ({
           value: item.Codigo, // Usar DesripMovimientoExce como valor
-          label: item.NombreCentroCostos.trim() // Mostrar CodigoMovimientoExce en la interfaz
+          label: item.Codigo + " - " +item.NombreCentroCostos.trim() // Mostrar CodigoMovimientoExce en la interfaz
         })))
       ).subscribe(
         data => {
@@ -138,7 +138,7 @@ export class TrabajadorComponent {
       .pipe(
         map(data => data.map(item => ({
           value: item.Descripcion, // Usar DesripMovimientoExce como valor
-          label: item.Codigo.trim() // Mostrar CodigoMovimientoExce en la interfaz
+          label: item.Descripcion + " - " +item.Codigo.trim() // Mostrar CodigoMovimientoExce en la interfaz
         })))
       ).subscribe(
         data => {
@@ -153,7 +153,7 @@ export class TrabajadorComponent {
       .pipe(
         map(data => data.map(item => ({
           value: item.Descripcion, // Usar DesripMovimientoExce como valor
-          label: item.Codigo.trim() // Mostrar CodigoMovimientoExce en la interfaz
+          label: item.Descripcion + " - " +item.Codigo.trim() // Mostrar CodigoMovimientoExce en la interfaz
         })))
       ).subscribe(
         data => {
@@ -168,7 +168,7 @@ export class TrabajadorComponent {
       .pipe(
         map(data => data.map(item => ({
           value: item.Descripcion, // Usar DesripMovimientoExce como valor
-          label: item.Codigo.trim() // Mostrar CodigoMovimientoExce en la interfaz
+          label: item.Descripcion + " - " +item.Codigo.trim() // Mostrar CodigoMovimientoExce en la interfaz
         })))
       ).subscribe(
         data => {
@@ -183,7 +183,7 @@ export class TrabajadorComponent {
       .pipe(
         map(data => data.map(item => ({
           value: item.Descripcion, // Usar DesripMovimientoExce como valor
-          label: item.Codigo.trim() // Mostrar CodigoMovimientoExce en la interfaz
+          label: item.Descripcion + " - " +item.Codigo.trim() // Mostrar CodigoMovimientoExce en la interfaz
         })))
       ).subscribe(
         data => {
@@ -198,7 +198,7 @@ export class TrabajadorComponent {
       .pipe(
         map(data => data.map(item => ({
           value: item.Descripcion, // Usar DesripMovimientoExce como valor
-          label: item.Codigo.trim() // Mostrar CodigoMovimientoExce en la interfaz
+          label: item.Descripcion + " - " +item.Codigo.trim() // Mostrar CodigoMovimientoExce en la interfaz
         })))
       ).subscribe(
         data => {
@@ -213,7 +213,7 @@ export class TrabajadorComponent {
       .pipe(
         map(data => data.map(item => ({
           value: item.Descripcion, // Usar DesripMovimientoExce como valor
-          label: item.Codigo.trim() // Mostrar CodigoMovimientoExce en la interfaz
+          label: item.Descripcion + " - " +item.Codigo.trim() // Mostrar CodigoMovimientoExce en la interfaz
         })))
       ).subscribe(
         data => {
@@ -273,7 +273,7 @@ export class TrabajadorComponent {
       .pipe(
         map(data => data.map(item => ({
           value: item.Codigo, // Usar DesripMovimientoExce como valor
-          label: item.Descripcion + " - " +item.Codigo.trim() // Mostrar CodigoMovimientoExce en la interfaz
+          label: item.Codigo.trim()+ ' - ' + item.Descripcion// Mostrar CodigoMovimientoExce en la interfaz
         })))
       ).subscribe(
         data => {
