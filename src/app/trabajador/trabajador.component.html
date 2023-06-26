@@ -20,7 +20,7 @@
       </button>
     </div>
     <div class="modal-body">
-      <form #myForm="ngForm" (submit)="onSubmit(myForm)" class="responsive-form">
+      <form id="CreateForm" #myForm="ngForm" (submit)="onSubmit(myForm)" class="responsive-form">
         <div class="form-group">
           <label for="codigoEmisor">Código Compañía</label>
           <input id="codigoEmisor" class="form-control" [(ngModel)]="codigoEmisorSeleccionado" name="codigoEmisor" readonly>
@@ -115,6 +115,7 @@
         <div class="form-group">
           <label for="tipoCese">Tipo Cese</label>
           <select id="tipoCese" class="form-control" [(ngModel)]="tipoCeseSeleccionado" name="tipoCese" required>
+            <option value="vacio"></option>
             <option *ngFor="let option of tipoCeseOptions" [value]="option.value">{{ option.label }}</option>
           </select>
         </div>
@@ -201,13 +202,12 @@
           <select id="fondoReserva" class="form-control" [(ngModel)]="fondoReservaSeleccionado" name="fondoReserva" required>
             <option *ngFor="let option of fondoReservaOptions" [value]="option.value">{{ option.label }}</option>
           </select>
-        </div>
-        <button type="submit" [disabled]="!myForm.valid || identificacionInvalid" class="btn btn-primary">Crear nuevo</button>
+        </div>      
       </form>
     </div>
     <div class="modal-footer">
+      <button type="submit" form="CreateForm" [disabled]="!myForm.valid || identificacionInvalid" class="btn btn-primary">Crear nuevo</button>
       <button type="button" class="btn btn-secondary" (click)="modalRef?.hide()">Cerrar</button>
-      <!-- <button type="button" class="btn btn-primary" (click)="crearTrabajador()">Crear</button> -->
     </div>
   </ng-template>
   
