@@ -257,8 +257,8 @@ export class TrabajadorComponent {
       this.http.get<any[]>('api/ControladorAPI/trabajador/GetDecimoTerceroDecimoCuarto')
       .pipe(
         map(data => data.map(item => ({
-          value: item.Descripcion, // Usar DesripMovimientoExce como valor
-          label: item.Descripcion + " - " +item.Codigo.trim() // Mostrar CodigoMovimientoExce en la interfaz
+          value: item.Codigo.trim(), // Usar DesripMovimientoExce como valor
+          label: item.Codigo.trim() + " - " +item.Descripcion // Mostrar CodigoMovimientoExce en la interfaz
         })))
       ).subscribe(
         data => {
@@ -272,7 +272,7 @@ export class TrabajadorComponent {
       this.http.get<any[]>('api/ControladorAPI/trabajador/GetFondoReserva')
       .pipe(
         map(data => data.map(item => ({
-          value: item.Descripcion, // Usar DesripMovimientoExce como valor
+          value: item.Codigo, // Usar DesripMovimientoExce como valor
           label: item.Descripcion + " - " +item.Codigo.trim() // Mostrar CodigoMovimientoExce en la interfaz
         })))
       ).subscribe(
@@ -302,7 +302,7 @@ export class TrabajadorComponent {
       this.http.get<any[]>('api/ControladorAPI/trabajador/GetNivelSalarial')
       .pipe(
         map(data => data.map(item => ({
-          value: item.Descripcion, // Usar DesripMovimientoExce como valor
+          value: item.Codigo, // Usar DesripMovimientoExce como valor
           label: item.Codigo + " - " +  item.Descripcion // Mostrar CodigoMovimientoExce en la interfaz
         })))
       ).subscribe(
@@ -412,6 +412,10 @@ export class TrabajadorComponent {
 
   onSubmit(form: NgForm) {
     if (form.valid) {
+      //validar ingreso de fechas en blanco
+      const fechaCeseValue = this.fechaCese ? new Date(this.fechaCese) : new Date(1753, 0, 1);
+      const fechaReingresoValue = this.fechaReingreso ? new Date(this.fechaReingreso) : new Date(1753, 0, 1);
+
       // El formulario es válido, realiza acciones adicionales aquí
       this.guardarNuevoTrabajador(
         parseInt(this.codigoEmisorSeleccionado),
@@ -438,9 +442,11 @@ export class TrabajadorComponent {
         this.tipoComisionSeleccionado,
         new Date(this.fechaNacimiento),
         new Date(this.fechaIngreso),
-        new Date(this.fechaCese), 
+        // new Date(this.fechaCese), 
+        fechaCeseValue,
         this.periodoVacacionesSeleccionado,
-        new Date(this.fechaReingreso), 
+        // new Date(this.fechaReingreso), 
+        fechaReingresoValue,
         new Date(this.fechaUltActualizacion), 
         this.esReingresoSeleccionado, 
         this.tipoCuentaSeleccionado,
@@ -538,22 +544,36 @@ export class TrabajadorComponent {
       `&BoniEspecial=${BoniEspecial}` +
       `&Remuneracion_Minima=${Remuneracion_Minima}` +
       `&Fondo_Reserva=${Fondo_Reserva}`;
-    this.http.post(url, null).subscribe(
-      (response) => {
-        Swal.fire({
-          title: 'El trabajador se ha creado correctamente',
-          icon: 'success',
-          showCancelButton: false,
-        }).then(() => {
-          this.modalRef?.hide()
-          this.fetchTrabajadores();
-        });
-      },
-      (error) => {
-        console.error(error);
-        Swal.fire('Error al crear el trabajador', '', 'error');
-      }
-    );
+      this.http.request('post', url, { observe: 'response', responseType: 'text' }).subscribe(
+        (response) => {
+          const responseBody = response.body;
+          if (response.status === 200) {
+            if (responseBody === 'Ingreso Exitoso') {
+              Swal.fire({
+                title: 'El trabajador se ha creado correctamente',
+                icon: 'success',
+                showCancelButton: false,
+              }).then(() => {
+                this.modalRef?.hide();
+                this.fetchTrabajadores();
+              });
+            } else {
+              Swal.fire('Error en la API', responseBody || '', 'error');
+            }
+          } else {
+            Swal.fire('Error en la API', responseBody || '', 'error');
+          }
+        },
+        (error: HttpErrorResponse) => {
+          console.error(error);
+          if (error.status === 400 && error.error) {
+            Swal.fire('Error en la API', error.error, 'error');
+          } else {
+            Swal.fire('Error al crear el trabajador', '', 'error');
+          }
+        }
+      );
+      
   }
 
   editarTrabajador(sucursal: number, idEmpleado: number){
@@ -1141,5 +1161,22 @@ validarIdentificacion() {
     }else{
       this.identificacionInvalid = true;
     }
-} 
+  } 
+
+  limitarLongitud(event: any, maxLength: number) {
+    const input = event.target as HTMLInputElement;
+    
+    // Limitar la longitud del valor
+    if (input.value.length > maxLength) {
+      input.value = input.value.slice(0, maxLength);
+    }
+    
+    // Evitar números negativos
+    const numericValue = Number(input.value);
+    if (numericValue < 0) {
+      input.value = '';
+    }
+  }
+  
+  
 }

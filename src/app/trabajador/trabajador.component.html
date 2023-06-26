@@ -33,40 +33,40 @@
         </div>
         <div class="form-group">
           <label for="apellidoPaterno">Apellido Paterno</label>
-          <input id="apellidoPaterno" class="form-control" [(ngModel)]="apellidoPaterno" name="apellidoPaterno" required (keydown)="onlyLettersAndNumbers($event)">
+          <input id="apellidoPaterno" class="form-control" [(ngModel)]="apellidoPaterno" name="apellidoPaterno" required (keydown)="onlyLettersAndNumbers($event)" maxlength="25">
         </div>
         <div class="form-group">
           <label for="apellidoMaterno">Apellido Materno</label>
-          <input id="apellidoMaterno" class="form-control" [(ngModel)]="apellidoMaterno" name="apellidoMaterno" required (keydown)="onlyLettersAndNumbers($event)">
+          <input id="apellidoMaterno" class="form-control" [(ngModel)]="apellidoMaterno" name="apellidoMaterno" required (keydown)="onlyLettersAndNumbers($event)" maxlength="25">
         </div>
         <div class="form-group">
           <label for="nombres">Nombres</label>
-          <input id="nombres" class="form-control" [(ngModel)]="nombres" name="nombres" required (keydown)="onlyLettersAndNumbers($event)">
+          <input id="nombres" class="form-control" [(ngModel)]="nombres" name="nombres" required (keydown)="onlyLettersAndNumbers($event)" maxlength="25">
         </div>
         <div class="form-group">
           <label for="identificacion">Identificacion</label>
-          <input id="identificacion" class="form-control" [(ngModel)]="identificacion" name="identificacion" required (keyup)="validarIdentificacion()" (keydown)="onlyNumbers($event)">
+          <input id="identificacion" class="form-control" [(ngModel)]="identificacion" name="identificacion" required (keyup)="validarIdentificacion()" (keydown)="onlyNumbers($event)" maxlength="10">
           <div class="validation-message" *ngIf="identificacionInvalid">Identificación inválida</div>
         </div>
         <div class="form-group">
           <label for="entidadBancaria">Entidad Bancaria</label>
-          <input id="entidadBancaria" class="form-control" [(ngModel)]="entidadBancaria" name="entidadBancaria" required (keydown)="onlyLettersAndNumbers($event)">
+          <input id="entidadBancaria" class="form-control" [(ngModel)]="entidadBancaria" name="entidadBancaria" required (keydown)="onlyLettersAndNumbers($event)" maxlength="25">
         </div>
         <div class="form-group">
           <label for="carnetIESS">Carnet IESS</label>
-          <input id="carnetIESS" class="form-control" [(ngModel)]="carnetIESS" name="carnetIESS" required (keydown)="onlyLettersAndNumbers($event)">
+          <input id="carnetIESS" class="form-control" [(ngModel)]="carnetIESS" name="carnetIESS" required (keydown)="onlyLettersAndNumbers($event)" maxlength="15">
         </div>
         <div class="form-group">
           <label for="direccion">Dirección</label>
-          <input id="direccion" class="form-control" [(ngModel)]="direccion" name="direccion" required>
+          <input id="direccion" class="form-control" [(ngModel)]="direccion" name="direccion" required maxlength="50">
         </div>
         <div class="form-group">
           <label for="telefonoFijo">Teléfono Fijo</label>
-          <input id="telefonoFijo" class="form-control" [(ngModel)]="telefonoFijo" name="telefonoFijo" required (keydown)="onlyNumbers($event)">
+          <input id="telefonoFijo" class="form-control" [(ngModel)]="telefonoFijo" name="telefonoFijo" required (keydown)="onlyNumbers($event)" maxlength="10">
         </div>
         <div class="form-group">
           <label for="telefonoMovil">Teléfono Móvil</label>
-          <input id="telefonoMovil" class="form-control" [(ngModel)]="telefonoMovil" name="telefonoMovil" required (keydown)="onlyNumbers($event)">
+          <input id="telefonoMovil" class="form-control" [(ngModel)]="telefonoMovil" name="telefonoMovil" required (keydown)="onlyNumbers($event)" maxlength="10">
         </div>
         <div class="form-group">
           <label for="genero">Genero</label>
@@ -76,7 +76,7 @@
         </div>
         <div class="form-group">
           <label for="nroCtaBancaria">Nro. Cuenta Bancaria</label>
-          <input id="nroCtaBancaria" class="form-control" [(ngModel)]="nroCtaBancaria" name="nroCtaBancaria" required (keydown)="onlyNumbers($event)">
+          <input id="nroCtaBancaria" class="form-control" [(ngModel)]="nroCtaBancaria" name="nroCtaBancaria" required (keydown)="onlyNumbers($event)" maxlength="10">
         </div>
         <div class="form-group">
           <label for="codigoCatOcupacion">Codigo Categoria ocupación</label>
@@ -86,7 +86,7 @@
         </div>
         <div class="form-group">
           <label for="ocupacion">Ocupación</label>
-          <input id="ocupacion" class="form-control" [(ngModel)]="ocupacion" name="ocupacion" required (keydown)="onlyLettersAndNumbers($event)">
+          <input id="ocupacion" class="form-control" [(ngModel)]="ocupacion" name="ocupacion" required (keydown)="onlyLettersAndNumbers($event)" maxlength="2">
         </div>
         <div class="form-group">
           <label for="centroCostos">Centro Costos</label>
@@ -140,17 +140,21 @@
         </div>
         <div class="form-group">
           <label for="fechaCese">Fecha Cese</label>
-          <input type="date" id="fechaCese" class="form-control" [(ngModel)]="fechaCese" name="fechaCese" required>
+          <input type="date" id="fechaCese" class="form-control" [(ngModel)]="fechaCese" name="fechaCese">
         </div>
-        <div class="form-group">
+        <!-- <div class="form-group">
           <label for="periodoVacaciones">Periodo Vacaciones</label>
           <select id="periodoVacaciones" class="form-control" [(ngModel)]="periodoVacacionesSeleccionado" name="periodoVacaciones" required>
             <option *ngFor="let option of periodoVacacionesOptions" [value]="option.value">{{ option.label }}</option>
           </select>
+        </div> -->
+        <div class="form-group">
+          <label for="periodoVacaciones">Periodo Vacaciones</label>
+          <input type="number" id="periodoVacaciones" class="form-control" [(ngModel)]="periodoVacacionesSeleccionado" name="periodoVacaciones" required (keydown)="onlyNumbers($event)" (input)="limitarLongitud($event, 1)">
         </div>
         <div class="form-group">
           <label for="fechaReingreso">Fecha Reingreso</label>
-          <input type="date" id="fechaReingreso" class="form-control" [(ngModel)]="fechaReingreso" name="fechaReingreso" required>
+          <input type="date" id="fechaReingreso" class="form-control" [(ngModel)]="fechaReingreso" name="fechaReingreso">
         </div>
         <div class="form-group">
           <label for="fechaUltActualizacion">Fecha Última Actualizacion</label>
@@ -182,15 +186,15 @@
         </div>
         <div class="form-group">
           <label for="boniComplementaria">Boni. Complementaria</label>
-          <input type="number" id="boniComplementaria" class="form-control" [(ngModel)]="boniComplementaria" name="boniComplementaria" required (keydown)="onlyNumbers($event)">
+          <input type="number" id="boniComplementaria" class="form-control" [(ngModel)]="boniComplementaria" name="boniComplementaria" required (keydown)="onlyNumbers($event)" (input)="limitarLongitud($event, 5)">
         </div>
         <div class="form-group">
           <label for="boniEspecial">Boni. Especial</label>
-          <input type="number" id="boniEspecial" class="form-control" [(ngModel)]="boniEspecial" name="boniEspecial" required (keydown)="onlyNumbers($event)">
+          <input type="number" id="boniEspecial" class="form-control" [(ngModel)]="boniEspecial" name="boniEspecial" required (keydown)="onlyNumbers($event)" (input)="limitarLongitud($event, 5)">
         </div>
         <div class="form-group">
           <label for="remuneracionMinima">Remuneración Mínima</label>
-          <input type="number" id="remuneracionMinima" class="form-control" [(ngModel)]="remuneracionMinima" name="remuneracionMinima" required (keydown)="onlyNumbers($event)">
+          <input type="number" id="remuneracionMinima" class="form-control" [(ngModel)]="remuneracionMinima" name="remuneracionMinima" required (keydown)="onlyNumbers($event)" (input)="limitarLongitud($event, 5)">
         </div>
         <div class="form-group">
           <label for="fondoReserva">Fondo Reserva</label>

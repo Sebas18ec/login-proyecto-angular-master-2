@@ -24,8 +24,8 @@ select:invalid {
     column-gap: 20px;
 }
 
-  /* Estilo para pantallas de hasta 1200px */
-@media screen and (max-width: 1900px) {
+  /* Estilo para pantallas de hasta 3200px */
+@media screen and (max-width: 3200px) {
     .responsive-form {
         column-count: 4;
     }
