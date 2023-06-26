@@ -37,7 +37,7 @@ export class TrabajadorComponent {
   decimoTerceroDecimoCuartoOptions: any
   categoriaOcupacionalOptions: any
   periodoVacacionesOptions: any
-  identificacionBusqueda: string = '';
+  nombresBusqueda: string = '';
   cedula: string =''; 
   @ViewChild('modalTemplate') modalTemplate!: TemplateRef<any>;
   modalRef?: BsModalRef;
@@ -415,7 +415,6 @@ export class TrabajadorComponent {
       //validar ingreso de fechas en blanco
       const fechaCeseValue = this.fechaCese ? new Date(this.fechaCese) : new Date(1753, 0, 1);
       const fechaReingresoValue = this.fechaReingreso ? new Date(this.fechaReingreso) : new Date(1753, 0, 1);
-      console.log("tipoCese select: ", this.tipoCeseSeleccionado)
       // Verificar si se ha seleccionado la opción en blanco
       if (this.tipoCeseSeleccionado === 'vacio') {
         this.tipoCeseSeleccionado = '';

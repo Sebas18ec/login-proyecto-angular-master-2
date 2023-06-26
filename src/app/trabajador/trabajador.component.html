@@ -9,7 +9,7 @@
 </div> -->
 
   <br>
-  <input type="text" class="form-control" placeholder="Buscar por cédula" [(ngModel)]="identificacionBusqueda">
+  <input type="text" class="form-control" style="width: 350px;" placeholder="Buscar por nombres" [(ngModel)]="nombresBusqueda">
   <br>
 
   <ng-template #modalTemplate>
@@ -264,7 +264,8 @@
                 </tr>
             </thead>
             <tbody>
-            <tr *ngFor="let cc of (datosTablaOriginal.length > 0 ? datosTablaOriginal : trabajadores) | paginate: { itemsPerPage: itemsPerPage, currentPage: currentPage } | filter: identificacionBusqueda">
+            <!-- <tr *ngFor="let cc of (datosTablaOriginal.length > 0 ? datosTablaOriginal : trabajadores) | paginate: { itemsPerPage: itemsPerPage, currentPage: currentPage } | filter: identificacionBusqueda"> -->
+              <tr *ngFor="let cc of (trabajadores | filter: nombresBusqueda) | paginate: { itemsPerPage: itemsPerPage, currentPage: currentPage }">
                 <td>{{ cc.COMP_Codigo }}</td>
                 <td>{{ cc.Id_Trabajador }}</td>
                 <td>{{ cc.Tipo_trabajador }}</td>
