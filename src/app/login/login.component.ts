@@ -24,17 +24,6 @@ export class LoginComponent implements OnInit {
   logoUrl: any;
   fechaActual: string | undefined;
 
-  httpOptions = {
-    headers: new HttpHeaders({
-      'Content-Type': 'application/json',
-      'Access-Control-Allow-Origin': 'https://login-proyecto-angular-master-2.vercel.app',
-      'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE',
-      'Access-Control-Allow-Headers': 'X-Requested-With,content-type',
-      'Access-Control-Allow-Credentials': 'true',
-      'Access-Control-Allow-Policy': 'AllowSpecificOrigin'
-    })
-  };
-
   minLength = {
     username: 4,
     password: 5
@@ -60,7 +49,7 @@ export class LoginComponent implements OnInit {
 
 
   ngOnInit() {
-    this.http.get<any>('https://aspnetback.azurewebsites.net/api/ControladorAPI/api/v1/emisores')
+    this.http.get<any>('api/ControladorAPI/api/v1/emisores')
       .subscribe((data: any[]) => {
         this.emisores = data.map(emisor => {
           return {
@@ -95,7 +84,7 @@ export class LoginComponent implements OnInit {
       contrasena: this.password
     };
 
-    this.http.post('https://aspnetback.azurewebsites.net/api/ControladorAPI/login', loginData)
+    this.http.post('api/ControladorAPI/login', loginData)
       .subscribe(response => {
         const data = JSON.stringify(response);
         const responseObj = JSON.parse(data);
