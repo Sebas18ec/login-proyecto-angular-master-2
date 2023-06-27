@@ -102,7 +102,10 @@
                               <a class="nav-link px-0 bi-arrow-counterclockwise"> <span class="d-none d-sm-inline"(click)="Reingreso()">Reingreso</span></a>
                             </li>
                             <li>
-                              <a class="nav-link px-0 bi-arrow-counterclockwise"> <span class="d-none d-sm-inline"(click)="NivelSalarial()">Nivel Salarial</span></a>
+                              <a class="nav-link px-0 bi-file-bar-graph"> <span class="d-none d-sm-inline"(click)="NivelSalarial()">Nivel Salarial</span></a>
+                            </li>
+                            <li>
+                              <a class="nav-link px-0 bi-tag"> <span class="d-none d-sm-inline"(click)="CategoriaOcupacional()">Categoria Ocupacional</span></a>
                             </li>
                         </ul>
                     </li>
@@ -162,6 +165,9 @@
             </div>
             <div *ngIf="componenteActivo === 'NivelSalarial'">
               <app-nivel-salarial></app-nivel-salarial>
+            </div>
+            <div *ngIf="componenteActivo === 'CategoriaOcupacional'">
+              <app-categoria-ocupacional></app-categoria-ocupacional>
             </div>
           </div>
     </div>

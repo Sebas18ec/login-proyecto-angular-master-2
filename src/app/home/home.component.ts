@@ -41,6 +41,7 @@ export class HomeComponent implements OnInit {
   mostrarAfectaIESS: boolean = false;
   mostrarAfectaImpRenta: boolean = false;
   mostrarNivelSalarial: boolean = false;
+  mostrarCategoriaOcupacional: boolean = false;
   componenteActivo: any
 
   constructor(private emisorService: EmisorService,private sanitizer: DomSanitizer, private http: HttpClient,private router: Router) {
@@ -271,6 +272,11 @@ export class HomeComponent implements OnInit {
     this.componenteActivo = 'NivelSalarial';
   }
 
+  CategoriaOcupacional(): void {
+    this.ocultarTodosLosComponentes();
+    this.componenteActivo = 'CategoriaOcupacional';
+  }
+
   ocultarTodosLosComponentes(): void {
     this.mostrarMovimientosPlanilla = false;
     this.mostrarFormularioCentroCostos = false;
@@ -289,6 +295,7 @@ export class HomeComponent implements OnInit {
     this.mostrarAfectaIESS = false;
     this.mostrarAfectaImpRenta = false;
     this.mostrarNivelSalarial = false;
+    this.mostrarCategoriaOcupacional = false;
     // Ocultar los demás componentes aquí...
   }
 

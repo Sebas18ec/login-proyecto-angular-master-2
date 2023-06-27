@@ -31,6 +31,7 @@ import { AfectaImpRentaComponent } from './afecta-imp-renta/afecta-imp-renta.com
 // Importa el módulo ModalModule desde ngx-bootstrap
 import { ModalModule } from 'ngx-bootstrap/modal';
 import { NivelSalarialComponent } from './nivel-salarial/nivel-salarial.component';
+import { CategoriaOcupacionalComponent } from './categoria-ocupacional/categoria-ocupacional.component';
 
 @NgModule({
   declarations: [
@@ -58,6 +59,7 @@ import { NivelSalarialComponent } from './nivel-salarial/nivel-salarial.componen
     AfectaIessComponent,
     AfectaImpRentaComponent,
     NivelSalarialComponent,
+    CategoriaOcupacionalComponent,
   ],
   imports: [
     BrowserModule,
