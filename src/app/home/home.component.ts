@@ -44,6 +44,7 @@ export class HomeComponent implements OnInit {
   mostrarCategoriaOcupacional: boolean = false;
   mostrarFondoReserva: boolean = false;
   mostrarDecimos: boolean = false;
+  mostrarTipoComision: boolean = false;
   componenteActivo: any
 
   constructor(private emisorService: EmisorService,private sanitizer: DomSanitizer, private http: HttpClient,private router: Router) {
@@ -289,6 +290,11 @@ export class HomeComponent implements OnInit {
     this.componenteActivo = 'Decimos';
   }
 
+  TipoComision(): void {
+    this.ocultarTodosLosComponentes();
+    this.componenteActivo = 'TipoComision';
+  }
+
   ocultarTodosLosComponentes(): void {
     this.mostrarMovimientosPlanilla = false;
     this.mostrarFormularioCentroCostos = false;
@@ -310,6 +316,7 @@ export class HomeComponent implements OnInit {
     this.mostrarCategoriaOcupacional = false;
     this.mostrarFondoReserva = false;
     this.mostrarDecimos = false;
+    this.mostrarTipoComision = false;
     // Ocultar los demás componentes aquí...
   }
 

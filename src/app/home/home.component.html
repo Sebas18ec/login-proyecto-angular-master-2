@@ -113,6 +113,9 @@
                             <li>
                               <a class="nav-link px-0 bi-coin"> <span class="d-none d-sm-inline"(click)="Decimos()">Décimo tercero y cuarto</span></a>
                             </li>
+                            <li>
+                              <a class="nav-link px-0 bi-percent"> <span class="d-none d-sm-inline"(click)="TipoComision()">Tipo Comisión</span></a>
+                            </li>
                         </ul>
                     </li>
                 </ul>
@@ -180,6 +183,9 @@
             </div>
             <div *ngIf="componenteActivo === 'Decimos'">
               <app-decimos></app-decimos>
+            </div>
+            <div *ngIf="componenteActivo === 'TipoComision'">
+              <app-tipo-comision></app-tipo-comision>
             </div>
           </div>
     </div>
