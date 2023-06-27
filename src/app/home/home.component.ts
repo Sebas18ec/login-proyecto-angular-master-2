@@ -42,6 +42,7 @@ export class HomeComponent implements OnInit {
   mostrarAfectaImpRenta: boolean = false;
   mostrarNivelSalarial: boolean = false;
   mostrarCategoriaOcupacional: boolean = false;
+  mostrarFondoReserva: boolean = false;
   componenteActivo: any
 
   constructor(private emisorService: EmisorService,private sanitizer: DomSanitizer, private http: HttpClient,private router: Router) {
@@ -277,6 +278,11 @@ export class HomeComponent implements OnInit {
     this.componenteActivo = 'CategoriaOcupacional';
   }
 
+  FondoReserva(): void {
+    this.ocultarTodosLosComponentes();
+    this.componenteActivo = 'FondoReserva';
+  }
+
   ocultarTodosLosComponentes(): void {
     this.mostrarMovimientosPlanilla = false;
     this.mostrarFormularioCentroCostos = false;
@@ -296,6 +302,7 @@ export class HomeComponent implements OnInit {
     this.mostrarAfectaImpRenta = false;
     this.mostrarNivelSalarial = false;
     this.mostrarCategoriaOcupacional = false;
+    this.mostrarFondoReserva = false;
     // Ocultar los demás componentes aquí...
   }
 

@@ -1,0 +1,19 @@
+<br>
+<h1>Fondo Reserva</h1>
+<div class="table-container">
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th>Código</th>
+                <th>Descripcion</th>
+            </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let fondo of fondoReserva">
+            <td>{{ fondo.Codigo }}</td>
+            <td>{{ fondo.Descripcion }}</td>
+            </tr>
+        </tbody>
+    </table>
+    <!-- Navegación de paginación -->
+</div>

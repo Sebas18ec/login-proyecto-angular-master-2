@@ -32,6 +32,7 @@ import { AfectaImpRentaComponent } from './afecta-imp-renta/afecta-imp-renta.com
 import { ModalModule } from 'ngx-bootstrap/modal';
 import { NivelSalarialComponent } from './nivel-salarial/nivel-salarial.component';
 import { CategoriaOcupacionalComponent } from './categoria-ocupacional/categoria-ocupacional.component';
+import { FondoReservaComponent } from './fondo-reserva/fondo-reserva.component';
 
 @NgModule({
   declarations: [
@@ -60,6 +61,7 @@ import { CategoriaOcupacionalComponent } from './categoria-ocupacional/categoria
     AfectaImpRentaComponent,
     NivelSalarialComponent,
     CategoriaOcupacionalComponent,
+    FondoReservaComponent,
   ],
   imports: [
     BrowserModule,
