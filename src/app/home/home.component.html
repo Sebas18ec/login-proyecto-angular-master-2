@@ -110,6 +110,9 @@
                             <li>
                               <a class="nav-link px-0 bi-wallet"> <span class="d-none d-sm-inline"(click)="FondoReserva()">Fondo Reserva</span></a>
                             </li>
+                            <li>
+                              <a class="nav-link px-0 bi-coin"> <span class="d-none d-sm-inline"(click)="Decimos()">Décimo tercero y cuarto</span></a>
+                            </li>
                         </ul>
                     </li>
                 </ul>
@@ -174,6 +177,9 @@
             </div>
             <div *ngIf="componenteActivo === 'FondoReserva'">
               <app-fondo-reserva></app-fondo-reserva>
+            </div>
+            <div *ngIf="componenteActivo === 'Decimos'">
+              <app-decimos></app-decimos>
             </div>
           </div>
     </div>

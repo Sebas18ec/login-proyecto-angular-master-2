@@ -33,6 +33,7 @@ import { ModalModule } from 'ngx-bootstrap/modal';
 import { NivelSalarialComponent } from './nivel-salarial/nivel-salarial.component';
 import { CategoriaOcupacionalComponent } from './categoria-ocupacional/categoria-ocupacional.component';
 import { FondoReservaComponent } from './fondo-reserva/fondo-reserva.component';
+import { DecimosComponent } from './decimos/decimos.component';
 
 @NgModule({
   declarations: [
@@ -62,6 +63,7 @@ import { FondoReservaComponent } from './fondo-reserva/fondo-reserva.component';
     NivelSalarialComponent,
     CategoriaOcupacionalComponent,
     FondoReservaComponent,
+    DecimosComponent,
   ],
   imports: [
     BrowserModule,
