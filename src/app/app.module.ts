@@ -34,6 +34,8 @@ import { NivelSalarialComponent } from './nivel-salarial/nivel-salarial.componen
 import { CategoriaOcupacionalComponent } from './categoria-ocupacional/categoria-ocupacional.component';
 import { FondoReservaComponent } from './fondo-reserva/fondo-reserva.component';
 import { DecimosComponent } from './decimos/decimos.component';
+import { TipoComisionComponent } from './tipo-comision/tipo-comision.component';
+import { PeriodoVacacionComponent } from './periodo-vacacion/periodo-vacacion.component';
 
 @NgModule({
   declarations: [
@@ -64,6 +66,8 @@ import { DecimosComponent } from './decimos/decimos.component';
     CategoriaOcupacionalComponent,
     FondoReservaComponent,
     DecimosComponent,
+    TipoComisionComponent,
+    PeriodoVacacionComponent,
   ],
   imports: [
     BrowserModule,

@@ -116,6 +116,9 @@
                             <li>
                               <a class="nav-link px-0 bi-percent"> <span class="d-none d-sm-inline"(click)="TipoComision()">Tipo Comisión</span></a>
                             </li>
+                            <li>
+                              <a class="nav-link px-0 bi-calendar3"> <span class="d-none d-sm-inline"(click)="PeriodoVacacion()">Periodo Vacaciones</span></a>
+                            </li>
                         </ul>
                     </li>
                 </ul>
@@ -186,6 +189,9 @@
             </div>
             <div *ngIf="componenteActivo === 'TipoComision'">
               <app-tipo-comision></app-tipo-comision>
+            </div>
+            <div *ngIf="componenteActivo === 'PeriodoVacacion'">
+              <app-periodo-vacacion></app-periodo-vacacion>
             </div>
           </div>
     </div>
