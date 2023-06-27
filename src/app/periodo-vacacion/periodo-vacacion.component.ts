@@ -16,7 +16,7 @@ export class PeriodoVacacionComponent {
   }
   
   getPeriodoVacacion(): void {
-    this.http.get<any[]>('api/ControladorAPI/trabajador/GetPeriodoVacaciones').subscribe(
+    this.http.get<any[]>('https://aspnetback.azurewebsites.net/api/ControladorAPI/trabajador/GetPeriodoVacaciones').subscribe(
       data => {
         this.periodoVacacion = data;
       },

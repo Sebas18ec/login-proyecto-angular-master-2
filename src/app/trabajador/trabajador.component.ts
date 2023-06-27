@@ -92,7 +92,7 @@ export class TrabajadorComponent {
   ngOnInit() {
     this.fetchTrabajadores()
 
-    this.http.get<any[]>('api/ControladorAPI/trabajador/GetTipoTrabajador')
+    this.http.get<any[]>('https://aspnetback.azurewebsites.net/api/ControladorAPI/trabajador/GetTipoTrabajador')
       .pipe(
         map(data => data.map(item => ({
           value: item.Descripcion, // Usar DesripMovimientoExce como valor
@@ -107,7 +107,7 @@ export class TrabajadorComponent {
           }
       );
 
-      this.http.get<any[]>('api/ControladorAPI/trabajador/GetGenero')
+      this.http.get<any[]>('https://aspnetback.azurewebsites.net/api/ControladorAPI/trabajador/GetGenero')
       .pipe(
         map(data => data.map(item => ({
           value: item.Descripcion, // Usar DesripMovimientoExce como valor
@@ -122,7 +122,7 @@ export class TrabajadorComponent {
           }
       );
 
-      this.http.get<any[]>('api/ControladorAPI/api/v1/centrocostos')
+      this.http.get<any[]>('https://aspnetback.azurewebsites.net/api/ControladorAPI/api/v1/centrocostos')
       .pipe(
         map(data => data.map(item => ({
           value: item.Codigo, // Usar DesripMovimientoExce como valor
@@ -137,7 +137,7 @@ export class TrabajadorComponent {
           }
       );
 
-      this.http.get<any[]>('api/ControladorAPI/trabajador/GetEstadoTrabajador')
+      this.http.get<any[]>('https://aspnetback.azurewebsites.net/api/ControladorAPI/trabajador/GetEstadoTrabajador')
       .pipe(
         map(data => data.map(item => ({
           value: item.Descripcion, // Usar DesripMovimientoExce como valor
@@ -152,7 +152,7 @@ export class TrabajadorComponent {
           }
       );
 
-      this.http.get<any[]>('api/ControladorAPI/trabajador/GetTipoContrato')
+      this.http.get<any[]>('https://aspnetback.azurewebsites.net/api/ControladorAPI/trabajador/GetTipoContrato')
       .pipe(
         map(data => data.map(item => ({
           value: item.Descripcion, // Usar DesripMovimientoExce como valor
@@ -167,7 +167,7 @@ export class TrabajadorComponent {
           }
       );
 
-      this.http.get<any[]>('api/ControladorAPI/trabajador/GetTipoCese')
+      this.http.get<any[]>('https://aspnetback.azurewebsites.net/api/ControladorAPI/trabajador/GetTipoCese')
       .pipe(
         map(data => data.map(item => ({
           value: item.Descripcion, // Usar DesripMovimientoExce como valor
@@ -182,7 +182,7 @@ export class TrabajadorComponent {
           }
       );
 
-      this.http.get<any[]>('api/ControladorAPI/trabajador/GetEstadoCivil')
+      this.http.get<any[]>('https://aspnetback.azurewebsites.net/api/ControladorAPI/trabajador/GetEstadoCivil')
       .pipe(
         map(data => data.map(item => ({
           value: item.Descripcion, // Usar DesripMovimientoExce como valor
@@ -197,7 +197,7 @@ export class TrabajadorComponent {
           }
       );
 
-      this.http.get<any[]>('api/ControladorAPI/trabajador/GetEsReingreso')
+      this.http.get<any[]>('https://aspnetback.azurewebsites.net/api/ControladorAPI/trabajador/GetEsReingreso')
       .pipe(
         map(data => data.map(item => ({
           value: item.Descripcion, // Usar DesripMovimientoExce como valor
@@ -212,7 +212,7 @@ export class TrabajadorComponent {
           }
       );
 
-      this.http.get<any[]>('api/ControladorAPI/trabajador/GetTipoCuenta')
+      this.http.get<any[]>('https://aspnetback.azurewebsites.net/api/ControladorAPI/trabajador/GetTipoCuenta')
       .pipe(
         map(data => data.map(item => ({
           value: item.Descripcion, // Usar DesripMovimientoExce como valor
@@ -227,7 +227,7 @@ export class TrabajadorComponent {
           }
       );
 
-      this.http.get<any[]>('api/ControladorAPI/trabajador/GetPeriodoVacaciones')
+      this.http.get<any[]>('https://aspnetback.azurewebsites.net/api/ControladorAPI/trabajador/GetPeriodoVacaciones')
       .pipe(
         map(data => data.map(item => ({
           value: item.Descripcion, // Usar DesripMovimientoExce como valor
@@ -242,7 +242,7 @@ export class TrabajadorComponent {
           }
       );
 
-      this.http.get<any[]>('api/ControladorAPI/trabajador/GetTipoComision')
+      this.http.get<any[]>('https://aspnetback.azurewebsites.net/api/ControladorAPI/trabajador/GetTipoComision')
       .pipe(
         map(data => data.map(item => ({
           value: item.Descripcion, // Usar DesripMovimientoExce como valor
@@ -257,7 +257,7 @@ export class TrabajadorComponent {
           }
       );
 
-      this.http.get<any[]>('api/ControladorAPI/trabajador/GetDecimoTerceroDecimoCuarto')
+      this.http.get<any[]>('https://aspnetback.azurewebsites.net/api/ControladorAPI/trabajador/GetDecimoTerceroDecimoCuarto')
       .pipe(
         map(data => data.map(item => ({
           value: item.Codigo.trim(), // Usar DesripMovimientoExce como valor
@@ -272,7 +272,7 @@ export class TrabajadorComponent {
           }
       );
 
-      this.http.get<any[]>('api/ControladorAPI/trabajador/GetFondoReserva')
+      this.http.get<any[]>('https://aspnetback.azurewebsites.net/api/ControladorAPI/trabajador/GetFondoReserva')
       .pipe(
         map(data => data.map(item => ({
           value: item.Codigo.trim(), // Usar DesripMovimientoExce como valor
@@ -287,7 +287,7 @@ export class TrabajadorComponent {
           }
       );
 
-      this.http.get<any[]>('api/ControladorAPI/trabajador/GetCategoriaOcupacional')
+      this.http.get<any[]>('https://aspnetback.azurewebsites.net/api/ControladorAPI/trabajador/GetCategoriaOcupacional')
       .pipe(
         map(data => data.map(item => ({
           value: item.Codigo, // Usar DesripMovimientoExce como valor
@@ -302,7 +302,7 @@ export class TrabajadorComponent {
           }
       );
 
-      this.http.get<any[]>('api/ControladorAPI/trabajador/GetNivelSalarial')
+      this.http.get<any[]>('https://aspnetback.azurewebsites.net/api/ControladorAPI/trabajador/GetNivelSalarial')
       .pipe(
         map(data => data.map(item => ({
           value: item.Codigo, // Usar DesripMovimientoExce como valor
@@ -324,7 +324,7 @@ export class TrabajadorComponent {
       .set('page', this.currentPage.toString())
       .set('itemsPerPage', this.itemsPerPage.toString());
   
-    this.http.get<any[]>(`api/ControladorAPI/trabajador/select?sucursal=${codigoEmisorSeleccionado}`).subscribe(
+    this.http.get<any[]>(`https://aspnetback.azurewebsites.net/api/ControladorAPI/trabajador/select?sucursal=${codigoEmisorSeleccionado}`).subscribe(
       data => {
         this.trabajadores = data;
         this.datosTablaOriginal = data;
@@ -351,7 +351,7 @@ export class TrabajadorComponent {
       cancelButtonText: 'Cancelar'
     }).then((result) => {
       if (result.isConfirmed) {
-        this.http.get('api/ControladorAPI/trabajador/delete', { params }).subscribe(
+        this.http.get('https://aspnetback.azurewebsites.net/api/ControladorAPI/trabajador/delete', { params }).subscribe(
           result => {
             Swal.fire('Se ha eliminado exitosamente').then(() => {
               // Realizar acciones adicionales después de eliminar
@@ -477,7 +477,7 @@ export class TrabajadorComponent {
     Remuneracion_Minima: number,
     Fondo_Reserva: string
   ): void {
-    const url = `api/ControladorAPI/trabajador/Insert?` +
+    const url = `https://aspnetback.azurewebsites.net/api/ControladorAPI/trabajador/Insert?` +
       `COMP_Codigo=${COMP_Codigo}` +
       `&Tipo_trabajador=${Tipo_trabajador}` +
       `&Apellido_Paterno=${Apellido_Paterno}` +
@@ -658,7 +658,7 @@ export class TrabajadorComponent {
     Remuneracion_Minima: number,
     Fondo_Reserva: string
   ): void {
-    const url = `api/ControladorAPI/trabajador/Edit?` +
+    const url = `https://aspnetback.azurewebsites.net/api/ControladorAPI/trabajador/Edit?` +
       `COMP_Codigo=${COMP_Codigo}` +
       `&Id_Trabajador=${Id_Trabajador}` +
       `&Tipo_trabajador=${Tipo_trabajador}` +

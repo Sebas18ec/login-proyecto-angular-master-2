@@ -16,7 +16,7 @@ export class FondoReservaComponent {
   }
   
   getFondoReserva(): void {
-    this.http.get<any[]>('api/ControladorAPI/trabajador/GetFondoReserva').subscribe(
+    this.http.get<any[]>('https://aspnetback.azurewebsites.net/api/ControladorAPI/trabajador/GetFondoReserva').subscribe(
       data => {
         this.fondoReserva = data;
       },

@@ -16,7 +16,7 @@ export class CategoriaOcupacionalComponent {
   }
   
   getCategoriaOcupacional(): void {
-    this.http.get<any[]>('api/ControladorAPI/trabajador/GetCategoriaOcupacional').subscribe(
+    this.http.get<any[]>('https://aspnetback.azurewebsites.net/api/ControladorAPI/trabajador/GetCategoriaOcupacional').subscribe(
       data => {
         this.categoriaOcupacional = data;
       },

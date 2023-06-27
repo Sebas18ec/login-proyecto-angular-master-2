@@ -16,7 +16,7 @@ export class TipoComisionComponent {
   }
   
   getTipoComision(): void {
-    this.http.get<any[]>('api/ControladorAPI/trabajador/GetTipoComision').subscribe(
+    this.http.get<any[]>('https://aspnetback.azurewebsites.net/api/ControladorAPI/trabajador/GetTipoComision').subscribe(
       data => {
         this.tipoComision = data;
       },

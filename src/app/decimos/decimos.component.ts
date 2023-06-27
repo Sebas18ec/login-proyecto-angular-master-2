@@ -16,7 +16,7 @@ export class DecimosComponent {
   }
   
   getDecimos(): void {
-    this.http.get<any[]>('api/ControladorAPI/trabajador/GetDecimoTerceroDecimoCuarto').subscribe(
+    this.http.get<any[]>('https://aspnetback.azurewebsites.net/api/ControladorAPI/trabajador/GetDecimoTerceroDecimoCuarto').subscribe(
       data => {
         this.decimos = data;
       },

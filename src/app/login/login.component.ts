@@ -49,7 +49,7 @@ export class LoginComponent implements OnInit {
 
 
   ngOnInit() {
-    this.http.get<any>('api/ControladorAPI/api/v1/emisores')
+    this.http.get<any>('https://aspnetback.azurewebsites.net/api/ControladorAPI/api/v1/emisores')
       .subscribe((data: any[]) => {
         this.emisores = data.map(emisor => {
           return {
@@ -84,7 +84,7 @@ export class LoginComponent implements OnInit {
       contrasena: this.password
     };
 
-    this.http.post('api/ControladorAPI/login', loginData)
+    this.http.post('https://aspnetback.azurewebsites.net/api/ControladorAPI/login', loginData)
       .subscribe(response => {
         const data = JSON.stringify(response);
         const responseObj = JSON.parse(data);

@@ -16,7 +16,7 @@ export class NivelSalarialComponent {
   }
   
   getNivelSalarial(): void {
-    this.http.get<any[]>('api/ControladorAPI/trabajador/GetNivelSalarial').subscribe(
+    this.http.get<any[]>('https://aspnetback.azurewebsites.net/api/ControladorAPI/trabajador/GetNivelSalarial').subscribe(
       data => {
         this.nivelSalarial = data;
       },
