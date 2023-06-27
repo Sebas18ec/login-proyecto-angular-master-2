@@ -367,42 +367,6 @@ export class TrabajadorComponent {
     });
   }
 
-  getOptionsTipoTrabajador(): { value: string, label: string }[] {
-    return this.tipoTrabajadorOptions;
-  }
-
-  getOptionsGenero(): { value: string, label: string }[] {
-    return this.generoOptions;
-  }
-
-  getOptionsCentroCostos(): { value: string, label: string }[] {
-    return this.centroCostosOptions;
-  }
-
-  getOptionsEstadoTrabajador(): { value: string, label: string }[] {
-    return this.estadoTrabajadorOptions;
-  }
-
-  getOptionsTipoContrato(): { value: string, label: string }[] {
-    return this.tipoContratoOptions;
-  }
-
-  getOptionsTipoCese(): { value: string, label: string }[] {
-    return this.tipoCeseOptions;
-  }
-
-  getOptionsEstadoCivil(): { value: string, label: string }[] {
-    return this.estadoCivilOptions;
-  }
-
-  getOptionsEsReingreso(): { value: string, label: string }[] {
-    return this.esReingresoOptions;
-  }
-
-  getOptionsTipoCuenta(): { value: string, label: string }[] {
-    return this.tipoCuentaOptions;
-  }
-
   nuevoTrabajador(){
     this.codigoEmisorSeleccionado = this.emisorService.getEmisorData().compania;
     // Abre el modal
