@@ -40,6 +40,7 @@ export class HomeComponent implements OnInit {
   mostrarMovExcepcion3: boolean = false;
   mostrarAfectaIESS: boolean = false;
   mostrarAfectaImpRenta: boolean = false;
+  componenteActivo: any
 
   constructor(private emisorService: EmisorService,private sanitizer: DomSanitizer, private http: HttpClient,private router: Router) {
     this.logoUrl = this.sanitizer.bypassSecurityTrustUrl('assets/img/logo-taller.svg');  
@@ -176,23 +177,8 @@ export class HomeComponent implements OnInit {
     if (!this.sesionIniciada) {
       this.abrirVentanaLogin('CentroCostos');
     } else {
-      // Aquí puedes colocar la lógica para mostrar el contenido del "Centro de Costos"
-      this.mostrarFormularioCentroCostos = true;
-      this.mostrarMovimientosPlanilla = false;
-      this.mostrarTrabajadores = false;
-      this.mostrarTipoTrabajador = false;
-      this.mostrarEstadoTrabajador = false;
-      this.mostrarTipoContrato  = false;
-      this.mostrarTipoCese  = false;
-      this.mostrarTipoCuenta = false;
-      this.mostrarEstadoCivil = false;
-      this.mostrarGenero = false;
-      this.mostrarReingreso = false;
-      this.mostrarTipoOperacion = false;
-      this.mostrarMovExcepcion1y2 = false;
-      this.mostrarMovExcepcion3 = false;
-      this.mostrarAfectaIESS = false;
-      this.mostrarAfectaImpRenta = false;
+      this.ocultarTodosLosComponentes();
+      this.componenteActivo = 'CentroCostos';
     }
   }
 
@@ -200,23 +186,8 @@ export class HomeComponent implements OnInit {
     if (!this.sesionIniciada) {
       this.abrirVentanaLogin('MovimientoPlanilla');
     } else {
-      // Aquí puedes colocar la lógica para mostrar el contenido del "Centro de Costos"
-      this.mostrarMovimientosPlanilla = true;
-      this.mostrarFormularioCentroCostos = false;
-      this.mostrarTrabajadores = false;
-      this.mostrarTipoTrabajador = false;
-      this.mostrarEstadoTrabajador = false;
-      this.mostrarTipoContrato  = false;
-      this.mostrarTipoCese  = false;
-      this.mostrarTipoCuenta = false;
-      this.mostrarEstadoCivil = false;
-      this.mostrarGenero = false;
-      this.mostrarReingreso = false;
-      this.mostrarTipoOperacion = false;
-      this.mostrarMovExcepcion1y2 = false;
-      this.mostrarMovExcepcion3 = false;
-      this.mostrarAfectaIESS = false;
-      this.mostrarAfectaImpRenta = false;
+      this.ocultarTodosLosComponentes();
+      this.componenteActivo = 'MovimientoPlanilla';
     }
   }
 
@@ -224,254 +195,77 @@ export class HomeComponent implements OnInit {
     if (!this.sesionIniciada) {
       this.abrirVentanaLogin('Trabajadores');
     } else {
-      this.mostrarTrabajadores = true;
-      this.mostrarFormularioCentroCostos = false;
-      this.mostrarMovimientosPlanilla = false;
-      this.mostrarTipoTrabajador = false;
-      this.mostrarEstadoTrabajador = false;
-      this.mostrarTipoContrato  = false;
-      this.mostrarTipoCese  = false;
-      this.mostrarTipoCuenta = false;
-      this.mostrarEstadoCivil = false;
-      this.mostrarGenero = false;
-      this.mostrarReingreso = false;
-      this.mostrarTipoOperacion = false;
-      this.mostrarMovExcepcion1y2 = false;
-      this.mostrarMovExcepcion3 = false;
-      this.mostrarAfectaIESS = false;
-      this.mostrarAfectaImpRenta = false;
+      this.ocultarTodosLosComponentes();
+      this.componenteActivo = 'Trabajadores';
     }
   }
 
   TipoTrabajador(): void {
-      this.mostrarMovimientosPlanilla = false;
-      this.mostrarFormularioCentroCostos = false;
-      this.mostrarTrabajadores = false;
-      this.mostrarTipoTrabajador = true;
-      this.mostrarEstadoTrabajador = false;
-      this.mostrarTipoContrato  = false;
-      this.mostrarTipoCese  = false;
-      this.mostrarTipoCuenta = false;
-      this.mostrarEstadoCivil = false;
-      this.mostrarGenero = false;
-      this.mostrarReingreso = false;
-      this.mostrarTipoOperacion = false;
-      this.mostrarMovExcepcion1y2 = false;
-      this.mostrarMovExcepcion3 = false;
-      this.mostrarAfectaIESS = false;
-      this.mostrarAfectaImpRenta = false;
+    this.ocultarTodosLosComponentes();
+    this.componenteActivo = 'TipoTrabajador';
   }
 
   EstadoTrabajador(): void {
-    this.mostrarMovimientosPlanilla = false;
-    this.mostrarFormularioCentroCostos = false;
-    this.mostrarTrabajadores = false;
-    this.mostrarTipoTrabajador = false;
-    this.mostrarEstadoTrabajador = true;
-    this.mostrarTipoContrato  = false;
-    this.mostrarTipoCese  = false;
-    this.mostrarTipoCuenta = false;
-    this.mostrarEstadoCivil = false;
-    this.mostrarGenero = false;
-    this.mostrarReingreso = false;
-    this.mostrarTipoOperacion = false;
-    this.mostrarMovExcepcion1y2 = false;
-    this.mostrarMovExcepcion3 = false;
-    this.mostrarAfectaIESS = false;
-    this.mostrarAfectaImpRenta = false;
+    this.ocultarTodosLosComponentes();
+    this.componenteActivo = 'EstadoTrabajador';
   }
 
   TipoContrato(): void {
-    this.mostrarMovimientosPlanilla = false;
-    this.mostrarFormularioCentroCostos = false;
-    this.mostrarTrabajadores = false;
-    this.mostrarTipoTrabajador = false;
-    this.mostrarEstadoTrabajador = false;
-    this.mostrarTipoContrato  = true;
-    this.mostrarTipoCese  = false;
-    this.mostrarTipoCuenta = false;
-    this.mostrarEstadoCivil = false;
-    this.mostrarGenero = false;
-    this.mostrarReingreso = false;
-    this.mostrarTipoOperacion = false;
-    this.mostrarMovExcepcion1y2 = false;
-    this.mostrarMovExcepcion3 = false;
-    this.mostrarAfectaIESS = false;
-    this.mostrarAfectaImpRenta = false;
+    this.ocultarTodosLosComponentes();
+    this.componenteActivo = 'TipoContrato';
   }
 
   TipoCese(): void {
-    this.mostrarMovimientosPlanilla = false;
-    this.mostrarFormularioCentroCostos = false;
-    this.mostrarTrabajadores = false;
-    this.mostrarTipoTrabajador = false;
-    this.mostrarEstadoTrabajador = false;
-    this.mostrarTipoContrato  = false;
-    this.mostrarTipoCese  = true;
-    this.mostrarTipoCuenta = false;
-    this.mostrarEstadoCivil = false;
-    this.mostrarGenero = false;
-    this.mostrarReingreso = false;
-    this.mostrarTipoOperacion = false;
-    this.mostrarMovExcepcion1y2 = false;
-    this.mostrarMovExcepcion3 = false;
-    this.mostrarAfectaIESS = false;
-    this.mostrarAfectaImpRenta = false;
+    this.ocultarTodosLosComponentes();
+    this.componenteActivo = 'TipoCese';
   }
 
   TipoCuenta(): void {
-    this.mostrarMovimientosPlanilla = false;
-    this.mostrarFormularioCentroCostos = false;
-    this.mostrarTrabajadores = false;
-    this.mostrarTipoTrabajador = false;
-    this.mostrarEstadoTrabajador = false;
-    this.mostrarTipoContrato  = false;
-    this.mostrarTipoCese  = false;
-    this.mostrarTipoCuenta = true;
-    this.mostrarEstadoCivil = false;
-    this.mostrarGenero = false;
-    this.mostrarReingreso = false;
-    this.mostrarTipoOperacion = false;
-    this.mostrarMovExcepcion1y2 = false;
-    this.mostrarMovExcepcion3 = false;
-    this.mostrarAfectaIESS = false;
-    this.mostrarAfectaImpRenta = false;
+    this.ocultarTodosLosComponentes();
+    this.componenteActivo = 'TipoCuenta';
   }
 
   EstadoCivil(): void {
-    this.mostrarMovimientosPlanilla = false;
-    this.mostrarFormularioCentroCostos = false;
-    this.mostrarTrabajadores = false;
-    this.mostrarTipoTrabajador = false;
-    this.mostrarEstadoTrabajador = false;
-    this.mostrarTipoContrato  = false;
-    this.mostrarTipoCese  = false;
-    this.mostrarTipoCuenta = false;
-    this.mostrarEstadoCivil = true;
-    this.mostrarGenero = false;
-    this.mostrarReingreso = false;
-    this.mostrarTipoOperacion = false;
-    this.mostrarMovExcepcion1y2 = false;
-    this.mostrarMovExcepcion3 = false;
-    this.mostrarAfectaIESS = false;
-    this.mostrarAfectaImpRenta = false;
+    this.ocultarTodosLosComponentes();
+    this.componenteActivo = 'EstadoCivil';
   }
 
   Genero(): void {
-    this.mostrarMovimientosPlanilla = false;
-    this.mostrarFormularioCentroCostos = false;
-    this.mostrarTrabajadores = false;
-    this.mostrarTipoTrabajador = false;
-    this.mostrarEstadoTrabajador = false;
-    this.mostrarTipoContrato  = false;
-    this.mostrarTipoCese  = false;
-    this.mostrarTipoCuenta = false;
-    this.mostrarEstadoCivil = false;
-    this.mostrarGenero = true;
-    this.mostrarReingreso = false;
-    this.mostrarTipoOperacion = false;
-    this.mostrarMovExcepcion1y2 = false;
-    this.mostrarMovExcepcion3 = false;
-    this.mostrarAfectaIESS = false;
-    this.mostrarAfectaImpRenta = false;
+    this.ocultarTodosLosComponentes();
+    this.componenteActivo = 'Genero';
   }
 
   Reingreso(): void {
-    this.mostrarMovimientosPlanilla = false;
-    this.mostrarFormularioCentroCostos = false;
-    this.mostrarTrabajadores = false;
-    this.mostrarTipoTrabajador = false;
-    this.mostrarEstadoTrabajador = false;
-    this.mostrarTipoContrato  = false;
-    this.mostrarTipoCese  = false;
-    this.mostrarTipoCuenta = false;
-    this.mostrarEstadoCivil = false;
-    this.mostrarGenero = false;
-    this.mostrarReingreso = true;
-    this.mostrarTipoOperacion = false;
-    this.mostrarMovExcepcion1y2 = false;
-    this.mostrarMovExcepcion3 = false;
-    this.mostrarAfectaIESS = false;
-    this.mostrarAfectaImpRenta = false;
+    this.ocultarTodosLosComponentes();
+    this.componenteActivo = 'Reingreso';
   }
 
   TipoOperacion(): void {
-    this.mostrarMovimientosPlanilla = false;
-    this.mostrarFormularioCentroCostos = false;
-    this.mostrarTrabajadores = false;
-    this.mostrarTipoTrabajador = false;
-    this.mostrarEstadoTrabajador = false;
-    this.mostrarTipoContrato  = false;
-    this.mostrarTipoCese  = false;
-    this.mostrarTipoCuenta = false;
-    this.mostrarEstadoCivil = false;
-    this.mostrarGenero = false;
-    this.mostrarReingreso = false;
-    this.mostrarTipoOperacion = true;
-    this.mostrarMovExcepcion1y2 = false;
-    this.mostrarMovExcepcion3 = false;
-    this.mostrarAfectaIESS = false;
-    this.mostrarAfectaImpRenta = false;
+    this.ocultarTodosLosComponentes();
+    this.componenteActivo = 'TipoOperacion';
   }
 
   MovimientoExcepcion1y2(): void {
-    this.mostrarMovimientosPlanilla = false;
-    this.mostrarFormularioCentroCostos = false;
-    this.mostrarTrabajadores = false;
-    this.mostrarTipoTrabajador = false;
-    this.mostrarEstadoTrabajador = false;
-    this.mostrarTipoContrato  = false;
-    this.mostrarTipoCese  = false;
-    this.mostrarTipoCuenta = false;
-    this.mostrarEstadoCivil = false;
-    this.mostrarGenero = false;
-    this.mostrarReingreso = false;
-    this.mostrarTipoOperacion = false;
-    this.mostrarMovExcepcion1y2 = true;
-    this.mostrarMovExcepcion3 = false;
-    this.mostrarAfectaIESS = false;
-    this.mostrarAfectaImpRenta = false;
+    this.ocultarTodosLosComponentes();
+    this.componenteActivo = 'MovimientoExcepcion1y2';
   }
 
   MovimientoExcepcion3(): void {
-    this.mostrarMovimientosPlanilla = false;
-    this.mostrarFormularioCentroCostos = false;
-    this.mostrarTrabajadores = false;
-    this.mostrarTipoTrabajador = false;
-    this.mostrarEstadoTrabajador = false;
-    this.mostrarTipoContrato  = false;
-    this.mostrarTipoCese  = false;
-    this.mostrarTipoCuenta = false;
-    this.mostrarEstadoCivil = false;
-    this.mostrarGenero = false;
-    this.mostrarReingreso = false;
-    this.mostrarTipoOperacion = false;
-    this.mostrarMovExcepcion1y2 = false;
-    this.mostrarMovExcepcion3 = true;
-    this.mostrarAfectaIESS = false;
-    this.mostrarAfectaImpRenta = false;
+    this.ocultarTodosLosComponentes();
+    this.componenteActivo = 'MovimientoExcepcion3';
   }
 
   AfectaIESS(): void {
-    this.mostrarMovimientosPlanilla = false;
-    this.mostrarFormularioCentroCostos = false;
-    this.mostrarTrabajadores = false;
-    this.mostrarTipoTrabajador = false;
-    this.mostrarEstadoTrabajador = false;
-    this.mostrarTipoContrato  = false;
-    this.mostrarTipoCese  = false;
-    this.mostrarTipoCuenta = false;
-    this.mostrarEstadoCivil = false;
-    this.mostrarGenero = false;
-    this.mostrarReingreso = false;
-    this.mostrarTipoOperacion = false;
-    this.mostrarMovExcepcion1y2 = false;
-    this.mostrarMovExcepcion3 = false;
-    this.mostrarAfectaIESS = true;
-    this.mostrarAfectaImpRenta = false;
+    this.ocultarTodosLosComponentes();
+    this.componenteActivo = 'AfectaIESS';
   }
 
   AfectaImpRenta(): void {
+    this.ocultarTodosLosComponentes();
+    this.componenteActivo = 'AfectaImpRenta';
+  }
+
+  ocultarTodosLosComponentes(): void {
     this.mostrarMovimientosPlanilla = false;
     this.mostrarFormularioCentroCostos = false;
     this.mostrarTrabajadores = false;
@@ -487,7 +281,8 @@ export class HomeComponent implements OnInit {
     this.mostrarMovExcepcion1y2 = false;
     this.mostrarMovExcepcion3 = false;
     this.mostrarAfectaIESS = false;
-    this.mostrarAfectaImpRenta = true;
+    this.mostrarAfectaImpRenta = false;
+    // Ocultar los demás componentes aquí...
   }
 
   cerrarSesionAutorizador(): void {
