@@ -101,6 +101,9 @@
                             <li>
                               <a class="nav-link px-0 bi-arrow-counterclockwise"> <span class="d-none d-sm-inline"(click)="Reingreso()">Reingreso</span></a>
                             </li>
+                            <li>
+                              <a class="nav-link px-0 bi-arrow-counterclockwise"> <span class="d-none d-sm-inline"(click)="NivelSalarial()">Nivel Salarial</span></a>
+                            </li>
                         </ul>
                     </li>
                 </ul>
@@ -156,6 +159,9 @@
             </div>
             <div *ngIf="componenteActivo === 'AfectaImpRenta'">
               <app-afecta-imp-renta></app-afecta-imp-renta>
+            </div>
+            <div *ngIf="componenteActivo === 'NivelSalarial'">
+              <app-nivel-salarial></app-nivel-salarial>
             </div>
           </div>
     </div>

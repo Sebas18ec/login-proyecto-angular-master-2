@@ -1,0 +1,19 @@
+<br>
+<h1>Nivel Salarial</h1>
+<div class="table-container">
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th>Código</th>
+                <th>Descripcion</th>
+            </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let nivel of nivelSalarial">
+            <td>{{ nivel.Codigo }}</td>
+            <td>{{ nivel.Descripcion }}</td>
+            </tr>
+        </tbody>
+    </table>
+    <!-- Navegación de paginación -->
+</div>
