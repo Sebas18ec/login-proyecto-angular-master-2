@@ -322,6 +322,7 @@
         <div class="form-group">
           <label for="tipoCese">Tipo Cese</label>
           <select id="tipoCese" class="form-control" [(ngModel)]="trabajadorSeleccionado.Tipo_Cese" name="tipoCese" required>
+            <option value="vacio"></option>
             <option *ngFor="let option of tipoCeseOptions" [value]="option.value" [selected]="option.value === trabajadorSeleccionado.Tipo_Cese">{{ option.label }}</option>
           </select>
         </div>

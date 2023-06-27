@@ -563,8 +563,8 @@ export class TrabajadorComponent {
       const fechaCeseValue = this.trabajadorSeleccionado.FechaCese ? new Date(this.trabajadorSeleccionado.FechaCese) : new Date(1753, 0, 1);
       const fechaReingresoValue = this.trabajadorSeleccionado.FechaReingreso ? new Date(this.trabajadorSeleccionado.FechaReingreso) : new Date(1753, 0, 1);
       // Verificar si se ha seleccionado la opción en blanco
-      if (this.tipoCeseSeleccionado === 'vacio') {
-        this.tipoCeseSeleccionado = '';
+      if (this.trabajadorSeleccionado.Tipo_Cese === 'vacio') {
+        this.trabajadorSeleccionado.Tipo_Cese = '';
       }
       // El formulario es válido, realiza acciones adicionales aquí
       this.guardarCambiosTrabajador(
