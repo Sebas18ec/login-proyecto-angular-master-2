@@ -375,7 +375,7 @@ export class TrabajadorComponent {
       .set('page', this.currentPage.toString())
       .set('itemsPerPage', this.itemsPerPage.toString());
   
-    this.http.get<any[]>(`api/ControladorAPI/trabajador/select?sucursal=${codigoEmisorSeleccionado}`).subscribe(
+    this.http.get<any[]>(`https://aspnetback.azurewebsites.net/api/ControladorAPI/trabajador/select?sucursal=${codigoEmisorSeleccionado}`).subscribe(
       data => {
         this.trabajadores = data;
         this.datosTablaOriginal = data;
