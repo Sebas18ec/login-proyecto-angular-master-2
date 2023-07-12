@@ -1,5 +1,5 @@
 import { HttpClient, HttpParams, HttpErrorResponse } from '@angular/common/http';
-import { Component,TemplateRef, ViewChild  } from '@angular/core';
+import { Component,TemplateRef, ViewChild, ElementRef   } from '@angular/core';
 import { EmisorService } from 'src/app/shared/emisor.service';
 import { Router } from '@angular/router';
 import { map } from 'rxjs';
@@ -7,6 +7,8 @@ import { DomSanitizer } from '@angular/platform-browser';
 import Swal from 'sweetalert2';
 import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal'
 import { FormsModule, NgForm } from '@angular/forms';
+import * as XLSX from 'xlsx';
+import { forkJoin,Observable, of } from 'rxjs';
 
 
 @Component({
@@ -41,6 +43,7 @@ export class TrabajadorComponent {
   cedula: string =''; 
   @ViewChild('modalTemplate') modalTemplate!: TemplateRef<any>;
   @ViewChild('modalEditTemplate') modalEditTemplate!: TemplateRef<any>;
+  @ViewChild('table', { static: false }) table: ElementRef;
   modalRef?: BsModalRef;
   codigoEmisorSeleccionado: string = '';
   trabajadorSeleccionado: any
@@ -82,11 +85,59 @@ export class TrabajadorComponent {
   identificacionInvalid: boolean = false;
 
   constructor(private modalService: BsModalService,private http: HttpClient,private sanitizer: DomSanitizer,private emisorService: EmisorService,private router: Router) {
+    this.table = new ElementRef(null);
   } 
 
   openModal(template: TemplateRef<any>) {
     this.modalRef = this.modalService.show(template);
   }
+
+  descargarTablaExcel(): void {
+    const observables = [];
+    const totalPages = Math.ceil(this.trabajadores.length / this.itemsPerPage);
+  
+    for (let i = 1; i <= totalPages; i++) {
+      observables.push(this.getPageData(i));
+    }
+  
+    forkJoin(observables).subscribe((pagesData: any[]) => {
+      const data = pagesData.reduce((acc, pageData) => acc.concat(pageData), []);
+      const filteredData = this.filterColumns(data);
+      const ws: XLSX.WorkSheet = XLSX.utils.json_to_sheet(filteredData);
+      const wb: XLSX.WorkBook = XLSX.utils.book_new();
+      XLSX.utils.book_append_sheet(wb, ws, 'Tabla');
+  
+      // Generar el archivo Excel
+      XLSX.writeFile(wb, 'listadoTrabajadores.xlsx');
+    });
+  }
+  columnasExportar: string[] = ['Apellido_Paterno', 'Apellido_Materno', 'Nombres', 'FechaNacimiento', 'Genero', 'Direccion', 'Telefono_Movil', 'Telefono_Fijo', 'Remuneracion_Minima', 'FormaCalculo13ro', 'FormaCalculo14ro',
+  'Fondo_Reserva', 'Entidad_Bancaria', 'Tipo_Cuenta', 'Nro_Cuenta_Bancaria', 'FechaIngreso'];
+  filterColumns(data: any[]): any[] {
+    const filteredData: any[] = [];
+  
+    for (const item of data) {
+      const filteredItem: any = {};
+  
+      for (const columna of this.columnasExportar) {
+        filteredItem[columna] = item[columna];
+      }
+  
+      filteredData.push(filteredItem);
+    }
+  
+    return filteredData;
+  }
+  
+  
+  getPageData(page: number): Observable<any> {
+    const start = (page - 1) * this.itemsPerPage;
+    const end = start + this.itemsPerPage;
+    const data = this.trabajadores.slice(start, end);
+  
+    return of(data); // Importa 'of' desde 'rxjs' si no lo tienes importado
+  }
+  
 
   
   ngOnInit() {
@@ -324,7 +375,7 @@ export class TrabajadorComponent {
       .set('page', this.currentPage.toString())
       .set('itemsPerPage', this.itemsPerPage.toString());
   
-    this.http.get<any[]>(`https://aspnetback.azurewebsites.net/api/ControladorAPI/trabajador/select?sucursal=${codigoEmisorSeleccionado}`).subscribe(
+    this.http.get<any[]>(`api/ControladorAPI/trabajador/select?sucursal=${codigoEmisorSeleccionado}`).subscribe(
       data => {
         this.trabajadores = data;
         this.datosTablaOriginal = data;
